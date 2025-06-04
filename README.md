@@ -32,7 +32,7 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 ## 🚀 Technologies Used
 
 - **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** Flask / Node.js (as per your implementation)  
+- **Backend:** Flask / Node.js 
 - **AI/ML Models:** For prediction modules (Crop, Yield, Disease)  
-- **Database:** MySQL / MongoDB (if applicable)  
+- **Database:** MySQL / MongoDB  
 - **Hosting:** Localhost (127.0.0.1), with option for cloud deployment
