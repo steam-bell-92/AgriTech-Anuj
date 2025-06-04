@@ -43,3 +43,30 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 - **[Kanisha Ravindra Sharma](https://github.com/KanishaSharma11)** – Web Developer  
 - **[Shubhangi Roy](https://github.com/ShubhangiRoy12)** – Machine Learning Engineer & Backend Developer
 
+---
+
+## 🌐 Future Scope
+
+- ☁️ Cloud deployment (e.g., Vercel, Heroku)
+- 📱 Mobile app integration
+- 🌦️ Real-time weather API
+- 🤖 AI chatbot for agriculture support
+- 🗣️ Support for regional languages
+
+---
+
+## 📃 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+### ✅ Optional Additions
+
+You can also add:
+- 🛡️ Badges (for build status, license, etc.)
+- 🎥 Demo video link
+- 🤝 Contribution guidelines
+- 💬 Feedback or contact info
+
+Let me know if you'd like help adding any of these!
