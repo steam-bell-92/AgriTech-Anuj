@@ -36,3 +36,12 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 - **AI/ML Models:** For prediction modules (Crop, Yield, Disease)  
 - **Database:** MySQL / MongoDB  
 - **Hosting:** Localhost (127.0.0.1), with option for cloud deployment
+
+## 👥 Team Members & Roles
+
+## 👥 Team Members & Roles
+
+- **[Om Roy](https://github.com/omroy07)** – Project Lead & Web Developer  
+- **[Kanisha Ravindra Sharma](https://github.com/KanishaSharma11)** – Web Developer  
+- **[Shubhangi Roy](https://github.com/ShubhangiRoy12)** – Machine Learning Engineer & Backend Developer
+
