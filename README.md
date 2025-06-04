@@ -61,12 +61,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-### ✅ Optional Additions
-
-You can also add:
-- 🛡️ Badges (for build status, license, etc.)
-- 🎥 Demo video link
-- 🤝 Contribution guidelines
-- 💬 Feedback or contact info
-
-Let me know if you'd like help adding any of these!
