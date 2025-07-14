@@ -5,7 +5,7 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 ## 🖼️ Preview
 
 ![AgriTech Dashboard](https://github.com/omroy07/AgriTech/blob/main/image/Screenshot%202025-06-03%20111019.png)
-
+ 
 ## 🌟 Features
 
 - **Crop Recommendation**  
