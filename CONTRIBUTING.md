@@ -18,6 +18,7 @@ Use a clear and descriptive name for your branch:
 ```bash
 git checkout -b feature/your-feature-name
 ```
+---
 ### 3. Make Your Changes
 
 You can:
@@ -36,13 +37,15 @@ You can:
 
 - Run your code locally and ensure everything works as expected.
 - Add test cases if needed to verify your functionality.
-### Commit and Push
+---
+### 5. Commit and Push
 Write a meaningful commit message:
 ```bash
 git add .
 git commit -m "feat: short description of the feature"
 git push origin feature/your-feature-name
 ```
+---
 ### 6. Submit a Pull Request (PR)
 
 - Navigate to your fork on GitHub
