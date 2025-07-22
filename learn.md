@@ -89,11 +89,11 @@ We'll review your work and help merge it 😊
 ---
 
 ## 🧪 Tips for Improving AgriTech
-
+- ✅ **Database Connection** (see [Issue #4](https://github.com/omroy07/AgriTech/issues/5))  
 - ✅ **Polish the front-end design** (see [Issue #4](https://github.com/omroy07/AgriTech/issues/4))  
 - 🤖 **Integrate a chatbot** using a small LLM (see [Issue #3](https://github.com/omroy07/AgriTech/issues/3))  
 - 📊 **Add a detailed yield prediction system** (see [Issue #2](https://github.com/omroy07/AgriTech/issues/2))  
-- 🧠 **Expand crop recommendation logic and UI** (see [Issue #1](https://github.com/omroy07/AgriTech/issues/1))  
+- 🧠 **Expand crop recommendation logic and UI** (see [Issue #1](https://github.com/omroy07/AgriTech/issues/1))
 
 ---
 
