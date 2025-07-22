@@ -61,7 +61,7 @@ AgriTech/
 git clone https://github.com/omroy07/AgriTech.git
 cd AgriTech
 ```
-###🔹 Set up a virtual environment
+### 🔹 Set up a virtual environment
 ```bash
 python3 -m venv venv
 source venv/bin/activate   # On Windows: venv\Scripts\activate
@@ -70,7 +70,7 @@ source venv/bin/activate   # On Windows: venv\Scripts\activate
 ```bash
 pip install -r requirements.txt
 ```
-###🔹 Run the app
+### 🔹 Run the app
 ```bash
 flask run
 ```
