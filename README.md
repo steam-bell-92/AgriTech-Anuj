@@ -1,11 +1,15 @@
 # 🌾 AgriTech Web Application
 
 AgriTech is an innovative web platform designed to empower farmers and agricultural communities with AI-powered tools, real-time insights, and interactive collaboration features.
+
 ---
+
 ## 🖼️ Preview
 
 ![AgriTech Dashboard](https://github.com/omroy07/AgriTech/blob/main/image/Screenshot%202025-06-03%20111019.png)
+
  ---
+ 
 ## 🌟 Features
 
 - **Crop Recommendation**  
@@ -28,7 +32,9 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 
 - **Plantation Guidance**  
   Access helpful plantation techniques and strategies for better crop growth.
+  
 ---
+
 ## 🚀 Technologies Used
 
 - **Frontend:** HTML, CSS, JavaScript  
@@ -36,7 +42,9 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 - **AI/ML Models:** For prediction modules (Crop, Yield, Disease)  
 - **Database:** MySQL / MongoDB  
 - **Hosting:** Localhost (127.0.0.1), with option for cloud deployment
+  
 ---
+
 ## 👥 Team Members & Roles
 
 - **[Om Roy](https://github.com/omroy07)** – Project Lead & Web Developer  
