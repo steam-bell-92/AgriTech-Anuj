@@ -53,6 +53,7 @@ AgriTech/
 ├── model files (e.g. crop . pkl)
 ├── requirements.txt            # Python dependencies
 └── images/                     # Disease sample images
+
 ```
 ## 🏁 Getting Started
 
