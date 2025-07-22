@@ -54,3 +54,51 @@ AgriTech/
 ├── requirements.txt            # Python dependencies
 └── images/                     # Disease sample images
 ```
+## 🏁 Getting Started
+
+### 🔹 Clone the repo  
+```bash
+git clone https://github.com/omroy07/AgriTech.git
+cd AgriTech
+```
+###🔹 Set up a virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate   # On Windows: venv\Scripts\activate
+```
+### 🔹 Install dependencies
+```bash
+pip install -r requirements.txt
+```
+###🔹 Run the app
+```bash
+flask run
+```
+Then visit http://localhost:5000 to explore features.
+## 📈 Adding a New Feature?
+
+1. **Fork the repo** & create a branch:  
+   `feature/your‑feature`
+
+2. **Build, test, and document** your changes
+
+3. **Push** your branch and open a **Pull Request**
+
+We'll review your work and help merge it 😊
+
+---
+
+## 🧪 Tips for Improving AgriTech
+
+- ✅ **Polish the front-end design** (see [Issue #4](https://github.com/omroy07/AgriTech/issues/4))  
+- 🤖 **Integrate a chatbot** using a small LLM (see [Issue #3](https://github.com/omroy07/AgriTech/issues/3))  
+- 📊 **Add a detailed yield prediction system** (see [Issue #2](https://github.com/omroy07/AgriTech/issues/2))  
+- 🧠 **Expand crop recommendation logic and UI** (see [Issue #1](https://github.com/omroy07/AgriTech/issues/1))  
+
+---
+
+## 💡 Want to Learn More?
+
+Curious about the inner workings—like how model training, data pipelines, or image analysis tie together? Dive into the notebooks found in the **Crop Recommendation** and **Yield Prediction** folders!
+
+
