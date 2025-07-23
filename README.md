@@ -63,9 +63,3 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 
 ---
 
-## 📃 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
-
