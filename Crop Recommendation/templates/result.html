@@ -57,6 +57,13 @@
   <div class="container">
     <h2>🌿 Recommended Crop</h2>
     <p class="result">{{ crop }}</p>
+    <form method="post" action="/download_report" style="margin-bottom: 16px;">
+      {% for key, value in params.items() %}
+        <input type="hidden" name="{{ key }}" value="{{ value }}">
+      {% endfor %}
+      <input type="hidden" name="crop" value="{{ crop }}">
+      <button type="submit" style="background-color: #2d8f85; color: #fff; padding: 10px 20px; border: none; border-radius: 8px; font-weight: 500; cursor: pointer; margin-bottom: 10px;">⬇️ Download as PDF</button>
+    </form>
     <a href="/">🔄 Try Again</a>
   </div>
 </body>
