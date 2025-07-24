@@ -36,11 +36,16 @@ body {
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .nav-buttons .btn:hover {
   background-color: #e0e0e0;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: #1b5e20;
 }
 
 /* Hero section styling */
