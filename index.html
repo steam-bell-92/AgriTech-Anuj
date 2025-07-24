@@ -3,9 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AgriTech</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="AgriTech - Empowering Agriculture Through Technology. Connect farmers, buyers, and suppliers in India's agricultural ecosystem." />
+  <title>AgriTech - Revolutionizing Agriculture with Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* Reset some basics */
     * {
@@ -28,16 +31,22 @@
     /* Navbar */
     .navbar {
       background-color: #2a7a2a;
-      /* dark green */
       color: white;
-      padding: 1rem 2rem;
+      padding: 1rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.7rem 5%;
+      background-color: rgba(42, 122, 42, 0.95);
+      backdrop-filter: blur(5px);
     }
 
     .logo {
@@ -46,25 +55,43 @@
       letter-spacing: 1.5px;
     }
 
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
     .nav-buttons a.btn {
       background-color: #4caf50;
-      /* medium green */
       color: white;
-      padding: 0.5rem 1.2rem;
-      border-radius: 5px;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
-      margin-left: 1rem;
-      transition: all 0.3s ease;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid transparent;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-buttons a.btn:hover,
+    .nav-buttons a.btn:focus {
+      background-color: #3a6f3a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      outline: none;
+    }
+
+    .nav-buttons a.btn:active {
       transform: translateY(0);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    .nav-buttons a.btn:hover {
-      background-color: #3a6f3a;
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      color: #f0f0f0;
+    .nav-buttons a.btn:focus-visible {
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
     }
 
     /* Hero Section */
@@ -73,6 +100,9 @@
       padding: 4rem 2rem;
       text-align: center;
       color: #1e2f1e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .hero-content h2 {
@@ -116,9 +146,26 @@
       height: 180px;
       object-fit: cover;
       margin-right: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       user-select: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #f5f5f5;
+    }
+
+    .slide-track img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Add fade-in animation for lazy loaded images */
+    .slide-track img[loading="lazy"] {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .slide-track img.loaded {
+      opacity: 1;
     }
 
     @keyframes scroll {
@@ -141,15 +188,88 @@
       font-size: 1rem;
     }
 
-    /* Responsive */
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .hero-content h2 {
+        font-size: 2.2rem;
+      }
+
+      .navbar {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-buttons a.btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 3rem 1.5rem;
+      }
+
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1.1rem;
+      }
+
+      .slide-track img {
+        width: 250px;
+        height: 150px;
+      }
+    }
+
     @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .logo {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .nav-buttons {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
       .hero-content h2 {
         font-size: 1.8rem;
+        line-height: 1.3;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
       }
 
       .slide-track img {
         width: 200px;
-        height: 120px;
+        height: 130px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .nav-buttons a.btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+      }
+
+      .slide-track img {
+        width: 180px;
+        height: 110px;
       }
     }
   </style>
@@ -176,16 +296,52 @@
     </div>
   </section>
 
-  <section class="carousel">
+  <section class="carousel" aria-label="Featured agricultural images">
     <div class="slider">
       <div class="slide-track">
-        <img src="images/slide1.jpeg" alt="Slide 1" />
-        <img src="images/slide2.jpeg" alt="Slide 2" />
-        <img src="images/slide3.jpeg" alt="Slide 3" />
-        <!-- Repeat for infinite effect -->
-        <img src="images/slide1.jpeg" alt="Slide 1" />
-        <img src="images/slide2.jpeg" alt="Slide 2" />
-        <img src="images/slide3.jpeg" alt="Slide 3" />
+        <img
+          src="images/slide1.jpeg"
+          loading="lazy"
+          alt="Farmers working in a lush green field"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide2.jpeg"
+          loading="lazy"
+          alt="Harvested crops ready for market"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide3.jpeg"
+          loading="lazy"
+          alt="Modern agricultural equipment in use"
+          width="300"
+          height="180"
+        />
+        <!-- Duplicates for infinite effect -->
+        <img
+          src="images/slide1.jpeg"
+          loading="lazy"
+          alt="Farmers working in a lush green field"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide2.jpeg"
+          loading="lazy"
+          alt="Harvested crops ready for market"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide3.jpeg"
+          loading="lazy"
+          alt="Modern agricultural equipment in use"
+          width="300"
+          height="180"
+        />
       </div>
     </div>
   </section>
@@ -194,7 +350,58 @@
     <p>&copy; 2025 AgriTech | Empowering India's Farming Future</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Add loaded class to images when they finish loading
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle lazy loaded images
+      const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+      
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.classList.add('loaded');
+            
+            // If image is already cached, ensure it gets the loaded class
+            if (img.complete) {
+              img.classList.add('loaded');
+            } else {
+              img.addEventListener('load', () => {
+                img.classList.add('loaded');
+              });
+            }
+            
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      lazyImages.forEach(img => {
+        imageObserver.observe(img);
+      });
+
+      // Navbar scroll effect
+      const navbar = document.querySelector('.navbar');
+      let lastScrollTop = 0;
+      
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+        
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      });
+      
+      // Initialize - check if page is already scrolled on load
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      }
+    });
+  </script>
 </body>
 
 </html>
