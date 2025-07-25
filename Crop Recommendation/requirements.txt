@@ -1,3 +1,5 @@
+# PDF generation
+reportlab
 flask
 joblib
 numpy
