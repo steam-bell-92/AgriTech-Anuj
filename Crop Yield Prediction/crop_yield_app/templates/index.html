@@ -1,171 +1,598 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Crop Yield Prediction</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction | AgriTech</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Crop Yield Prediction</h1>
-    <form method="post">
-        <label>Crop:</label>
-        <select name="crop">
-            <option value="Arecanut">Arecanut</option>
-            <option value="Arhar/Tur">Arhar/Tur</option>
-            <option value="Bajra">Bajra</option>
-            <option value="Banana">Banana</option>
-            <option value="Barley">Barley</option>
-            <option value="Black pepper">Black pepper</option>
-            <option value="Cardamom">Cardamom</option>
-            <option value="Cashewnut">Cashewnut</option>
-            <option value="Castor seed">Castor seed</option>
-            <option value="Coconut">Coconut</option>
-            <option value="Coriander">Coriander</option>
-            <option value="Cotton(lint)">Cotton(lint)</option>
-            <option value="Cowpea(Lobia)">Cowpea(Lobia)</option>
-            <option value="Dry chillies">Dry chillies</option>
-            <option value="Garlic">Garlic</option>
-            <option value="Ginger">Ginger</option>
-            <option value="Gram">Gram</option>
-            <option value="Groundnut">Groundnut</option>
-            <option value="Guar seed">Guar seed</option>
-            <option value="Horse-gram">Horse-gram</option>
-            <option value="Jowar">Jowar</option>
-            <option value="Jute">Jute</option>
-            <option value="Khesari">Khesari</option>
-            <option value="Linseed">Linseed</option>
-            <option value="Maize">Maize</option>
-            <option value="Masoor">Masoor</option>
-            <option value="Mesta">Mesta</option>
-            <option value="Moong(Green Gram)">Moong(Green Gram)</option>
-            <option value="Moth">Moth</option>
-            <option value="Niger seed">Niger seed</option>
-            <option value="Oilseeds total">Oilseeds total</option>
-            <option value="Onion">Onion</option>
-            <option value="Other  Rabi pulses">Other  Rabi pulses</option>
-            <option value="Other Cereals">Other Cereals</option>
-            <option value="Other Kharif pulses">Other Kharif pulses</option>
-            <option value="Other Summer Pulses">Other Summer Pulses</option>
-            <option value="Peas & beans (Pulses)">Peas & beans (Pulses)</option>
-            <option value="Potato">Potato</option>
-            <option value="Ragi">Ragi</option>
-            <option value="Rapeseed &Mustard">Rapeseed &Mustard</option>
-            <option value="Rice">Rice</option>
-            <option value="Safflower">Safflower</option>
-            <option value="Sannhamp">Sannhamp</option>
-            <option value="Sesamum">Sesamum</option>
-            <option value="Small millets">Small millets</option>
-            <option value="Soyabean">Soyabean</option>
-            <option value="Sugarcane">Sugarcane</option>
-            <option value="Sunflower">Sunflower</option>
-            <option value="Sweet potato">Sweet potato</option>
-            <option value="Tapioca">Tapioca</option>
-            <option value="Tobacco">Tobacco</option>
-            <option value="Turmeric">Turmeric</option>
-            <option value="Urad">Urad</option>
-            <option value="Wheat">Wheat</option>
-            <option value="other oilseeds">other oilseeds</option>
-        </select>
+    <div class="container">
+        <a href="../../index.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        
+        <header class="header">
+            <h1>Crop Yield Prediction</h1>
+            <p>Get accurate yield predictions based on crop type, location, and environmental factors to optimize your agricultural planning.</p>
+        </header>
 
-        <label>Crop Year:</label>
-<select name="year" required>
-    <option value="1997">1997</option>
-    <option value="1998">1998</option>
-    <option value="1999">1999</option>
-    <option value="2000">2000</option>
-    <option value="2001">2001</option>
-    <option value="2002">2002</option>
-    <option value="2003">2003</option>
-    <option value="2004">2004</option>
-    <option value="2005">2005</option>
-    <option value="2006">2006</option>
-    <option value="2007">2007</option>
-    <option value="2008">2008</option>
-    <option value="2009">2009</option>
-    <option value="2010">2010</option>
-    <option value="2011">2011</option>
-    <option value="2012">2012</option>
-    <option value="2013">2013</option>
-    <option value="2014">2014</option>
-    <option value="2015">2015</option>
-    <option value="2016">2016</option>
-    <option value="2017">2017</option>
-    <option value="2018">2018</option>
-    <option value="2019">2019</option>
-    <option value="2020">2020</option>
-    <option value="2021">2021</option>
-    <option value="2022">2022</option>
-    <option value="2023">2023</option>
-    <option value="2024">2024</option>
-    <option value="2025">2025</option>
-    <option value="2026">2026</option>
-    <option value="2027">2027</option>
-    <option value="2028">2028</option>
-    <option value="2029">2029</option>
-    <option value="2030">2030</option>
-</select>
+        <div class="prediction-card">
+            <form id="yieldForm" method="post" onsubmit="showLoading()">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="crop">Crop Type</label>
+                        <select id="crop" name="crop" required>
+                            <option value="" disabled selected>Select a crop</option>
+                            <option value="Rice">Rice</option>
+                            <option value="Wheat">Wheat</option>
+                            <option value="Maize">Maize</option>
+                            <option value="Soyabean">Soybean</option>
+                            <option value="Cotton(lint)">Cotton</option>
+                            <option value="Sugarcane">Sugarcane</option>
+                            <option value="Groundnut">Groundnut</option>
+                            <option value="Potato">Potato</option>
+                            <option value="Jowar">Jowar (Sorghum)</option>
+                            <option value="Bajra">Bajra (Pearl Millet)</option>
+                            <option value="Ragi">Ragi (Finger Millet)</option>
+                            <option value="Barley">Barley</option>
+                            <option value="Turmeric">Turmeric</option>
+                            <option value="Onion">Onion</option>
+                            <option value="Banana">Banana</option>
+                            <option value="Coconut">Coconut</option>
+                            <option value="Arecanut">Arecanut</option>
+                            <option value="Cashewnut">Cashewnut</option>
+                            <option value="Sunflower">Sunflower</option>
+                        </select>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="year">Crop Year</label>
+                        <select id="year" name="year" required>
+                            <option value="" disabled selected>Select year</option>
+                            {% for year in range(1997, 2029) %}
+                                <option value="{{ year }}" {% if year == 2024 %}selected{% endif %}>{{ year }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
 
-        <label>Season:</label>
-        <select name="season">
-            <option value="Autumn">Autumn</option>
-            <option value="Kharif">Kharif</option>
-            <option value="Rabi">Rabi</option>
-            <option value="Summer">Summer</option>
-            <option value="Whole Year">Whole Year</option>
-            <option value="Winter">Winter</option>
-        </select>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="season">Season</label>
+                        <select id="season" name="season" required>
+                            <option value="" disabled selected>Select season</option>
+                            <option value="Kharif">Kharif (June-October)</option>
+                            <option value="Rabi">Rabi (October-April)</option>
+                            <option value="Zaid">Zaid (March-June)</option>
+                            <option value="Whole Year">Whole Year</option>
+                        </select>
+                    </div>
 
-        <label>State:</label>
-        <select name="state">
-            <option value="Andhra Pradesh">Andhra Pradesh</option>
-            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-            <option value="Assam">Assam</option>
-            <option value="Bihar">Bihar</option>
-            <option value="Chhattisgarh">Chhattisgarh</option>
-            <option value="Delhi">Delhi</option>
-            <option value="Goa">Goa</option>
-            <option value="Gujarat">Gujarat</option>
-            <option value="Haryana">Haryana</option>
-            <option value="Himachal Pradesh">Himachal Pradesh</option>
-            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-            <option value="Jharkhand">Jharkhand</option>
-            <option value="Karnataka">Karnataka</option>
-            <option value="Kerala">Kerala</option>
-            <option value="Madhya Pradesh">Madhya Pradesh</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Manipur">Manipur</option>
-            <option value="Meghalaya">Meghalaya</option>
-            <option value="Mizoram">Mizoram</option>
-            <option value="Nagaland">Nagaland</option>
-            <option value="Odisha">Odisha</option>
-            <option value="Puducherry">Puducherry</option>
-            <option value="Punjab">Punjab</option>
-            <option value="Sikkim">Sikkim</option>
-            <option value="Tamil Nadu">Tamil Nadu</option>
-            <option value="Telangana">Telangana</option>
-            <option value="Tripura">Tripura</option>
-            <option value="Uttar Pradesh">Uttar Pradesh</option>
-            <option value="Uttarakhand">Uttarakhand</option>
-            <option value="West Bengal">West Bengal</option>
-        </select>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" name="state" required>
+                            <option value="" disabled selected>Select state</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                        </select>
+                    </div>
+                </div>
 
-        <label>Area (hectares):</label>
-        <input type="number" name="area" step="0.01" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="area">Cultivation Area (hectares)</label>
+                        <input type="number" id="area" name="area" min="0.01" step="0.01" placeholder="e.g., 2.5" required>
+                    </div>
 
-        <label>Annual Rainfall (mm):</label>
-        <input type="number" name="rainfall" step="0.01" required>
+                    <div class="form-group">
+                        <label for="rainfall">Expected Annual Rainfall (mm)</label>
+                        <input type="number" id="rainfall" name="rainfall" min="0" step="1" placeholder="e.g., 1200" required>
+                    </div>
+                </div>
 
-        <label>Production (tonnes):</label>
-        <input type="number" name="production" step="0.01" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="production">Expected Production (tonnes)</label>
+                        <input type="number" id="production" name="production" min="0.01" step="0.01" placeholder="e.g., 10.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fertilizer">Fertilizer Usage (kg/hectare)</label>
+                        <input type="number" id="fertilizer" name="fertilizer" min="0" step="0.1" placeholder="e.g., 150" required>
+                    </div>
+                </div>
 
+                <button type="submit" class="btn">
+                    <i class="fas fa-calculator"></i> Predict Yield
+                </button>
+            </form>
 
-        <input type="submit" value="Predict Yield">
-    </form>
+            <div class="loading" id="loadingIndicator">
+                <div class="spinner"></div>
+                <p>Analyzing data and generating prediction...</p>
+            </div>
 
-    
-{% if prediction is not none %}
-    <h2>Predicted Yield: {{ prediction }} tonnes per hectare</h2>
-{% endif %}
+            <div class="result-card" id="resultCard" style="display: none;">
+                <h2>Predicted Yield</h2>
+                <div class="result-value">
+                    <span id="predictionValue">0.00</span>
+                    <small>tonnes/hectare</small>
+                </div>
+                <p>Based on the input parameters, the expected yield for your crop is shown above.</p>
+                
+                <div class="yield-insights">
+                    <h3><i class="fas fa-chart-line"></i> Yield Insights</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-tachometer-alt"></i>
+                            <div>
+                                <strong>Efficiency:</strong> <span id="efficiency">-</span>
+                                <p class="insight-note" id="efficiency-note">Analyzing yield potential...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-cloud-rain"></i>
+                            <div>
+                                <strong>Rainfall Impact:</strong> <span id="rainfall-impact">-</span>
+                                <p class="insight-note" id="rainfall-note">Analyzing rainfall data...</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <strong>Recommendation:</strong>
+                                <p class="insight-note" id="recommendation">Generating recommendations...</p>
+                            </div>
+                        </li>
+                        <li id="season-tip-container" style="display: none;">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Seasonal Tip:</strong>
+                                <p class="insight-note" id="season-tip"></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <button type="button" onclick="window.location.reload()" class="btn" style="background-color: #4caf50; margin-top: 20px;">
+                    <i class="fas fa-redo"></i> Make Another Prediction
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        // Show loading indicator
+        function showLoading(show = true) {
+            const loadingEl = document.getElementById('loadingIndicator');
+            const formEl = document.getElementById('yieldForm');
+            const resultEl = document.getElementById('resultCard');
+            
+            if (show) {
+                loadingEl.style.display = 'flex';
+                resultEl.style.display = 'none';
+                formEl.style.opacity = '0.7';
+                formEl.style.pointerEvents = 'none';
+            } else {
+                loadingEl.style.display = 'none';
+                formEl.style.opacity = '1';
+                formEl.style.pointerEvents = 'auto';
+            }
+        }
+
+        // Show result with prediction
+        function showPrediction(data) {
+            const resultEl = document.getElementById('resultCard');
+            const predictionEl = document.getElementById('predictionValue');
+            const efficiencyEl = document.getElementById('efficiency');
+            const efficiencyNoteEl = document.getElementById('efficiency-note');
+            const rainfallImpactEl = document.getElementById('rainfall-impact');
+            const rainfallNoteEl = document.getElementById('rainfall-note');
+            const recommendationEl = document.getElementById('recommendation');
+            const seasonTipEl = document.getElementById('season-tip');
+            
+            // Update prediction value
+            predictionEl.textContent = data.prediction;
+            
+            // Update insights
+            efficiencyEl.textContent = data.context.efficiency;
+            efficiencyNoteEl.textContent = data.context.efficiency_note;
+            rainfallImpactEl.textContent = data.context.rainfall_impact || 'N/A';
+            rainfallNoteEl.textContent = data.context.rainfall_note || 'No rainfall data available.';
+            recommendationEl.textContent = data.context.recommendation;
+            
+            // Update season tip if available
+            if (data.context.season_tip) {
+                seasonTipEl.textContent = data.context.season_tip;
+                document.getElementById('season-tip-container').style.display = 'block';
+            } else {
+                document.getElementById('season-tip-container').style.display = 'none';
+            }
+            
+            // Show result card
+            resultEl.style.display = 'block';
+            
+            // Smooth scroll to results
+            setTimeout(() => {
+                resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+        }
+
+        // Show form errors
+        function showFormErrors(errors) {
+            // Reset all error states
+            document.querySelectorAll('.form-group').forEach(group => {
+                group.classList.remove('error', 'success');
+                const errorEl = group.querySelector('.error-message');
+                if (errorEl) {
+                    errorEl.textContent = '';
+                }
+            });
+            
+            // Show new errors
+            Object.entries(errors).forEach(([field, message]) => {
+                const input = document.querySelector(`[name="${field}"]`);
+                if (!input) return;
+                
+                const formGroup = input.closest('.form-group');
+                if (!formGroup) return;
+                
+                // Add error class to form group
+                formGroup.classList.add('error');
+                
+                // Create or update error message
+                let errorEl = formGroup.querySelector('.error-message');
+                if (!errorEl) {
+                    errorEl = document.createElement('div');
+                    errorEl.className = 'error-message';
+                    // Insert after the input element
+                    input.insertAdjacentElement('afterend', errorEl);
+                }
+                
+                // Set error message
+                errorEl.textContent = message;
+                
+                // Focus the first invalid field
+                if (Object.keys(errors)[0] === field) {
+                    setTimeout(() => {
+                        input.focus({ preventScroll: true });
+                        // Smooth scroll to the error
+                        input.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                            inline: 'nearest'
+                        });
+                    }, 100);
+                }
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('yieldForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            // Get form reference
+            const form = event.target;
+            
+            // Validate form inputs before submission
+            if (!validateForm(form)) {
+                return false;
+            }
+            
+            // Disable submit button and show loading state
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            
+            // Show loading indicator
+            showLoading(true);
+            
+            try {
+                // Prepare form data
+                const formData = new FormData(form);
+                
+                // Add CSRF token if available
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+                const headers = {};
+                if (csrfToken) {
+                    headers['X-CSRFToken'] = csrfToken;
+                }
+                
+                // Make API request
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData,
+                    headers: headers
+                });
+                
+                // Handle response
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.error || 'Failed to get prediction');
+                }
+                
+                if (result.success) {
+                    // Show success state on form fields
+                    markFormFieldsAsValid(form);
+                    // Display prediction results
+                    showPrediction(result);
+                    // Scroll to results
+                    setTimeout(() => {
+                        document.getElementById('resultCard').scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                    }, 100);
+                } else if (result.errors) {
+                    // Show validation errors
+                    showFormErrors(result.errors);
+                } else {
+                    throw new Error('Invalid response from server');
+                }
+            } catch (error) {
+                console.error('Prediction error:', error);
+                showError(error.message || 'An error occurred while processing your request. Please try again.');
+            } finally {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+                // Hide loading indicator
+                showLoading(false);
+            }
+            
+            return false;
+        });
+        
+        // Mark all form fields as valid
+        function markFormFieldsAsValid(form) {
+            const inputs = form.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                const formGroup = input.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.remove('error');
+                    formGroup.classList.add('success');
+                    const errorEl = formGroup.querySelector('.error-message');
+                    if (errorEl) {
+                        errorEl.textContent = '';
+                    }
+                }
+            });
+        }
+        
+        // Client-side form validation
+        function validateForm(form) {
+            let isValid = true;
+            const errors = {};
+            const currentYear = new Date().getFullYear();
+            
+            // Validation rules for each field
+            const validationRules = {
+                crop: {
+                    required: true,
+                    message: 'Please select a crop type'
+                },
+                year: {
+                    required: true,
+                    number: true,
+                    min: 1997,
+                    max: currentYear + 5,
+                    message: `Year must be between 1997 and ${currentYear + 5}`
+                },
+                season: {
+                    required: true,
+                    message: 'Please select a season'
+                },
+                state: {
+                    required: true,
+                    message: 'Please select a state'
+                },
+                area: {
+                    required: true,
+                    number: true,
+                    min: 0.01,
+                    message: 'Area must be greater than 0'
+                },
+                production: {
+                    required: true,
+                    number: true,
+                    min: 0.01,
+                    message: 'Production must be greater than 0'
+                },
+                rainfall: {
+                    required: true,
+                    number: true,
+                    min: 0,
+                    message: 'Rainfall must be 0 or greater'
+                }
+            };
+            
+            // Validate each field against its rules
+            Object.entries(validationRules).forEach(([field, rules]) => {
+                const input = form.querySelector(`[name="${field}"]`);
+                if (!input) return;
+                
+                const value = input.value.trim();
+                const formGroup = input.closest('.form-group');
+                
+                // Reset field state
+                if (formGroup) {
+                    formGroup.classList.remove('error', 'success');
+                    const errorEl = formGroup.querySelector('.error-message');
+                    if (errorEl) errorEl.textContent = '';
+                }
+                
+                // Skip validation for disabled fields
+                if (input.disabled) return;
+                
+                // Check required field
+                if (rules.required && !value) {
+                    errors[field] = rules.message || 'This field is required';
+                    return;
+                }
+                
+                // Skip further validation if no value and not required
+                if (!value) return;
+                
+                // Check if numeric
+                if (rules.number) {
+                    const numValue = parseFloat(value);
+                    if (isNaN(numValue)) {
+                        errors[field] = 'Please enter a valid number';
+                        return;
+                    }
+                    
+                    // Check min value
+                    if (typeof rules.min !== 'undefined' && numValue < rules.min) {
+                        errors[field] = rules.message || `Value must be at least ${rules.min}`;
+                        return;
+                    }
+                    
+                    // Check max value
+                    if (typeof rules.max !== 'undefined' && numValue > rules.max) {
+                        errors[field] = rules.message || `Value cannot exceed ${rules.max}`;
+                        return;
+                    }
+                }
+            });
+            
+            // Show errors if any
+            if (Object.keys(errors).length > 0) {
+                showFormErrors(errors);
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // Show notification to user
+        function showNotification(message, type = 'error') {
+            // Create notification element if it doesn't exist
+            let notification = document.getElementById('notification');
+            
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.id = 'notification';
+                notification.className = `notification ${type}`;
+                notification.role = 'alert';
+                notification.ariaLive = 'assertive';
+                
+                // Add close button
+                const closeButton = document.createElement('button');
+                closeButton.className = 'notification-close';
+                closeButton.innerHTML = '&times;';
+                closeButton.setAttribute('aria-label', 'Close notification');
+                closeButton.addEventListener('click', () => {
+                    hideNotification();
+                });
+                
+                const messageEl = document.createElement('div');
+                messageEl.className = 'notification-message';
+                
+                notification.appendChild(messageEl);
+                notification.appendChild(closeButton);
+                document.body.appendChild(notification);
+            }
+            
+            // Update notification content and show
+            const messageEl = notification.querySelector('.notification-message');
+            messageEl.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            // Auto-hide after 5 seconds
+            clearTimeout(notification.timeout);
+            notification.timeout = setTimeout(() => {
+                hideNotification();
+            }, 5000);
+        }
+        
+        // Hide notification
+        function hideNotification() {
+            const notification = document.getElementById('notification');
+            if (notification) {
+                notification.classList.remove('show');
+                // Remove from DOM after animation completes
+                setTimeout(() => {
+                    if (notification && notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }
+        }
+        
+        // Show error message (wrapper for backward compatibility)
+        function showError(message) {
+            showNotification(message, 'error');
+        }
+        
+        // Show success message
+        function showSuccess(message) {
+            showNotification(message, 'success');
+        }
+        
+        // Clear validation on input
+        document.querySelectorAll('input, select').forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorEl = this.closest('.form-group')?.querySelector('.error-message');
+                if (errorEl) {
+                    errorEl.textContent = '';
+                }
+            });
+        });
+        
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year as default if year field is empty
+            const yearInput = document.getElementById('year');
+            if (yearInput && !yearInput.value) {
+                const currentYear = new Date().getFullYear();
+                yearInput.value = currentYear;
+            }
+            
+            // Add form field validation
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                input.addEventListener('change', function() {
+                    const min = parseFloat(this.min) || 0;
+                    const max = parseFloat(this.max) || Number.MAX_SAFE_INTEGER;
+                    const value = parseFloat(this.value) || 0;
+                    
+                    if (value < min) {
+                        this.value = min;
+                    } else if (value > max) {
+                        this.value = max;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
