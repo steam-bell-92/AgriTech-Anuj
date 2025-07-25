@@ -32,6 +32,9 @@ AgriTech is an innovative web platform designed to empower farmers and agricultu
 
 - **Plantation Guidance**  
   Access helpful plantation techniques and strategies for better crop growth.
+
+- **Crop Planning**  
+  Plan your season with confidence and unlock your farm's true potential for a more profitable and sustainable future.
   
 ---
 
