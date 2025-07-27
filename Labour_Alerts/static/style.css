@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  background: #f8f9fa;
+  color: #333;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+
+header {
+  background: #1b4332;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  height: calc(100% - 70px);
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs {
+  display: flex;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.tab.active {
+  color: #1b4332;
+  font-weight: 600;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 40%;
+  height: 3px;
+  background: #1b4332;
+  border-radius: 3px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input,
+textarea,
+select {
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+button {
+  padding: 14px 32px;
+  background: #2d6a4f;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  /* Pill Shape */
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: #245943;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(0px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.alert-card,
+.posted-job {
+  background: #ffffff;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  border-radius: 10px;
+  border-left: 5px solid #2d6a4f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.alert-card h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #2d6a4f;
+}
+
+.posted-job h4 {
+  margin-bottom: 8px;
+  font-size: 17px;
+  color: #1b4332;
+}
+
+.posted-job p {
+  font-size: 14px;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  header {
+    font-size: 20px;
+  }
+
+  .tab {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+#alerts h2 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#alerts h2:first-child {
+  margin-top: 0;
+}
+
+.delete-btn {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background: #e63946;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #c1121f;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 15px;
+  resize: vertical;
+}
+
+#newsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.news-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.news-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1b4332;
+  margin-bottom: 10px;
+}
+
+.news-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2d6a4f;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.news-link:hover {
+    background-color: #1b4332;
+}
