@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Labour Scheduling & Alerts</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Labour Scheduling & Alerts</h1>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-tab="schedule">Labour Scheduling</div>
+            <div class="tab" data-tab="alerts">Alerts</div>
+        </div>
+
+        <div id="schedule" class="content active">
+            <div class="card">
+                <h2>Post Labour Requirement</h2>
+
+                <div class="form-group">
+                    <label for="workType">Type of Work</label>
+                    <select id="workType">
+                        <option value="">Select Work Type</option>
+                        <option value="Harvesting">Harvesting</option>
+                        <option value="Ploughing">Ploughing</option>
+                        <option value="Weeding">Weeding</option>
+                        <option value="Sowing">Sowing</option>
+                        <option value="Irrigation">Irrigation</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="peopleCount">Number of People Required</label>
+                    <input type="number" id="peopleCount" placeholder="e.g., 5">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date Needed</label>
+                    <input type="date" id="date">
+                </div>
+
+                <div class="form-group">
+                    <label for="village">Village Name</label>
+                    <input type="text" id="village" placeholder="Enter village name">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Taluka / District</label>
+                    <input type="text" id="location" placeholder="Enter Taluka/District">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Full Address (Optional)</label>
+                    <textarea id="address" rows="3" placeholder="House no, street, landmark, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="wage">Wage per Day (in Rs.)</label>
+                    <input type="number" id="wage" placeholder="e.g., 300">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="tel" id="contact" placeholder="e.g., 9876543210">
+                </div>
+
+                <button id="postJobBtn">Post Requirement</button>
+            </div>
+
+            <h3>Posted Jobs</h3>
+            <div id="postedJobs" class="cards-list"></div>
+        </div>
+
+
+        <div id="alerts" class="content">
+            <h2>Live Alerts</h2>
+            <div id="newsList" class="cards-list">
+            </div>
+
+            <h2>Job Alerts</h3>
+                <div id="dynamicJobAlerts" class="cards-list"></div>
+        </div>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+
+</html>
