@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
+
+from flask import Flask, render_template, request, jsonify
 import joblib
 import numpy as np
-import os
 
 app = Flask(__name__)
 
@@ -11,44 +11,57 @@ crop_encoder = joblib.load('models/Crop_encoder.pkl')
 season_encoder = joblib.load('models/Season_encoder.pkl')
 state_encoder = joblib.load('models/State_encoder.pkl')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
-    prediction = None
-    if request.method == 'POST':
-        try:
-            # Get form inputs
-            crop = request.form['crop']
-            year = int(request.form['year'])
-            season = request.form['season']
-            state = request.form['state']
-            area = float(request.form['area'])
-            production = float(request.form['production'])
-            rainfall = float(request.form['rainfall'])
+    return render_template('index.html')
 
-            # Encode inputs with error handling
-            if crop not in crop_encoder.classes_:
-                raise ValueError(f"Unknown crop: {crop}")
-            if season not in season_encoder.classes_:
-                raise ValueError(f"Unknown season: {season}")
-            if state not in state_encoder.classes_:
-                raise ValueError(f"Unknown state: {state}")
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        form = request.form
 
-            crop_encoded = crop_encoder.transform([crop])[0]
-            season_encoded = season_encoder.transform([season])[0]
-            state_encoded = state_encoder.transform([state])[0]
+        # Parse form inputs
+        crop = form['crop']
+        year = int(form['year'])
+        season = form['season']
+        state = form['state']
+        area = float(form['area'])
+        production = float(form['production'])
+        rainfall = float(form['rainfall'])
 
-            # Form feature array
-            features = np.array([[crop_encoded, year, season_encoded, state_encoded, area, rainfall, production]])
+        # Encode values
+        if crop not in crop_encoder.classes_:
+            return jsonify({'success': False, 'error': f"Unknown crop: {crop}"}), 400
+        if season not in season_encoder.classes_:
+            return jsonify({'success': False, 'error': f"Unknown season: {season}"}), 400
+        if state not in state_encoder.classes_:
+            return jsonify({'success': False, 'error': f"Unknown state: {state}"}), 400
 
-            # Make prediction
-            prediction = model.predict(features)[0]
+        crop_encoded = crop_encoder.transform([crop])[0]
+        season_encoded = season_encoder.transform([season])[0]
+        state_encoded = state_encoder.transform([state])[0]
 
-        except ValueError as ve:
-            prediction = f"Input error: {ve}"
-        except Exception as e:
-            prediction = f"Unexpected error: {e}"
+        # Prepare features
+        features = np.array([[crop_encoded, year, season_encoded, state_encoded, area, rainfall, production]])
 
-    return render_template('index.html', prediction=prediction)
+        # Predict
+        prediction = float(round(model.predict(features)[0], 2))
 
+        # Return result
+        return jsonify({
+            'success': True,
+            'prediction': prediction,
+            'context': {
+                'efficiency': "Moderate",
+                'efficiency_note': "Yield efficiency is average.",
+                'rainfall_impact': "Positive",
+                'rainfall_note': "Rainfall is within optimal range.",
+                'recommendation': "Consider using improved seeds for better yield.",
+                'season_tip': "Ensure timely sowing for the selected season."
+            }
+        })
+
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=True, port=5502)
