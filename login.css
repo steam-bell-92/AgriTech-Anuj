@@ -88,6 +88,64 @@ body {
   text-decoration: underline;
 }
 
+/* Divider line*/
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0; 
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ccc; 
+}
+
+.divider:not(:empty)::before {
+  margin-right: 10px;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 10px;
+}
+
+.divider span {
+  color: #888;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* Google Button */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%; 
+    background-color: white !important; 
+    color: #3c4043 !important; 
+    border: 1px solid #dadce0;
+    border-radius: 7px !important;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+
+.google-btn:hover {
+    background-color: #f7f8f8;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+}
+
 /* Responsive design */
 @media (max-width: 500px) {
   .form-container {
