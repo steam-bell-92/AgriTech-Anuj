@@ -5,15 +5,15 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <title>Login - AgriTech</title>
-  <link rel="stylesheet" href="../static/login.css">
-  <script src="../static/firebase.js" defer type="module"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+  <script src="{{ url_for('static', filename='firebase.js') }}" defer type="module"></script>
 </head>
 
 <body
-  style="background-image: url('images/login.avif'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  style="background-image: url('/static/images/login.avif'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div class="form-container">
     <h2>Login</h2>
-    <form onsubmit="handleLogin(event)">
+    <form onsubmit="handleLogin(event, '/main')">
       <input type="email" placeholder="Email" required>
       <input type="password" placeholder="Password" required>
       <button type="submit">Login</button>
@@ -39,10 +39,10 @@
           <span>Sign in with Google</span>
         </button>
       </div>
-      <p>Don't have an account? <a href="register.html">Register here</a></p>
+      <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
     </form>
   </div>
-  <script src="../static/login.js"></script>
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
 </body>
 
 </html>

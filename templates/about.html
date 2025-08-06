@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link rel="stylesheet" href="../static/about.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
@@ -15,9 +15,9 @@
   <nav class="navbar">
     <h1>About Us</h1>
     <div class="nav-buttons">
-      <a href="index.html" class="btn">Home</a>
-      <a href="login.html" class="btn">Login</a>
-      <a href="register.html" class="btn">Register</a>
+      <a href="{{ url_for('index') }}" class="btn">Home</a>
+      <a href="{{ url_for('login') }}" class="btn">Login</a>
+      <a href="{{ url_for('register') }}" class="btn">Register</a>
     </div>
   </nav>
   <!-- main-section -->

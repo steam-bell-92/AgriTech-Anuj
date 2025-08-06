@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="../static/firebase.js" defer type="module"></script>
+  <script src="{{ url_for('static', filename='firebase.js') }}" defer type="module"></script>
 
   <style>
     /* Reset some basics */
@@ -283,9 +283,9 @@
   <nav class="navbar">
     <h1 class="logo">AgriTech</h1>
     <div class="nav-buttons">
-      <a href="about.html" class="btn">About</a>
-      <a href="login.html" class="btn">Login</a>
-      <a href="register.html" class="btn">Register</a>
+      <a href="{{ url_for('about') }}" class="btn">About</a>
+      <a href="{{ url_for('login') }}" class="btn">Login</a>
+      <a href="{{ url_for('register') }}" class="btn">Register</a>
     </div>
   </nav>
 
@@ -303,17 +303,19 @@
   <section class="carousel" aria-label="Featured agricultural images">
     <div class="slider">
       <div class="slide-track">
-        <img src="images/slide1.jpeg" loading="lazy" alt="Farmers working in a lush green field" width="300"
-          height="180" />
-        <img src="images/slide2.jpeg" loading="lazy" alt="Harvested crops ready for market" width="300" height="180" />
-        <img src="images/slide3.jpeg" loading="lazy" alt="Modern agricultural equipment in use" width="300"
-          height="180" />
+        <img src="{{ url_for('static', filename='images/slide1.jpeg') }}" loading="lazy"
+          alt="Farmers working in a lush green field" width="300" height="180" />
+        <img src="{{ url_for('static', filename='images/slide2.jpeg') }}" loading="lazy"
+          alt="Harvested crops ready for market" width="300" height="180" />
+        <img src="{{ url_for('static', filename='images/slide3.jpeg') }}" loading="lazy"
+          alt="Modern agricultural equipment in use" width="300" height="180" />
         <!-- Duplicates for infinite effect -->
-        <img src="images/slide1.jpeg" loading="lazy" alt="Farmers working in a lush green field" width="300"
-          height="180" />
-        <img src="images/slide2.jpeg" loading="lazy" alt="Harvested crops ready for market" width="300" height="180" />
-        <img src="images/slide3.jpeg" loading="lazy" alt="Modern agricultural equipment in use" width="300"
-          height="180" />
+        <img src="{{ url_for('static', filename='images/slide1.jpeg') }}" loading="lazy"
+          alt="Farmers working in a lush green field" width="300" height="180" />
+        <img src="{{ url_for('static', filename='images/slide2.jpeg') }}" loading="lazy"
+          alt="Harvested crops ready for market" width="300" height="180" />
+        <img src="{{ url_for('static', filename='images/slide3.jpeg') }}" loading="lazy"
+          alt="Modern agricultural equipment in use" width="300" height="180" />
       </div>
     </div>
   </section>
