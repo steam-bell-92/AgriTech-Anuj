@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register - AgriTech</title>
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}" />
 </head>
 
 <body>
   <div class="form-container">
     <h2>Register</h2>
-    <form onsubmit="handleRegister(event)">
+    <form onsubmit="handleRegister(event, '/login')">
       <select required>
         <option value="">Select Role</option>
         <option value="buyer">Buyer</option>
@@ -23,10 +23,10 @@
       <input type="email" placeholder="Email" required />
       <input type="password" placeholder="Password" required />
       <button type="submit">Register</button>
-      <p>Already have an account? <a href="login.html">Login here</a></p>
+      <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
     </form>
   </div>
-  <script src="login.js"></script>
+  <script src="{{ url_for('static', filename='login.js') }}"></script>
 </body>
 
 </html>

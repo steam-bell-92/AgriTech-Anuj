@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatInput = document.getElementById('chat-input');
   const sendBtn = document.getElementById('send-button');
 
-  const API_KEY = 'GEMINI_API_KEY'; // get api key from https://ai.google.dev/
-  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=${API_KEY}`;
-  
+
+  const API_URL = '/api/chat';
+
   const systemMsg = {
     role: "user",
     parts: [{ text: "You are an expert agricultural assistant named AgriBot. Provide detailed, accurate and helpful responses about farming, crops, weather impact, soil health, pest control, and sustainable agriculture practices. Format your answers with clear concise minimal paragraphs. If asked about something outside agriculture except greetings, politely decline and refocus on farming topics." }]
@@ -32,13 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
     history.push({ role: "user", parts: [{ text: input }] });
 
     try {
+      // This fetch call now goes to  Flask api endpoint ('/api/chat')
       const res = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contents: history,
-          generationConfig: { 
-            temperature: 0.7, 
+          generationConfig: {
+            temperature: 0.7,
             maxOutputTokens: 1000,
             topP: 0.8,
             topK: 40
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const data = await res.json();
       console.log('API Response:', data);
-      
+
       const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ I didn't receive a proper response. Please try again.";
       addMessage('bot', reply);
       history.push({ role: "model", parts: [{ text: reply }] });
@@ -96,9 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const format = (txt) =>
     txt.replace(/\n/g, '<br>')
-       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-       .replace(/`(.*?)`/g, '<code>$1</code>');
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em>$1</em>')
+      .replace(/`(.*?)`/g, '<code>$1</code>');
 
   setTimeout(() => {
     addMessage('bot', 'Hello! 🌱 I\'m AgriBot, your agricultural assistant. I can help you with farming questions, crop management, soil health, pest control, and more. How can I assist you today?');

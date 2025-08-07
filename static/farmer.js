@@ -57,4 +57,4 @@ buyForm.addEventListener('submit', function (e) {
   }
 });
 
-<button onclick="window.location.href='main.html'">Back to Main</button>
+<button onclick="window.location.href='/main'">Back to Main</button>
