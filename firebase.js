@@ -29,7 +29,7 @@ googleLogin.addEventListener("click", function () {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
       console.log(user);
-      window.location.href = "/"; // Redirect to home page after successful login
+      window.location.href = "index.html"; // Redirect to home page after successful login
     })
     .catch((error) => {  
       const errorCode = error.code;

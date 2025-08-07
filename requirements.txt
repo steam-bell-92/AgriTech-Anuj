@@ -12,4 +12,3 @@ seaborn
 joblib
 google-generativeai
 flask-cors
-python-dotenv

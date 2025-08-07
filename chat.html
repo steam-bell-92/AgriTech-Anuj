@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriTech Chatbot</title>
-  <link rel="stylesheet" href="../static/chat.css">
+  <link rel="stylesheet" href="/chat.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
   <header>
     <div class="header-content">
@@ -16,24 +14,24 @@
         <i class="fas fa-seedling"></i>
         <h1>AgriTech Assistant</h1>
       </div>
-      <a href="{{ url_for('main') }}" class="back-button">
+      <button class="back-button">
         <i class="fas fa-arrow-left"></i> Back to Main
-      </a>
+      </button>
     </div>
   </header>
-
+  
   <main>
     <div id="chat-container">
       <div class="chat-header">
         <i class="fas fa-robot"></i>
         <h2>Ask me anything about agriculture, crops, or farming techniques</h2>
       </div>
-
+      
       <div id="chat-window">
         <div class="welcome-message">
           <h3><i class="fas fa-leaf"></i> Welcome to AgriTech Assistant!</h3>
           <p>I'm powered by Google Gemini AI to help with all your farming questions.</p>
-
+          
           <div class="suggestions">
             <div class="suggestion">Best crops for this season?</div>
             <div class="suggestion">Organic pest control methods</div>
@@ -42,7 +40,7 @@
           </div>
         </div>
       </div>
-
+      
       <form id="chat-form">
         <div class="input-container">
           <input type="text" id="chat-input" placeholder="Ask about crops, weather, fertilizers..." required>
@@ -54,7 +52,6 @@
     </div>
   </main>
 
-  <script src="../static/chat.js"></script>
+  <script src="/chat.js"></script>
 </body>
-
 </html>

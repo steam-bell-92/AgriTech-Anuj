@@ -4,13 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <meta name="description"
-    content="AgriTech - Empowering Agriculture Through Technology. Connect farmers, buyers, and suppliers in India's agricultural ecosystem." />
+  <meta name="description" content="AgriTech - Empowering Agriculture Through Technology. Connect farmers, buyers, and suppliers in India's agricultural ecosystem." />
   <title>AgriTech - Revolutionizing Agriculture with Technology</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script src="{{ url_for('static', filename='firebase.js') }}" defer type="module"></script>
+  <script src="firebase.js" defer type="module"></script>
 
   <style>
     /* Reset some basics */
@@ -283,9 +282,9 @@
   <nav class="navbar">
     <h1 class="logo">AgriTech</h1>
     <div class="nav-buttons">
-      <a href="{{ url_for('about') }}" class="btn">About</a>
-      <a href="{{ url_for('login') }}" class="btn">Login</a>
-      <a href="{{ url_for('register') }}" class="btn">Register</a>
+      <a href="about.html" class="btn">About</a>
+      <a href="login.html" class="btn">Login</a>
+      <a href="register.html" class="btn">Register</a>
     </div>
   </nav>
 
@@ -303,19 +302,49 @@
   <section class="carousel" aria-label="Featured agricultural images">
     <div class="slider">
       <div class="slide-track">
-        <img src="{{ url_for('static', filename='images/slide1.jpeg') }}" loading="lazy"
-          alt="Farmers working in a lush green field" width="300" height="180" />
-        <img src="{{ url_for('static', filename='images/slide2.jpeg') }}" loading="lazy"
-          alt="Harvested crops ready for market" width="300" height="180" />
-        <img src="{{ url_for('static', filename='images/slide3.jpeg') }}" loading="lazy"
-          alt="Modern agricultural equipment in use" width="300" height="180" />
+        <img
+          src="images/slide1.jpeg"
+          loading="lazy"
+          alt="Farmers working in a lush green field"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide2.jpeg"
+          loading="lazy"
+          alt="Harvested crops ready for market"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide3.jpeg"
+          loading="lazy"
+          alt="Modern agricultural equipment in use"
+          width="300"
+          height="180"
+        />
         <!-- Duplicates for infinite effect -->
-        <img src="{{ url_for('static', filename='images/slide1.jpeg') }}" loading="lazy"
-          alt="Farmers working in a lush green field" width="300" height="180" />
-        <img src="{{ url_for('static', filename='images/slide2.jpeg') }}" loading="lazy"
-          alt="Harvested crops ready for market" width="300" height="180" />
-        <img src="{{ url_for('static', filename='images/slide3.jpeg') }}" loading="lazy"
-          alt="Modern agricultural equipment in use" width="300" height="180" />
+        <img
+          src="images/slide1.jpeg"
+          loading="lazy"
+          alt="Farmers working in a lush green field"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide2.jpeg"
+          loading="lazy"
+          alt="Harvested crops ready for market"
+          width="300"
+          height="180"
+        />
+        <img
+          src="images/slide3.jpeg"
+          loading="lazy"
+          alt="Modern agricultural equipment in use"
+          width="300"
+          height="180"
+        />
       </div>
     </div>
   </section>
@@ -326,16 +355,16 @@
 
   <script>
     // Add loaded class to images when they finish loading
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
       // Handle lazy loaded images
       const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-
+      
       const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             const img = entry.target;
             img.classList.add('loaded');
-
+            
             // If image is already cached, ensure it gets the loaded class
             if (img.complete) {
               img.classList.add('loaded');
@@ -344,7 +373,7 @@
                 img.classList.add('loaded');
               });
             }
-
+            
             observer.unobserve(img);
           }
         });
@@ -357,19 +386,19 @@
       // Navbar scroll effect
       const navbar = document.querySelector('.navbar');
       let lastScrollTop = 0;
-
+      
       window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+        
         if (scrollTop > 50) {
           navbar.classList.add('scrolled');
         } else {
           navbar.classList.remove('scrolled');
         }
-
+        
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
       });
-
+      
       // Initialize - check if page is already scrolled on load
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
