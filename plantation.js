@@ -7,4 +7,4 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
   });
 });
 
-<button onclick="window.location.href='/main'">Back to Main</button>
+<button onclick="window.location.href='main.html'">Back to Main</button>
