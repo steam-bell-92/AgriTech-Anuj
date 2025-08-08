@@ -1,3 +1,5 @@
+/* farmer.css */
+
 /* Reset and base styles */
 * {
   box-sizing: border-box;
@@ -26,155 +28,11 @@ header h1 {
   font-size: 2rem;
 }
 
-main {
-  flex: 1;
-  padding: 20px;
-}
-
-#product-listing h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#product-form {
-  background-color: #ffffff;
-  padding: 20px;
-  border: 1px solid #c8e6c9;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-#product-form input,
-#product-form button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #a5d6a7;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-#product-form input:focus {
-  outline: none;
-  border-color: #66bb6a;
-  box-shadow: 0 0 5px rgba(102, 187, 106, 0.5);
-}
-
-#product-form button {
-  background-color: #66bb6a;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#product-form button:hover {
-  background-color: #388e3c;
-}
-
-#product-display {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-#product-display li {
-  background-color: #e8f5e9;
-  border: 1px solid #c8e6c9;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-#buy-form {
-  background-color: #ffffff;
-  padding: 20px;
-  border: 1px solid #bbdefb;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-#buy-form input,
-#buy-form button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #90caf9;
-  border-radius: 5px;
-  font-size: 1rem;
-}
-
-#buy-form input:focus {
-  outline: none;
-  border-color: #42a5f5;
-  box-shadow: 0 0 5px rgba(66, 165, 245, 0.5);
-}
-
-#buy-form button {
-  background-color: #42a5f5;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#buy-form button:hover {
-  background-color: #1e88e5;
-}
-
-#buy-request-display {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
-}
-
-#buy-request-display li {
-  background-color: #e3f2fd;
-  border: 1px solid #bbdefb;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.delete-btn {
-  background-color: #e53935;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  margin-left: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-
-.delete-btn:hover {
-  background-color: #b71c1c;
-}
-
-footer {
-  text-align: center;
-  background-color: #a5d6a7;
-  color: #1b5e20;
-  padding: 10px 0;
-}
-
 /* Back Button Styling */
 .back-button {
-  background-color: #4CAF50; /* Green background */
+  background-color: #4CAF50;
   border: none;
-  color: white; /* White text */
+  color: white;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -187,5 +45,138 @@ footer {
 }
 
 .back-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+section {
+  background-color: white;
+  padding: 2em;
+  margin: 1em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  min-width: 300px;
+}
+
+h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-group {
+  position: relative;
+  /* This is the key change */
+  margin-bottom: 1.5em;
+  /* This gives space for the error message */
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #66bb6a;
+  box-shadow: 0 0 5px rgba(102, 187, 106, 0.5);
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 5px;
+  position: absolute;
+  /* This positions the error message */
+  bottom: -1.2em;
+  /* This places it below the input field */
+  left: 0;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Buy Form Specifics */
+#buy-form input,
+#buy-form button {
+  border: 1px solid #90caf9;
+}
+
+#buy-form input:focus {
+  border-color: #42a5f5;
+  box-shadow: 0 0 5px rgba(66, 165, 245, 0.5);
+}
+
+#buy-form button {
+  background-color: #42a5f5;
+}
+
+#buy-form button:hover {
+  background-color: #1e88e5;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 2em;
+}
+
+li {
+  background-color: #e9e9e9;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: auto;
+}
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  section {
+    width: 90%;
+  }
 }
