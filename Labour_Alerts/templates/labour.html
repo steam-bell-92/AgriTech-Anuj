@@ -6,7 +6,201 @@
     <title>Labour Scheduling & Alerts</title>
     <link rel="stylesheet" href="../static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
 
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            contents.forEach(c => c.classList.remove('active'));
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Set the minimum date to today for the date input
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const todayFormatted = `${year}-${month}-${day}`;
+    dateInput.min = todayFormatted;
+
+    // Get the Post Job button and add a click event listener
+    const postJobBtn = document.getElementById('postJobBtn');
+    postJobBtn.addEventListener('click', postLabourRequirement);
+
+    // Function to display error message
+    function displayError(inputElement, message) {
+        // Find if an error span already exists and remove it
+        const existingError = inputElement.nextElementSibling;
+        if (existingError && existingError.classList.contains('error-message')) {
+            existingError.remove();
+        }
+
+        const errorElement = document.createElement('span');
+        errorElement.className = 'error-message';
+        errorElement.textContent = message;
+        errorElement.style.color = 'red';
+        errorElement.style.fontSize = '12px';
+        errorElement.style.marginTop = '4px';
+        errorElement.style.display = 'block';
+
+        inputElement.parentNode.insertBefore(errorElement, inputElement.nextSibling);
+    }
+
+    // Function to clear all error messages
+    function clearErrors() {
+        const errorElements = document.querySelectorAll('.error-message');
+        errorElements.forEach(el => el.remove());
+    }
+
+    // --- On-Blur Validation Logic ---
+    const villageInput = document.getElementById('village');
+    const locationInput = document.getElementById('location');
+    const contactInput = document.getElementById('contact');
+    const dateInputCheck = document.getElementById('date');
+
+    villageInput.addEventListener('blur', () => {
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(villageInput.value.trim())) {
+            displayError(villageInput, 'Village name can only contain letters and spaces.');
+        } else {
+            clearSpecificError(villageInput);
+        }
+    });
+
+    locationInput.addEventListener('blur', () => {
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(locationInput.value.trim())) {
+            displayError(locationInput, 'Taluka/District can only contain letters and spaces.');
+        } else {
+            clearSpecificError(locationInput);
+        }
+    });
+
+    contactInput.addEventListener('blur', () => {
+        const contactPattern = /^[0-9]{10}$/;
+        if (!contactPattern.test(contactInput.value)) {
+            displayError(contactInput, 'Please enter a valid 10-digit contact number.');
+        } else {
+            clearSpecificError(contactInput);
+        }
+    });
+    
+    dateInputCheck.addEventListener('blur', () => {
+        const selectedDate = new Date(dateInputCheck.value);
+        const todayNoTime = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        if (selectedDate < todayNoTime) {
+            displayError(dateInputCheck, 'Date needed cannot be in the past.');
+        } else {
+            clearSpecificError(dateInputCheck);
+        }
+    });
+
+    // Helper function to clear a specific error message
+    function clearSpecificError(inputElement) {
+        const existingError = inputElement.nextElementSibling;
+        if (existingError && existingError.classList.contains('error-message')) {
+            existingError.remove();
+        }
+    }
+
+
+    function postLabourRequirement() {
+        // Clear previous errors first
+        clearErrors();
+        let isValid = true;
+
+        // Retrieve form values and elements
+        const workType = document.getElementById('workType').value;
+        const peopleCount = document.getElementById('peopleCount').value;
+        const date = dateInputCheck.value;
+        const village = villageInput.value;
+        const location = locationInput.value;
+        const address = document.getElementById('address').value;
+        const wage = document.getElementById('wage').value;
+        const contact = contactInput.value;
+
+        // --- Validation Logic on Submit ---
+
+        // Basic Required Field Validation
+        if (!workType || !peopleCount || !date || !village || !location || !wage || !contact) {
+            alert('Please fill out all required fields.');
+            return;
+        }
+
+        // Village & Taluka/District Validation
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(village.trim())) {
+            displayError(villageInput, 'Village name can only contain letters and spaces.');
+            isValid = false;
+        }
+        if (!namePattern.test(location.trim())) {
+            displayError(locationInput, 'Taluka/District can only contain letters and spaces.');
+            isValid = false;
+        }
+
+        // Date Validation
+        const selectedDate = new Date(date);
+        const todayNoTime = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        if (selectedDate < todayNoTime) {
+            displayError(dateInputCheck, 'Date needed cannot be in the past.');
+            isValid = false;
+        }
+
+        // Contact Number Validation
+        const contactPattern = /^[0-9]{10}$/;
+        if (!contactPattern.test(contact)) {
+            displayError(contactInput, 'Please enter a valid 10-digit contact number.');
+            isValid = false;
+        }
+
+        // --- If all validations pass, proceed with posting the job ---
+        if (isValid) {
+            const postedJobsContainer = document.getElementById('postedJobs');
+            const jobCard = document.createElement('div');
+            jobCard.classList.add('card', 'posted-job');
+            jobCard.innerHTML = `
+                <h4>${workType} Requirement</h4>
+                <p><strong>People Needed:</strong> ${peopleCount}</p>
+                <p><strong>Date:</strong> ${date}</p>
+                <p><strong>Location:</strong> ${village}, ${location}</p>
+                <p><strong>Wage:</strong> Rs. ${wage} per day</p>
+                <p><strong>Contact:</strong> ${contact}</p>
+            `;
+            postedJobsContainer.prepend(jobCard);
+
+            const dynamicJobAlerts = document.getElementById('dynamicJobAlerts');
+            const alertCard = document.createElement('div');
+            alertCard.classList.add('card', 'alert-card');
+            alertCard.innerHTML = `
+                <h4>New Job: ${workType} in ${village}</h4>
+                <p>${peopleCount} people needed on ${date}. Contact ${contact} for details.</p>
+            `;
+            dynamicJobAlerts.prepend(alertCard);
+
+            alert('Labour requirement posted successfully!');
+            
+            // Clear the form fields after successful submission
+            document.getElementById('workType').value = '';
+            document.getElementById('peopleCount').value = '';
+            dateInput.value = ''; 
+            villageInput.value = '';
+            locationInput.value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('wage').value = '';
+            contactInput.value = '';
+        }
+    }
+});
+</script>
+</html>
 </head>
 
 <body>
