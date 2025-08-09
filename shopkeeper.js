@@ -1,4 +1,4 @@
-// This code creates a particle system that animates particles across the screen,
+// Particle System - Enhanced from global.js
 const PARTICLE_CONFIG = {
   count: 80,
   size: { min: 1, max: 3 },
@@ -220,6 +220,7 @@ function initializeSearch() {
       }
     });
 
+    // Hide/show sections based on visible cards
     document.querySelectorAll(".section").forEach((section) => {
       const visibleCards = section.querySelectorAll(
         '.dealer-card[style*="block"]'
@@ -231,11 +232,16 @@ function initializeSearch() {
 
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize particle system
   const canvas = document.getElementById("particles-js");
   if (canvas) {
     new ParticleSystem(canvas);
   }
+
+  // Initialize search
   initializeSearch();
+
+  // Add intersection observer for scroll animations
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50px 0px",
@@ -258,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(section);
   });
 
-  // Add hover effect for dealer cards
+  // Add hover effects to dealer cards
   document.querySelectorAll(".dealer-card").forEach((card) => {
     card.addEventListener("mouseenter", () => {
       card.style.transform = "translateY(-12px) scale(1.02)";
@@ -282,17 +288,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  // Fade-in effect for the body
+
+  // Add loading animation completion
   setTimeout(() => {
     document.body.style.opacity = "1";
   }, 100);
 });
 
+// Performance optimization: Reduce particles on mobile
 if (window.innerWidth < 768) {
   PARTICLE_CONFIG.count = 40;
   PARTICLE_CONFIG.connections.distance = 80;
 }
 
+// Add touch support for mobile hover effects
 document.addEventListener("touchstart", function () {}, {
   passive: true,
 });

@@ -1,3 +1,4 @@
+/* === Reset and Base Styles === */
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +43,7 @@ body {
   overflow-x: hidden;
 }
 
-// Particles Background
+/* === Canvas Background === */
 #particles-js {
   position: fixed;
   top: 0;
@@ -52,8 +53,8 @@ body {
   z-index: -1;
 }
 
-// Header
-header {
+/* === Header === */
+.header {
   position: relative;
   background: var(--gradient-primary);
   padding: 4rem 2rem 6rem;
@@ -61,7 +62,7 @@ header {
   overflow: hidden;
 }
 
-header::before {
+.header::before {
   content: "";
   position: absolute;
   top: 0;
@@ -88,7 +89,7 @@ header::before {
   z-index: 2;
 }
 
-header h1 {
+.header h1 {
   font-family: "Poppins", sans-serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
@@ -127,7 +128,7 @@ header h1 {
   box-shadow: var(--shadow-medium);
 }
 
-// Main Content
+/* === Main Content === */
 .main-content {
   max-width: 1400px;
   margin: -3rem auto 0;
@@ -136,7 +137,7 @@ header h1 {
   z-index: 1;
 }
 
-//Section Styles
+/* === Section Styling === */
 .section {
   background: var(--surface);
   backdrop-filter: blur(20px);
@@ -186,7 +187,7 @@ header h1 {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-//Dealer Grid
+/* === Dealer Grid === */
 .dealer-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -270,12 +271,12 @@ header h1 {
   transform: scale(1.05);
 }
 
-// Footer
+/* === Footer === */
 .footer {
   background: var(--gradient-primary);
   color: white;
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 3rem 2rem;
   margin-top: 4rem;
   position: relative;
   overflow: hidden;
@@ -303,8 +304,19 @@ header h1 {
   z-index: 2;
 }
 
+.footer-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
 
-// Animations
+.footer-tagline {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--pale-green);
+}
+
+/* === Animations === */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -327,7 +339,7 @@ header h1 {
   }
 }
 
-// Section Animations
+/* === Loading States === */
 .section {
   animation-fill-mode: both;
 }
@@ -345,7 +357,7 @@ header h1 {
   animation-delay: 0.4s;
 }
 
-// Responsive Styles
+/* === Responsive Design === */
 @media (max-width: 768px) {
   .header {
     padding: 3rem 1rem 4rem;
@@ -378,7 +390,7 @@ header h1 {
   }
 }
 
-// Focus and Accessibility
+/* === Focus and Accessibility === */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -395,7 +407,7 @@ header h1 {
   border-radius: 4px;
 }
 
-//Search and Filter Bar
+/* === Search and Filter Bar === */
 .search-container {
   background: var(--surface);
   backdrop-filter: blur(20px);
