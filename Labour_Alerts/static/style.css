@@ -23,7 +23,6 @@ label {
   display: block;
 }
 
-
 header {
   background: #1b4332;
   color: #fff;
@@ -112,7 +111,6 @@ button {
   color: white;
   border: none;
   border-radius: 50px;
-  /* Pill Shape */
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -132,7 +130,6 @@ button:active {
   transform: translateY(0px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .cards-list {
   display: grid;
@@ -274,16 +271,23 @@ textarea {
 }
 
 .news-link {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #2d6a4f;
-    color: #fff;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #2d6a4f;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
 .news-link:hover {
-    background-color: #1b4332;
+  background-color: #1b4332;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
 }
