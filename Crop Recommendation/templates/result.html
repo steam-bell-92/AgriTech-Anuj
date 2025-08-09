@@ -224,6 +224,9 @@
       .btn:nth-child(2) {
         animation-delay: 1.4s;
       }
+      .btn:nth-child(3) {
+        animation-delay: 1.6s;
+      }
 
       @keyframes slideInLeft {
         from {
@@ -260,6 +263,18 @@
         transform: translateY(-3px);
         box-shadow: 0 12px 28px rgba(45, 143, 133, 0.25),
           0 6px 16px rgba(45, 143, 133, 0.15);
+      }
+
+      .btn-back {
+        background: linear-gradient(135deg, #dc7916, #f7ab38);
+        color: #fff;
+      }
+
+      .btn-back:hover {
+        background: linear-gradient(135deg, #ef5502, #f57c00);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(245, 124, 0, 0.3),
+          0 6px 16px rgba(245, 124, 0, 0.2);
       }
 
       .btn::before {
@@ -327,13 +342,13 @@
       }
 
       .stat:nth-child(1) {
-        animation-delay: 1.6s;
-      }
-      .stat:nth-child(2) {
         animation-delay: 1.8s;
       }
-      .stat:nth-child(3) {
+      .stat:nth-child(2) {
         animation-delay: 2s;
+      }
+      .stat:nth-child(3) {
+        animation-delay: 2.2s;
       }
 
       @keyframes fadeInScale {
@@ -462,6 +477,8 @@
         </form>
 
         <a href="/" class="btn btn-secondary"> 🔄 New Analysis </a>
+        
+        <a href="javascript:history.back()" class="btn btn-back">🔙 Back to Main</a>
       </div>
 
       <div class="stats">
