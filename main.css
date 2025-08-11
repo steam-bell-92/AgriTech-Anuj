@@ -14,7 +14,11 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+.calendar{
+  display: flex;
+  position: relative;
+  bottom: 60px;
+}
 header {
   background-color: #a5d6a7;
   padding: 20px;
