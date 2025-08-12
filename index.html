@@ -1,153 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
-    />
-    <meta
-      name="description"
-      content="AgriTech - Empowering Agriculture Through Technology. Connect farmers, buyers, and suppliers in India's agricultural ecosystem."
-    />
-    <title>AgriTech - Revolutionizing Agriculture with Technology</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <script src="firebase.js" defer type="module"></script>
-  </head>
 
-  <body>
-    <nav class="navbar">
-      <h1 class="logo">AgriTech</h1>
-      <div class="nav-buttons">
-        <a href="about.html" class="btn">About</a>
-        <a href="login.html" class="btn">Login</a>
-        <a href="register.html" class="btn">Register</a>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description"
+    content="AgriTech - Empowering Agriculture Through Technology. Connect farmers, buyers, and suppliers in India's agricultural ecosystem." />
+  <title>AgriTech - Revolutionizing Agriculture with Technology</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="firebase.js" defer type="module"></script>
+</head>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Empowering Agriculture Through Technology</h2>
-        <p>
-          AgriTech connects <strong>Farmers</strong>, <strong>Buyers</strong>,
-          <strong>Equipment Suppliers</strong>, and
-          <strong>Grocery Sellers</strong> to revolutionize India's agricultural
-          ecosystem with smart solutions and seamless collaboration.
-        </p>
-      </div>
-    </section>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">AgriTech</h1>
+    <div class="nav-buttons">
+      <a href="about.html" class="btn">About</a>
+      <a href="login.html" class="btn">Login</a>
+      <a href="register.html" class="btn">Register</a>
+    </div>
+  </nav>
 
-    <section class="features loading">
-      <div class="features-container">
-        <h2 class="features-title">Our Platform Benefits</h2>
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon">🌱</div>
-            <h3 class="feature-title">For Farmers</h3>
-            <p class="feature-description">
-              Direct access to buyers, fair pricing, and modern equipment rental
-              services to maximize your harvest potential.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🏪</div>
-            <h3 class="feature-title">For Buyers</h3>
-            <p class="feature-description">
-              Source fresh produce directly from verified farmers with
-              transparent pricing and quality assurance.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🚜</div>
-            <h3 class="feature-title">Equipment Suppliers</h3>
-            <p class="feature-description">
-              Expand your reach and connect with farmers who need modern
-              agricultural equipment and services.
-            </p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon">🛒</div>
-            <h3 class="feature-title">Grocery Sellers</h3>
-            <p class="feature-description">
-              Access fresh produce supply chain with competitive rates and
-              reliable delivery systems.
-            </p>
-          </div>
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Empowering Agriculture Through Technology</h2>
+      <p>
+        AgriTech connects <strong>Farmers</strong>, <strong>Buyers</strong>,
+        <strong>Equipment Suppliers</strong>, and
+        <strong>Grocery Sellers</strong> to revolutionize India's agricultural
+        ecosystem with smart solutions and seamless collaboration.
+      </p>
+    </div>
+  </section>
+
+  <section class="features loading">
+    <div class="features-container">
+      <h2 class="features-title">Our Platform Benefits</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌱</div>
+          <h3 class="feature-title">For Farmers</h3>
+          <p class="feature-description">
+            Direct access to buyers, fair pricing, and modern equipment rental
+            services to maximize your harvest potential.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏪</div>
+          <h3 class="feature-title">For Buyers</h3>
+          <p class="feature-description">
+            Source fresh produce directly from verified farmers with
+            transparent pricing and quality assurance.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚜</div>
+          <h3 class="feature-title">Equipment Suppliers</h3>
+          <p class="feature-description">
+            Expand your reach and connect with farmers who need modern
+            agricultural equipment and services.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛒</div>
+          <h3 class="feature-title">Grocery Sellers</h3>
+          <p class="feature-description">
+            Access fresh produce supply chain with competitive rates and
+            reliable delivery systems.
+          </p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="carousel" aria-label="Featured agricultural images">
-      <h2 class="carousel-title">Agriculture in Action</h2>
-      <div class="slider">
-        <div class="slide-track">
-          <img
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300&h=200&fit=crop"
-            loading="lazy"
-            alt="Farmers working in a lush green field"
-            width="300"
-            height="200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&h=200&fit=crop"
-            loading="lazy"
-            alt="Harvested crops ready for market"
-            width="300"
-            height="200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&h=200&fit=crop"
-            loading="lazy"
-            alt="Modern agricultural equipment in use"
-            width="300"
-            height="200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=300&h=200&fit=crop"
-            loading="lazy"
-            alt="Farmers working in a lush green field"
-            width="300"
-            height="200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=300&h=200&fit=crop"
-            loading="lazy"
-            alt="Harvested crops ready for market"
-            width="300"
-            height="200"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=300&h=200&fit=crop"
-            loading="lazy"
-            alt="Modern agricultural equipment in use"
-            width="300"
-            height="200"
-          />
-        </div>
+  <section class="carousel" aria-label="Featured agricultural images">
+    <h2 class="carousel-title">Agriculture in Action</h2>
+    <div class="slider">
+      <div class="slide-track">
+        <!-- Original 6 images -->
+        <img src="images/AgriActImg1.jpeg" alt="Farmers working in a lush green field" />
+        <img src="images/AgriActImg2.jpeg" alt="Harvested crops ready for market" />
+        <img src="images/AgriActImg3.jpeg" alt="Modern agricultural equipment in use" />
+        <img src="images/AgriActImg1.jpeg" alt="Farmers working in a lush green field" />
+        <img src="images/AgriActImg2.jpeg" alt="Harvested crops ready for market" />
+        <img src="images/AgriActImg3.jpeg" alt="Modern agricultural equipment in use" />
+        <!-- Duplicate the same 6 images again -->
+        <img src="images/AgriActImg1.jpeg" alt="Farmers working in a lush green field" />
+        <img src="images/AgriActImg2.jpeg" alt="Harvested crops ready for market" />
+        <img src="images/AgriActImg3.jpeg" alt="Modern agricultural equipment in use" />
+        <img src="images/AgriActImg1.jpeg" alt="Farmers working in a lush green field" />
+        <img src="images/AgriActImg2.jpeg" alt="Harvested crops ready for market" />
+        <img src="images/AgriActImg3.jpeg" alt="Modern agricultural equipment in use" />
       </div>
-    </section>
+    </div>
+  </section>
+  <section class="cta">
+    <div class="cta-content">
+      <h3>Ready to Transform Agriculture?</h3>
+      <p>
+        Join thousands of farmers, buyers, and suppliers who are already
+        benefiting from our platform.
+      </p>
+      <a href="register.html" class="cta-button">Get Started Today</a>
+    </div>
+  </section>
 
-    <section class="cta">
-      <div class="cta-content">
-        <h3>Ready to Transform Agriculture?</h3>
-        <p>
-          Join thousands of farmers, buyers, and suppliers who are already
-          benefiting from our platform.
-        </p>
-        <a href="register.html" class="cta-button">Get Started Today</a>
-      </div>
-    </section>
+  <footer>
+    <p>&copy; 2025 AgriTech | Empowering India's Farming Future</p>
+  </footer>
 
-    <footer>
-      <p>&copy; 2025 AgriTech | Empowering India's Farming Future</p>
-    </footer>
+  <script src="script.js"></script>
+</body>
 
-    <script src="script.js"></script>
-  </body>
 </html>
