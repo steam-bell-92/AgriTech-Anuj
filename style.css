@@ -690,3 +690,59 @@ footer::before {
   outline: 2px solid var(--secondary-green);
   outline-offset: 2px;
 }
+/* Loan Guide Section */
+.loan-guide-section {
+  background: #f5f9f6;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.loan-guide-section h2 {
+  text-align: center;
+  color: #2c5e3f;
+  margin-bottom: 20px;
+}
+
+.loan-guide-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.loan-guide-section label {
+  font-weight: 500;
+  color: #333;
+}
+
+.loan-guide-section input,
+.loan-guide-section select,
+.loan-guide-section button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.loan-guide-section button {
+  background: #2c5e3f;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.loan-guide-section button:hover {
+  background: #3b7b52;
+}
+
+.loan-result-box {
+  margin-top: 20px;
+  background: #fff;
+  border-left: 4px solid #2c5e3f;
+  padding: 15px;
+  border-radius: 6px;
+  display: none;
+}
