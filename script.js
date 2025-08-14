@@ -128,6 +128,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add loading states for navigation
   const navLinks = document.querySelectorAll('nav a');
+
+  const navbarLogo = document.querySelector('.navbar .logo');
+  if (navbarLogo) {
+    navbarLogo.style.cursor = 'pointer';
+    navbarLogo.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   navLinks.forEach(link => {
     link.addEventListener('click', function() {
       if (!this.href.includes('#')) {
