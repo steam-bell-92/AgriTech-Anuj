@@ -12,3 +12,10 @@ seaborn
 joblib
 google-generativeai
 flask-cors
+
+# Security dependencies
+bcrypt==4.0.1
+email-validator==2.0.0
+flask-limiter==3.5.0
+werkzeug==2.3.7
+requests==2.31.0
