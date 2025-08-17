@@ -13,6 +13,50 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   let history = [systemMsg];
 
+  // HTML escaping function to prevent XSS
+  function escapeHtml(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
+  // Secure message rendering function
+  function displayMessage(messageContent, sender) {
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${sender}`;
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const name = sender === 'user' ? 'You' : 'AgriBot';
+    
+    // Create message header
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'message-header';
+    const icon = document.createElement('i');
+    icon.className = `fas fa-${sender === 'user' ? 'user' : 'robot'}`;
+    headerDiv.appendChild(icon);
+    headerDiv.appendChild(document.createTextNode(` ${name}`));
+    
+    // Create message text (safely formatted)
+    const textDiv = document.createElement('div');
+    textDiv.className = 'message-text';
+    textDiv.innerHTML = format(escapeHtml(messageContent)); // Safe formatting after escaping
+    
+    // Create timestamp
+    const timeDiv = document.createElement('div');
+    timeDiv.className = 'timestamp';
+    timeDiv.textContent = time;
+    
+    // Assemble message
+    messageElement.appendChild(headerDiv);
+    messageElement.appendChild(textDiv);
+    messageElement.appendChild(timeDiv);
+    
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('suggestion')) {
       chatInput.value = e.target.textContent;
@@ -25,7 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const input = chatInput.value.trim();
     if (!input) return;
 
-    addMessage('user', input);
+    // Input validation - limit message length
+    if (input.length > 1000) {
+      alert('Message too long. Please keep messages under 1000 characters.');
+      return;
+    }
+
+    displayMessage(input, 'user');
     chatInput.value = '';
     const typing = showTyping();
     toggleInput(true);
@@ -54,11 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('API Response:', data);
       
       const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ I didn't receive a proper response. Please try again.";
-      addMessage('bot', reply);
+      displayMessage(reply, 'bot');
       history.push({ role: "model", parts: [{ text: reply }] });
     } catch (error) {
       console.error('Error:', error);
-      addMessage('bot', "⚠️ I'm having trouble connecting right now. Please check your internet connection and try again.");
+      displayMessage("⚠️ I'm having trouble connecting right now. Please check your internet connection and try again.", 'bot');
     } finally {
       typing.remove();
       toggleInput(false);
@@ -66,17 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const addMessage = (who, txt) => {
-    const div = document.createElement('div');
-    div.className = `message ${who}`;
-    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const name = who === 'user' ? 'You' : 'AgriBot';
-    div.innerHTML = `
-      <div class="message-header"><i class="fas fa-${who === 'user' ? 'user' : 'robot'}"></i> ${name}</div>
-      <div class="message-text">${format(txt)}</div>
-      <div class="timestamp">${time}</div>
-    `;
-    chatWindow.appendChild(div);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+    displayMessage(txt, who);
   };
 
   const showTyping = () => {
@@ -101,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
        .replace(/`(.*?)`/g, '<code>$1</code>');
 
   setTimeout(() => {
-    addMessage('bot', 'Hello! 🌱 I\'m AgriBot, your agricultural assistant. I can help you with farming questions, crop management, soil health, pest control, and more. How can I assist you today?');
+    displayMessage('Hello! 🌱 I\'m AgriBot, your agricultural assistant. I can help you with farming questions, crop management, soil health, pest control, and more. How can I assist you today?', 'bot');
   }, 500);
 
   chatInput.focus();
