@@ -4,6 +4,10 @@ import traceback
 import os
 import re
 from flask_cors import CORS
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:5500"}})
@@ -41,11 +45,25 @@ def validate_input(data):
     return True, "Valid input"
 
 # Initialize Gemini API
-API_KEY = 'YOUR-API-KEY'
+API_KEY = os.environ.get('GEMINI_API_KEY', 'YOUR-API-KEY')
 MODEL_ID = 'gemini-2.5-flash'
 
 # Configure Gemini Client
 client = genai.Client(api_key=API_KEY)
+
+
+@app.route('/api/firebase-config')
+def get_firebase_config():
+    """Secure endpoint to provide Firebase configuration to client"""
+    return jsonify({
+        'apiKey': os.environ.get('FIREBASE_API_KEY'),
+        'authDomain': os.environ.get('FIREBASE_AUTH_DOMAIN'),
+        'projectId': os.environ.get('FIREBASE_PROJECT_ID'),
+        'storageBucket': os.environ.get('FIREBASE_STORAGE_BUCKET'),
+        'messagingSenderId': os.environ.get('FIREBASE_MESSAGING_SENDER_ID'),
+        'appId': os.environ.get('FIREBASE_APP_ID'),
+        'measurementId': os.environ.get('FIREBASE_MEASUREMENT_ID')
+    })
 
 
 @app.route('/process-loan', methods=['POST'])
