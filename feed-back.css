@@ -236,8 +236,8 @@ main {
   margin-top: -2px;
 }
 
-.form-group input:focus + .input-underline,
-.form-group textarea:focus + .input-underline {
+.form-group input:focus+.input-underline,
+.form-group textarea:focus+.input-underline {
   transform: scaleX(1);
 }
 
@@ -542,13 +542,27 @@ main {
 
 /* Animations */
 @keyframes leafGrow {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.1) rotate(5deg); }
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+
+  50% {
+    transform: scale(1.1) rotate(5deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
 }
 
 @keyframes slideInUp {
@@ -556,6 +570,7 @@ main {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -567,6 +582,7 @@ main {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -574,9 +590,17 @@ main {
 }
 
 @keyframes successBounce {
-  0% { transform: scale(0); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes ripple {
@@ -593,44 +617,44 @@ main {
     padding: 30px 25px;
     border-radius: 15px;
   }
-  
+
   .header-content {
     padding: 0 15px;
   }
-  
+
   header h1 {
     font-size: 1.8rem;
   }
-  
+
   .logo-icon {
     font-size: 2rem;
   }
-  
+
   .logout-button {
     padding: 10px 18px;
     font-size: 14px;
   }
-  
+
   .feedback-title {
     font-size: 1.6rem;
   }
-  
+
   .action-buttons {
     flex-direction: column;
     align-items: center;
   }
-  
+
   .home-button,
   .view-button {
     width: 100%;
     max-width: 250px;
   }
-  
+
   .floating-help {
     bottom: 20px;
     right: 20px;
   }
-  
+
   .help-button {
     width: 50px;
     height: 50px;
@@ -642,31 +666,65 @@ main {
   .feedback-container {
     padding: 20px;
   }
-  
+
   .feedback-header {
     margin-bottom: 30px;
   }
-  
+
   .form-row {
     margin-bottom: 25px;
   }
-  
+
   .form-group input,
   .form-group textarea {
     padding: 14px 16px;
   }
-  
+
   .submit-button {
     padding: 16px;
     font-size: 16px;
   }
 }
 
+/* Footer */
 footer {
   background: linear-gradient(135deg, #4caf50, #66bb6a);
-  color: #ffffff;
+  color: white;
   text-align: center;
-  padding: 1.5rem;
-  font-weight: 500;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  padding-bottom: 0.2rem;
+  margin-top: auto;
+}
+
+footer h3 {
+  font-size: 22px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+footer p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+footer a {
+  display: inline-block;
+  margin: 0 15px;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: var(--transition);
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  line-height: 30px;
+}
+
+footer a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px) scale(1.1);
 }
