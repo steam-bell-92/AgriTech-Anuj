@@ -1,109 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
-    />
-    <meta
-      name="description"
-      content="AgriTech - Empowering Agriculture Through Technology."
-    />
-     <link rel="stylesheet" href="../static/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background: #f6f9f6;
-            color: #333;
-        }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-        }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <meta name="description" content="AgriTech - Empowering Agriculture Through Technology." />
+  <link rel="stylesheet" href="../static/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f6f9f6;
+      color: #333;
+    }
 
-        .loan-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
 
-        .loan-card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease;
-        }
+    .loan-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
 
-        .loan-card:hover {
-            transform: translateY(-5px);
-        }
+    .loan-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
 
-        .loan-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
+    .loan-card:hover {
+      transform: translateY(-5px);
+    }
 
-        .loan-card span {
-            display: block;
-            padding: 10px;
-            font-weight: 600;
-            background: #e8f5e9;
-        }
+    .loan-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
 
-        /* Loan Guide section */
-        .loan-guide-section {
-            text-align: center;
-            margin-top: 50px;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
+    .loan-card span {
+      display: block;
+      padding: 10px;
+      font-weight: 600;
+      background: #e8f5e9;
+    }
 
-        .btn-green {
-            display: inline-block;
-            background: #2e7d32;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
+    /* Loan Guide section */
+    .loan-guide-section {
+      text-align: center;
+      margin-top: 50px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    }
 
-        .btn-green:hover {
-            background: #256428;
-        }
+    .btn-green {
+      display: inline-block;
+      background: #2e7d32;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
 
-        select.language-select {
-            padding: 8px;
-            border-radius: 5px;
-            margin-left: 10px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    .btn-green:hover {
+      background: #256428;
+    }
+
+    select.language-select {
+      padding: 8px;
+      border-radius: 5px;
+      margin-left: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <title>AgriTech Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
+  <link rel="stylesheet" href="main.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
 </head>
-    <title>AgriTech Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
-    <link rel="stylesheet" href="main.css" />
-  </head>
 
 <body>
   <div class="header-nav-wrapper">
@@ -121,7 +115,7 @@
         <a href="index.html" class="logout-button">Logout</a>
       </div>
     </header>
-    
+
     <nav>
       <ul>
         <li>
@@ -145,7 +139,7 @@
       </ul>
     </nav>
   </div>
-  
+
   <!-- Main Section -->
   <main>
     <div class="section-title">
@@ -159,11 +153,7 @@
     <!-- Grid Section (Cards) -->
     <section class="grid-container">
       <a href="Crop Recommendation/templates/index.html" class="grid-item">
-        <img
-          src="images/crop.avif"
-          alt="Crop Recommendation"
-          loading="lazy"
-        />
+        <img src="images/crop.avif" alt="Crop Recommendation" loading="lazy" />
         <div class="grid-item-content">
           <h3>Crop Recommendation</h3>
           <p>
@@ -193,11 +183,7 @@
       </a>
 
       <a href="disease.html" class="grid-item">
-        <img
-          src="images/disease.avif"
-          alt="Disease Prediction"
-          loading="lazy"
-        />
+        <img src="images/disease.avif" alt="Disease Prediction" loading="lazy" />
         <div class="grid-item-content">
           <h3>Disease Prediction</h3>
           <p>
@@ -212,11 +198,7 @@
       </a>
 
       <a href="organic.html" class="grid-item">
-        <img
-          src="images/organic.jpg"
-          alt="Organic Farming Guide"
-          loading="lazy"
-        />
+        <img src="images/organic.jpg" alt="Organic Farming Guide" loading="lazy" />
         <div class="grid-item-content">
           <h3>Organic Farming Guide</h3>
           <p>
@@ -231,11 +213,7 @@
       </a>
 
       <a href="farmer.html" class="grid-item">
-        <img
-          src="images/farmer.avif"
-          alt="Farmer Connection"
-          loading="lazy"
-        />
+        <img src="images/farmer.avif" alt="Farmer Connection" loading="lazy" />
         <div class="grid-item-content">
           <h3>Farmer Connection</h3>
           <p>
@@ -250,11 +228,7 @@
       </a>
 
       <a href="shopkeeper.html" class="grid-item">
-        <img
-          src="images/shopkeeper.avif"
-          alt="Shopkeeper Listings"
-          loading="lazy"
-        />
+        <img src="images/shopkeeper.avif" alt="Shopkeeper Listings" loading="lazy" />
         <div class="grid-item-content">
           <h3>Shopkeeper Listings</h3>
           <p>
@@ -284,11 +258,7 @@
       </a>
 
       <a href="plantation.html" class="grid-item">
-        <img
-          src="images/Plantation.avif"
-          alt="Plantation Guidance"
-          loading="lazy"
-        />
+        <img src="images/Plantation.avif" alt="Plantation Guidance" loading="lazy" />
         <div class="grid-item-content">
           <h3>Plantation Guidance</h3>
           <p>
@@ -318,11 +288,8 @@
       </a>
 
       <a href="Labour_Alerts/templates/labour.html" class="grid-item">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStjJBgIGmDDh6NzJSUF8AmM_TuDO_MEPiOIA&s"
-          alt="Schedule Labour & Alerts"
-          loading="lazy"
-        />
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStjJBgIGmDDh6NzJSUF8AmM_TuDO_MEPiOIA&s"
+          alt="Schedule Labour & Alerts" loading="lazy" />
         <div class="grid-item-content">
           <h3>Labour Scheduling & Alerts</h3>
           <p>
@@ -337,31 +304,26 @@
       </a>
 
       <a href="forum/forum.html" class="grid-item">
-      <img src="https://cdn-icons-png.flaticon.com/512/3063/3063826.png"
-     alt="Farmer Forum"
-     loading="lazy"
-     style="width:100%; height:200px; object-fit:cover; border-radius:8px;" />
-     
-    <div class="grid-item-content">
-     <h3>Farmer Forum</h3>
-     <p>
-      Connect with other farmers, share advice, and discuss tips for improving yields and efficiency.
-     </p>
-     <div class="grid-item-footer">
-      <span class="feature-badge">Community</span>
-      <span class="arrow-icon">→</span>
-    </div>
-  </div>
-</a>
+        <img src="https://cdn-icons-png.flaticon.com/512/3063/3063826.png" alt="Farmer Forum" loading="lazy"
+          style="width:100%; height:200px; object-fit:cover; border-radius:8px;" />
+
+        <div class="grid-item-content">
+          <h3>Farmer Forum</h3>
+          <p>
+            Connect with other farmers, share advice, and discuss tips for improving yields and efficiency.
+          </p>
+          <div class="grid-item-footer">
+            <span class="feature-badge">Community</span>
+            <span class="arrow-icon">→</span>
+          </div>
+        </div>
+      </a>
 
 
 
       <a href="Crop_Prices_Tracker/templates/crop_price_tracker.html" class="grid-item">
-        <img
-          src="https://d3nn873nee648n.cloudfront.net/900x600/10734/14-SP305920.jpg"
-          alt="Crop Price Tracker"
-          loading="lazy"
-        />
+        <img src="https://d3nn873nee648n.cloudfront.net/900x600/10734/14-SP305920.jpg" alt="Crop Price Tracker"
+          loading="lazy" />
         <div class="grid-item-content">
           <h3>Crop Price Tracker</h3>
           <p>
@@ -375,68 +337,88 @@
         </div>
       </a>
     </section>
-<body>
-    <div class="container">
+
+    <body>
+      <div class="container">
         <header>
-            <h1>Smart Loan Guide for Farmers</h1>
-            <p>Select the type of loan you want to apply for:</p>
+          <h1>Smart Loan Guide for Farmers</h1>
+          <p>Select the type of loan you want to apply for:</p>
         </header>
 
         <div class="loan-cards">
-            <div class="loan-card" data-type="crop">
-                <img src="https://5.imimg.com/data5/SELLER/Default/2024/2/389292204/CR/MJ/TT/191214086/fresh-wheat-crop.webp"
-                    alt="Crop Cultivation">
-                <span>Crop Cultivation</span>
-            </div>
-            <div class="loan-card" data-type="equipment">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1DzqFJ-uX4N9Hm1AO-o88YUgG40sl6WPJTg&s"
-                    alt="Farm Equipment">
-                <span>Farm Equipment</span>
-            </div>
-            <div class="loan-card" data-type="water">
-                <img src="https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/saur-energy/media/post_attachments/2017/06/Solar-Pump-Irrigators.jpg"
-                    alt="Water Source">
-                <span>Water Source Development</span>
-            </div>
-            <div class="loan-card" data-type="land">
-                <img src="https://genuineplots.com/images/propertytype/featured1-compressed.jpg" alt="Land Purchase">
-                <span>Land Purchase</span>
-            </div>
+          <div class="loan-card" data-type="crop">
+            <img
+              src="https://5.imimg.com/data5/SELLER/Default/2024/2/389292204/CR/MJ/TT/191214086/fresh-wheat-crop.webp"
+              alt="Crop Cultivation">
+            <span>Crop Cultivation</span>
+          </div>
+          <div class="loan-card" data-type="equipment">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1DzqFJ-uX4N9Hm1AO-o88YUgG40sl6WPJTg&s"
+              alt="Farm Equipment">
+            <span>Farm Equipment</span>
+          </div>
+          <div class="loan-card" data-type="water">
+            <img
+              src="https://img-cdn.publive.online/fit-in/1200x675/filters:format(webp)/saur-energy/media/post_attachments/2017/06/Solar-Pump-Irrigators.jpg"
+              alt="Water Source">
+            <span>Water Source Development</span>
+          </div>
+          <div class="loan-card" data-type="land">
+            <img src="https://genuineplots.com/images/propertytype/featured1-compressed.jpg" alt="Land Purchase">
+            <span>Land Purchase</span>
+          </div>
         </div>
 
         <!-- Loan Guide Redirect Section -->
         <section id="loan-guide" class="loan-guide-section">
-            <h2>Smart Loan Eligibility Guide</h2>
-            <p>Get step-by-step assistance for applying for agricultural loans.</p>
-            <a href="smart_loan.html" class="btn-green" id="goLoanGuide">Go to Smart Loan Guide</a>
+          <h2>Smart Loan Eligibility Guide</h2>
+          <p>Get step-by-step assistance for applying for agricultural loans.</p>
+          <a href="smart_loan.html" class="btn-green" id="goLoanGuide">Go to Smart Loan Guide</a>
 
-            <label for="languageSelect">Language:</label>
-            <select id="languageSelect" class="language-select">
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
-            </select>
+          <label for="languageSelect">Language:</label>
+          <select id="languageSelect" class="language-select">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+          </select>
         </section>
-    </div>
+      </div>
 
-    <script>
+      <script>
         document.getElementById('goLoanGuide').addEventListener('click', function (event) {
-            event.preventDefault();
-            const lang = document.getElementById('languageSelect').value;
-            window.location.href = `smart_loan.html?lang=${lang}`;
+          event.preventDefault();
+          const lang = document.getElementById('languageSelect').value;
+          window.location.href = `smart_loan.html?lang=${lang}`;
         });
-    </script>
+      </script>
   </main>
 
   <!-- Footer -->
-  <footer>
+  < <footer>
+    <h3>🤝 Connect With Us</h3>
     <p>
-      &copy; 2025 AgriTech. All rights reserved. | Empowering India's Farming
-      Future 🌾
+      If you have any questions or need assistance, feel free to reach out to
+      us through our social media channels:
     </p>
-  </footer>
-  
-  <script src="main.js"></script>
+
+    <div style="margin: 1rem 0">
+      <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://github.com/omroy07" target="_blank" aria-label="View our GitHub repositories">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/om-roy-3b809628a/" target="_blank" aria-label="Connect with us on LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+
+    <p style="margin-top: 2rem; opacity: 0.8">
+      &copy; 2025 AgriTech | Empowering India's Farming Future 🇮🇳
+    </p>
+    </footer>
+
+
+    <script src="main.js"></script>
 </body>
 
 </html>
-

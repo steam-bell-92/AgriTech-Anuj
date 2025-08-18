@@ -238,11 +238,9 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(76, 175, 80, 0.05),
-    rgba(102, 187, 106, 0.05)
-  );
+  background: linear-gradient(135deg,
+      rgba(76, 175, 80, 0.05),
+      rgba(102, 187, 106, 0.05));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -321,11 +319,44 @@ main {
 /* Footer */
 footer {
   background: linear-gradient(135deg, #4caf50, #66bb6a);
-  color: #ffffff;
+  color: white;
   text-align: center;
-  padding: 1.5rem;
-  font-weight: 500;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  padding-bottom: 0.2rem;
+  margin-top: auto;
+}
+
+footer h3 {
+  font-size: 22px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+footer p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+footer a {
+  display: inline-block;
+  margin: 0 15px;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: var(--transition);
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  line-height: 30px;
+}
+
+footer a:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px) scale(1.1);
 }
 
 /* Ripple Animation */
@@ -341,6 +372,7 @@ footer {
   0% {
     background-position: -200px 0;
   }
+
   100% {
     background-position: calc(200px + 100%) 0;
   }
