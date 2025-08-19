@@ -1,14 +1,18 @@
+/* Import theme system */
+@import url('../../theme.css');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f5f5f5;
+  color: var(--text-primary, #333);
+  background-color: var(--bg-secondary, #f5f5f5);
   min-height: 100vh;
   padding-top: 80px;
   position: relative;
@@ -70,9 +74,9 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
-  background: white;
+  background: var(--bg-primary, white);
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px var(--shadow-medium, rgba(0, 0, 0, 0.1));
   margin-bottom: 2rem;
   animation: slideUp 0.8s ease;
 }
@@ -171,7 +175,8 @@ select {
   border: 2px solid #e1e5e9;
   border-radius: 12px;
   font-size: 1rem;
-  background: white;
+  background: var(--bg-primary, white);
+  color: var(--text-primary, #333);
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -185,7 +190,7 @@ select:focus {
 }
 
 input::placeholder {
-  color: #999;
+  color: var(--text-muted, #999);
   font-style: italic;
 }
 
@@ -276,10 +281,10 @@ input::placeholder {
 }
 
 .guide-item {
-  background: white;
+  background: var(--bg-primary, white);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow-light, rgba(0, 0, 0, 0.08));
   transition: all 0.3s ease;
   border: 1px solid rgba(46, 125, 50, 0.1);
   position: relative;
@@ -308,14 +313,14 @@ input::placeholder {
 }
 
 .guide-item h4 {
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 1.1rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .guide-item p {
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.6;
   font-size: 0.95rem;
 }

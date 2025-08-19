@@ -12,14 +12,17 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../../theme.css" />
     <style>
       * {
         box-sizing: border-box;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
       }
 
       body {
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #d4fc79, #96e6a1);
+        background-color: var(--bg-secondary, #d4fc79);
+        color: var(--text-primary, #333);
         background-size: 400% 400%;
         animation: gradientShift 8s ease infinite;
         margin: 0;
@@ -43,12 +46,12 @@
       }
 
       .container {
-        background: rgba(255, 255, 255, 0.95);
+        background: var(--bg-primary, rgba(255, 255, 255, 0.95));
         backdrop-filter: blur(10px);
         padding: 50px 40px;
         border-radius: 24px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1),
-          0 10px 20px rgba(0, 0, 0, 0.05),
+        box-shadow: 0 20px 40px var(--shadow-medium, rgba(0, 0, 0, 0.1)),
+          0 10px 20px var(--shadow-light, rgba(0, 0, 0, 0.05)),
           inset 0 1px 0 rgba(255, 255, 255, 0.8);
         text-align: center;
         max-width: 700px;
@@ -57,6 +60,7 @@
         overflow: hidden;
         transform: translateY(0);
         animation: slideIn 0.8s ease-out;
+        color: var(--text-primary, #333);
       }
 
       @keyframes slideIn {
@@ -97,7 +101,7 @@
 
       h1 {
         margin-bottom: 40px;
-        color: #2e7d32;
+        color: var(--primary-green, #2e7d32);
         font-size: 32px;
         font-weight: 700;
         text-shadow: 0 2px 4px rgba(46, 125, 50, 0.1);
@@ -122,14 +126,15 @@
         border-radius: 12px;
         font-size: 16px;
         font-family: inherit;
-        background: rgba(255, 255, 255, 0.9);
+        background: var(--bg-primary, rgba(255, 255, 255, 0.9));
+        color: var(--text-primary, #333);
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         outline: none;
       }
 
       .input-group input:focus {
         border-color: #66bb6a;
-        background: #ffffff;
+        background: var(--bg-primary, #ffffff);
         box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.1),
           0 4px 12px rgba(102, 187, 106, 0.15);
         transform: translateY(-2px);
@@ -140,7 +145,7 @@
       }
 
       .input-group input::placeholder {
-        color: #81c784;
+        color: var(--text-muted, #81c784);
         font-weight: 500;
       }
 
@@ -378,6 +383,14 @@
   <body>
     <header></header>
     <div class="container">
+      <div style="position: absolute; top: 20px; right: 20px;">
+        <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(46, 125, 50, 0.1); border: 1px solid rgba(46, 125, 50, 0.3); color: #2e7d32; padding: 8px 12px; border-radius: 20px; font-size: 12px;">
+          <i class="fas fa-sun sun-icon"></i>
+          <i class="fas fa-moon moon-icon"></i>
+          <span class="theme-text">Light</span>
+        </button>
+      </div>
+      
       <h1>🌾 Crop Recommendation System</h1>
 
       <form action="/" method="POST" id="cropForm">
@@ -554,5 +567,6 @@
         });
       });
     </script>
+    <script src="../../theme.js"></script>
   </body>
 </html>

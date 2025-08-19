@@ -12,14 +12,17 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="../../theme.css" />
     <style>
       * {
         box-sizing: border-box;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
       }
 
       body {
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #a8edea, #fed6e3);
+        background-color: var(--bg-secondary, #a8edea);
+        color: var(--text-primary, #333);
         background-size: 400% 400%;
         animation: gradientShift 10s ease infinite;
         display: flex;
@@ -43,12 +46,12 @@
       }
 
       .container {
-        background: rgba(255, 255, 255, 0.95);
+        background: var(--bg-primary, rgba(255, 255, 255, 0.95));
         backdrop-filter: blur(15px);
         padding: 50px 40px;
         border-radius: 24px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1),
-          0 15px 30px rgba(0, 0, 0, 0.05),
+        box-shadow: 0 25px 50px var(--shadow-medium, rgba(0, 0, 0, 0.1)),
+          0 15px 30px var(--shadow-light, rgba(0, 0, 0, 0.05)),
           inset 0 1px 0 rgba(255, 255, 255, 0.9);
         text-align: center;
         max-width: 650px;
@@ -56,6 +59,7 @@
         position: relative;
         overflow: hidden;
         animation: slideInUp 0.8s ease-out;
+        color: var(--text-primary, #333);
       }
 
       @keyframes slideInUp {
@@ -96,7 +100,7 @@
 
       h2 {
         margin-bottom: 30px;
-        color: #333;
+        color: var(--text-primary, #333);
         font-size: 28px;
         font-weight: 700;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -454,6 +458,14 @@
   </head>
   <body>
     <div class="container">
+      <div style="position: absolute; top: 20px; right: 20px;">
+        <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(46, 125, 50, 0.1); border: 1px solid rgba(46, 125, 50, 0.3); color: #2e7d32; padding: 8px 12px; border-radius: 20px; font-size: 12px;">
+          <i class="fas fa-sun sun-icon"></i>
+          <i class="fas fa-moon moon-icon"></i>
+          <span class="theme-text">Light</span>
+        </button>
+      </div>
+      
       <div class="success-icon">✓</div>
       <h2>🌿 Recommended Crop</h2>
 
@@ -547,5 +559,6 @@
         });
       });
     </script>
+    <script src="../../theme.js"></script>
   </body>
 </html>

@@ -12,6 +12,7 @@
     />
     <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
     <link rel="stylesheet" href="shopkeeper.css">
+    <link rel="stylesheet" href="theme.css">
   </head>
 
   <body>
@@ -25,7 +26,14 @@
         <p class="header-subtitle">
           Your comprehensive guide to agricultural solutions across Punjab
         </p>
-        <a href="main.html" class="back-button"> ← Back to Main </a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+            <span class="theme-text">Light</span>
+          </button>
+          <a href="main.html" class="back-button"> ← Back to Main </a>
+        </div>
       </div>
     </header>
 
@@ -238,5 +246,6 @@
     </footer>
 
     <script src="shopkeeper.js"></script>
+    <script src="theme.js"></script>
   </body>
 </html>

@@ -1,8 +1,12 @@
 
+/* Import theme system */
+@import url('theme.css');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 :root {
@@ -67,7 +71,8 @@ html {
 }
 
 body {
-  background: linear-gradient(135deg, var(--background) 0%, #e8f4e8 100%);
+  background-color: var(--bg-secondary, #f0f4f7);
+  color: var(--text-primary, #333);
   font-family: "Poppins", sans-serif;
   max-width: none;
   width: 100%;
@@ -298,10 +303,10 @@ footer p {
 
 /* Enhanced Sections */
 section {
-  background: var(--white);
+  background: var(--bg-primary, #ffffff);
   padding: 2.5rem;
   border-radius: var(--border-radius-large);
-  box-shadow: 0 10px 30px var(--shadow-medium);
+  box-shadow: 0 10px 30px var(--shadow-medium, rgba(0, 0, 0, 0.15));
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -328,7 +333,7 @@ section:hover {
 }
 
 section h2 {
-  color: var(--primary-green);
+  color: var(--primary-green, #2e7d32);
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
@@ -338,7 +343,7 @@ section h2 {
 }
 
 section h3 {
-  color: var(--text-dark);
+  color: var(--text-primary, #333);
   font-size: 1.3rem;
   font-weight: 600;
   margin: 1.5rem 0 1rem;
@@ -459,7 +464,7 @@ section strong {
 p {
   margin-bottom: 1.5rem;
   line-height: 1.8;
-  color: var(--text-medium);
+  color: var(--text-secondary, #666);
 }
 
 /* Responsive Design */
