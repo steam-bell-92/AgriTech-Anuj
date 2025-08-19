@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>AgriTech - Feedback</title>
   <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
   <link rel="stylesheet" href="feed-back.css" />
@@ -18,13 +18,14 @@
           <img src="/AgriTech/images/logo.png" alt="AgriTech logo" class="site-logo">
           <h1>AgriTech</h1>
         </div>
+        <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
+      </div>
         <a href="index.html" class="logout-button">
           <i class="fas fa-sign-out-alt"></i>
           Logout
         </a>
       </div>
     </header>
-
     <main>
       <div class="feedback-container">
         <div class="feedback-header">
@@ -153,7 +154,25 @@
     </p>
   </footer>
 
-  <script src="feed-back.js"></script>
-</body>
-
+    <script src="feed-back.js"></script>
+    <script>
+        function showLogoutConfirmation() {
+            Swal.fire({
+            title: 'Confirm Logout',
+            text: 'Are you sure you want to logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, logout',
+            cancelButtonText: 'No'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to logout page or homepage
+                window.location.href = 'index.html';  
+            }
+            });
+        }
+    </script>
+  </body>
 </html>
