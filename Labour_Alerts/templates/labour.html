@@ -6,6 +6,7 @@
     <title>Labour Scheduling & Alerts</title>
     <link rel="stylesheet" href="../static/style.css" />
     <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
+    <link rel="stylesheet" href="../../theme.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -22,7 +23,14 @@
       <div class="header-content">
         <i class="fas fa-users header-icon"></i>
         <h1>Labour Scheduling & Alerts</h1>
-        <a href="/main.html" class="back-button"> ← Back to Main </a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+            <span class="theme-text">Light</span>
+          </button>
+          <a href="/main.html" class="back-button"> ← Back to Main </a>
+        </div>
       </div>
     </header>
 
@@ -259,5 +267,6 @@
     </div>
 
     <script src="../static/script.js"></script>
+    <script src="../../theme.js"></script>
   </body>
 </html>

@@ -7,6 +7,7 @@
     <title>AgriTech - Feedback</title>
     <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
     <link rel="stylesheet" href="feed-back.css" />
+    <link rel="stylesheet" href="theme.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
@@ -20,7 +21,14 @@
             <img src="/AgriTech/images/logo.png" alt="AgriTech logo" class="site-logo">
             <h1>AgriTech</h1>
           </div>
-          <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">
+              <i class="fas fa-sun sun-icon"></i>
+              <i class="fas fa-moon moon-icon"></i>
+              <span class="theme-text">Light</span>
+            </button>
+            <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
+          </div>
         </div>
       </header>
 
@@ -152,6 +160,7 @@
     </footer>
 
     <script src="feed-back.js"></script>
+    <script src="theme.js"></script>
     <script>
         function showLogoutConfirmation() {
             Swal.fire({

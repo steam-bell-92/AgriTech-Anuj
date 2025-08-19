@@ -11,6 +11,7 @@
     />
     <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
     <link rel="stylesheet" href="chat.css" />
+    <link rel="stylesheet" href="theme.css" />
   </head>
   <body>
     <header>
@@ -19,9 +20,16 @@
           <i class="fas fa-seedling"></i>
           <h1>AgriTech Assistant</h1>
         </div>
-        <a href="/main.html" class="nav-back">
-          <i class="fas fa-arrow-left"></i> Back to Home
-        </a>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <button class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+            <span class="theme-text">Light</span>
+          </button>
+          <a href="/main.html" class="nav-back">
+            <i class="fas fa-arrow-left"></i> Back to Home
+          </a>
+        </div>
       </div>
     </header>
 
@@ -67,6 +75,7 @@
       </div>
     </main>
     <script src="chat.js"></script>
+    <script src="theme.js"></script>
       <style>
     .site-footer {background: linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; margin-top:auto; padding: 2rem 1.25rem;}
     .site-footer .footer-inner {max-width:1200px;margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem; align-items:flex-start;}

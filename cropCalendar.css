@@ -1,8 +1,13 @@
+/* Import theme system */
+@import url('theme.css');
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: var(--bg-secondary, #f4f4f4);
+    color: var(--text-primary, #333);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header {
@@ -59,7 +64,7 @@ select:focus {
     grid-template-columns: repeat(13, 100px);
     gap: 2px;
     overflow-x: auto;
-    background: white;
+    background: var(--bg-primary, white);
     padding: 10px;
     border-radius: 8px;
 }
@@ -73,7 +78,7 @@ select:focus {
 
 .month {
     color: green;
-    background: linear-gradient(135deg, #e6f9e6, #d0f0d0);
+    background: var(--bg-secondary, linear-gradient(135deg, #e6f9e6, #d0f0d0));
     font-weight: bold;
     border: 1px solid #ccc;
     padding: 5px;
@@ -113,7 +118,7 @@ select:focus {
 
 .crop-name {
     font-weight: bold;
-    color: #023e0a;
+    color: var(--text-primary, #023e0a);
     gap: 10px;
     padding: 5px;
 }

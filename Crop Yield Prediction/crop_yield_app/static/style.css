@@ -1,8 +1,12 @@
+/* Import theme system */
+@import url('../../../theme.css');
+
 /* === Reset and Box Sizing === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* === Root Variables === */
@@ -26,8 +30,8 @@
 /* === Base Typography and Layout === */
 body {
   font-family: "Poppins", sans-serif;
-  background: var(--background);
-  color: var(--text-dark);
+  background-color: var(--bg-secondary, #f0f9ff);
+  color: var(--text-primary, #333);
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
@@ -100,10 +104,14 @@ body::before {
 
 /* === Container === */
 .container {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-  animation: fadeInUp 0.8s ease-out;
+  padding: 2rem;
+  background: var(--bg-primary, white);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px var(--shadow-medium, rgba(0, 0, 0, 0.1));
+  margin-bottom: 2rem;
+  animation: slideUp 0.8s ease;
 }
 
 /* === Navigation Back === */
@@ -192,9 +200,9 @@ body::before {
 
 /* === Prediction Card === */
 .prediction-card {
-  background: var(--white);
+  background: var(--bg-primary, #ffffff);
   border-radius: var(--border-radius-large);
-  box-shadow: var(--shadow-medium);
+  box-shadow: 0 8px 30px var(--shadow-medium, rgba(0, 0, 0, 0.15));
   padding: 40px;
   position: relative;
   overflow: hidden;
@@ -235,6 +243,32 @@ body::before {
   margin-bottom: 8px;
   font-size: 0.95em;
   transition: var(--transition);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--bg-primary, white);
+  color: var(--text-primary, #333);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+  transform: translateY(-2px);
+}
+
+input::placeholder {
+  color: var(--text-muted, #999);
+  font-style: italic;
 }
 
 .form-group input,

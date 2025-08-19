@@ -107,6 +107,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="theme.css" />
   </head>
 
 <body>
@@ -124,6 +125,11 @@
         </a>
         <a href="feed-back.html" class="feedback-button">Feedback</a>
         <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
+        <button class="theme-toggle" aria-label="Toggle dark/light mode">
+          <i class="fas fa-sun sun-icon"></i>
+          <i class="fas fa-moon moon-icon"></i>
+          <span class="theme-text">Light</span>
+        </button>
       </div>
     </header>
     
@@ -152,6 +158,7 @@
   </div>
   
   <!-- Main Section -->
+   <nav>
   <main>
     <div class="section-title">
       <h2>Comprehensive Agricultural Solutions</h2>
@@ -431,7 +438,7 @@
         });
     </script>
   </main>
-
+</nav>
   <!-- Footer -->
   <style>
     .site-footer {background: linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; margin-top:auto; padding: 2rem 1.25rem;}
@@ -489,6 +496,7 @@
   </footer>
   
   <script src="main.js"></script>
+  <script src="theme.js"></script>
   <script>
         function showLogoutConfirmation() {
             Swal.fire({

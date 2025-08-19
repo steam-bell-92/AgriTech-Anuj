@@ -6,13 +6,25 @@
     <title>Plant Disease Detection - AI Powered Diagnosis</title>
     <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
     <link rel="stylesheet" href="disease.css">
+    <link rel="stylesheet" href="theme.css">
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <h1>🌱 Plant Disease Detection</h1>
-        <p>AI-Powered Plant Health Diagnosis System</p>
-        <a href="main.html" class="back-button"> ← Back to Main </a>
+        <div class="header-content">
+          <div>
+            <h1>🌱 Plant Disease Detection</h1>
+            <p>AI-Powered Plant Health Diagnosis System</p>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">
+              <i class="fas fa-sun sun-icon"></i>
+              <i class="fas fa-moon moon-icon"></i>
+              <span class="theme-text">Light</span>
+            </button>
+            <a href="main.html" class="back-button"> ← Back to Main </a>
+          </div>
+        </div>
       </header>
 
       <div class="main-content">
@@ -364,6 +376,7 @@
     </div>
 
     <script src="disease.js"></script>
+    <script src="theme.js"></script>
       <style>
     .site-footer {background: linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; margin-top:auto; padding: 2rem 1.25rem;}
     .site-footer .footer-inner {max-width:1200px;margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem; align-items:flex-start;}

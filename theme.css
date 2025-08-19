@@ -1,0 +1,252 @@
+/* Theme System - Dark/Light Mode */
+:root {
+  /* Light mode colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+  --border-color: #dee2e6;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-heavy: rgba(0, 0, 0, 0.25);
+  
+  /* Green colors remain consistent */
+  --primary-green: #2e7d32;
+  --secondary-green: #4caf50;
+  --accent-green: #66bb6a;
+  --light-green: #e8f5e8;
+  --dark-green: #1b5e20;
+}
+
+[data-theme="dark"] {
+  /* Dark mode colors */
+  --bg-primary: #150f1fe3;
+  --bg-secondary: #4e4343d0;
+  --bg-tertiary: #423939;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+  --border-color: #404040;
+  --shadow-light: rgba(66, 44, 44, 0.671);
+  --shadow-medium: rgba(65, 40, 40, 0.4);
+  --shadow-heavy: rgba(46, 29, 29, 0.6);
+  
+  /* Adjusted green colors for dark mode */
+  --light-green: #2d4a2d;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: relative;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  min-width: 100px;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(41, 39, 39, 0.2);
+}
+
+.theme-toggle i {
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.theme-toggle .moon-icon {
+  opacity: 0;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 12px;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+  opacity: 0;
+  transform: rotate(180deg);
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Apply theme colors to common elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cards and containers */
+.card,
+.container,
+.form-container,
+.feedback-container,
+.prediction-card,
+.upload-card,
+.analysis-section,
+.features-section,
+.section,
+.dealer-card,
+.listing-item,
+.feature-card,
+.grid-item {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Secondary backgrounds */
+.chat-header,
+.upload-area,
+.preview-container,
+.result-card,
+.guide-item,
+.crop-item,
+.feedback-item,
+.alert-card,
+.news-card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Text colors */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+p, span, div {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.text-secondary,
+.description,
+.insight-note,
+.dealer-info,
+.timestamp,
+.character-count {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Form elements */
+input,
+textarea,
+select {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: var(--bg-primary);
+  border-color: var(--secondary-green);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+/* Shadows */
+.shadow,
+.box-shadow,
+[class*="shadow"] {
+  box-shadow: 0 4px 6px var(--shadow-light);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Navigation and header adjustments */
+nav {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+nav a {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+/* Chat specific adjustments */
+#chat-window {
+  background-color: var(--bg-secondary);
+  transition: background-color 0.3s ease;
+}
+
+.message.bot {
+  background-color: var(--bg-primary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Footer adjustments */
+footer,
+.site-footer {
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  /* Keep footer green in both modes */
+}
+
+/* Ensure proper contrast for important elements */
+[data-theme="dark"] .grid-item:hover,
+[data-theme="dark"] .dealer-card:hover,
+[data-theme="dark"] .feature-card:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Loading and spinner adjustments */
+[data-theme="dark"] .spinner {
+  border-color: var(--border-color);
+  border-top-color: var(--secondary-green);
+}
+
+/* Modal adjustments */
+[data-theme="dark"] .modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Ensure readability in all states */
+[data-theme="dark"] .welcome-message,
+[data-theme="dark"] .no-results,
+[data-theme="dark"] .empty-state {
+  color: var(--text-secondary);
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

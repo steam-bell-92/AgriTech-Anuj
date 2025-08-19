@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../static/result.css">
+    <link rel="stylesheet" href="../../theme.css">
   </head>
   <body>
     <div class="background-animation">
@@ -34,6 +35,11 @@
           <span>PlantCare AI</span>
         </div>
         <div class="nav-actions">
+          <button class="theme-toggle nav-btn" aria-label="Toggle dark/light mode">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+            <span class="theme-text">Light</span>
+          </button>
           <a href="/" class="nav-btn">
             <i class="fas fa-upload"></i>
             New Analysis
@@ -332,5 +338,6 @@
         });
       });
     </script>
+    <script src="../../theme.js"></script>
   </body>
 </html>
