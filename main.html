@@ -120,7 +120,7 @@
       <div class="brand">
         <img src="images/logo.png" alt="AgriTech logo" class="site-logo">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <h1>Welcome to AgriTech</h1>
+        <h2>Welcome to AgriTech</h2>
       </div>
       <div class="header-buttons">
         <a href="cropCalendar.html" class="calendar-button" title="Crop Calendar">
@@ -359,8 +359,6 @@
   </div>
 </a>
 
-
-
       <a href="Crop_Prices_Tracker/templates/crop_price_tracker.html" class="grid-item">
         <img src="https://d3nn873nee648n.cloudfront.net/900x600/10734/14-SP305920.jpg" alt="Crop Price Tracker"
           loading="lazy" />
@@ -491,7 +489,23 @@
     </footer>
     <script src="main.js"></script>
   <script src="theme.js"></script>
+  <script src="auth.js"></script>
   <script>
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', () => {
+          if (!requireAuth()) {
+            return;
+          }
+          const currentUser = window.authManager.getCurrentUser();
+          if (currentUser) {
+            // Update header to show user name
+            const headerTitle = document.querySelector('header h2');
+            if (headerTitle) {
+              headerTitle.textContent = `Welcome to AgriTech, ${currentUser.fullname}!`;
+            }
+          }
+        });
+        
         function showLogoutConfirmation() {
             Swal.fire({
             title: 'Confirm Logout',
@@ -504,8 +518,13 @@
             cancelButtonText: 'No'
             }).then((result) => {
             if (result.isConfirmed) {
-                // Redirect to logout page or homepage
-                window.location.href = 'index.html';  
+                const logoutResult = window.authManager.logout();
+                if (logoutResult.success) {
+                  showAuthMessage(logoutResult.message, 'success');
+                  setTimeout(() => {
+                    window.location.href = 'index.html';
+                  }, 1000);
+                }
             }
             });
         }
