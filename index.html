@@ -16,6 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
   <script src="firebase.js" defer type="module"></script>
+  <link rel="stylesheet" href="theme.css" />
 </head>
 
 <body>
@@ -24,6 +25,11 @@
       <h1 class="logo">AgriTech</h1>
     </div>
     <div class="nav-buttons">
+      <button class="theme-toggle btn" aria-label="Toggle dark/light mode">
+        <i class="fas fa-sun sun-icon"></i>
+        <i class="fas fa-moon moon-icon"></i>
+        <span class="theme-text">Light</span>
+      </button>
       <a href="about.html" class="btn">About</a>
       <a href="login.html" class="btn">Login</a>
       <a href="register.html" class="btn">Register</a>
@@ -225,6 +231,7 @@
   </script>
 </body>
 <script src="script.js"></script>
+<script src="theme.js"></script>
 </body>
 
 </html>

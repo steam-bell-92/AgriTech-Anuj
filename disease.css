@@ -1,13 +1,17 @@
+/* Import theme system */
+@import url('theme.css');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fff8 100%);
-  color: #333;
+  background-color: var(--bg-secondary, #f8fff8);
+  color: var(--text-primary, #333);
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -143,10 +147,10 @@ header > p {
 }
 
 .analysis-section {
-  background: white;
+  background: var(--bg-primary, white);
   padding: 30px;
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-light, rgba(0, 0, 0, 0.1));
   border: 2px solid #e8f5e8;
 }
 
@@ -366,10 +370,10 @@ header > p {
 }
 
 .features-section {
-  background: white;
+  background: var(--bg-primary, white);
   padding: 40px;
   border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 25px var(--shadow-light, rgba(0, 0, 0, 0.1));
   border: 2px solid #e8f5e8;
   margin-bottom: 40px;
 }

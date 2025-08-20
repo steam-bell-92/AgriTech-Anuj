@@ -5,25 +5,28 @@
   <title>Farmer Forum</title>
   <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
   <link rel="stylesheet" href="farmer.css" />
+  <link rel="stylesheet" href="../theme.css" />
   <style>
   body {
     font-family: Arial, sans-serif;
     margin: 30px;
-    background-color: #f7f7f7;
+    background-color: var(--bg-secondary, #f7f7f7);
+    color: var(--text-primary, #333);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
 
   h1, h2 {
-    color: #2c3e50;
+    color: var(--text-primary, #2c3e50);
   }
 
 
   form {
     margin-bottom: 20px;
-    background: white;
+    background: var(--bg-primary, white);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px var(--shadow-light, rgba(0, 0, 0, 0.1));
   }
 
 
@@ -35,6 +38,8 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
+    background: var(--bg-primary, white);
+    color: var(--text-primary, #333);
   }
 
 
@@ -54,7 +59,7 @@
 
 
   .forum-post {
-    background: white;
+    background: var(--bg-primary, white);
     margin-bottom: 10px;
     padding: 15px;
     border-radius: 6px;
@@ -71,6 +76,14 @@
 </head>
 <body>
   <h1>Farmer Forum</h1>
+  
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(46, 125, 50, 0.1); border: 1px solid rgba(46, 125, 50, 0.3); color: #2e7d32; padding: 8px 12px; border-radius: 20px; font-size: 12px;">
+      <i class="fas fa-sun sun-icon"></i>
+      <i class="fas fa-moon moon-icon"></i>
+      <span class="theme-text">Light</span>
+    </button>
+  </div>
 
   <a href="../main.html" style="text-decoration: none;">
   <button type="button">Back to Main Page</button>
@@ -89,6 +102,7 @@
 
 
   <script src="forum.js"></script>
+  <script src="../theme.js"></script>
 </body>
 </html>
 

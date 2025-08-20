@@ -1,3 +1,6 @@
+/* Import theme system */
+@import url('theme.css');
+
 :root {
   --primary-green: #4caf50;
   --secondary-green: #66bb6a;
@@ -19,6 +22,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 html {
@@ -28,8 +32,8 @@ html {
 body {
   font-family: "Inter", sans-serif;
   line-height: 1.6;
-  color: var(--text-dark);
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: var(--text-primary, #333);
+  background-color: var(--bg-secondary, #f8f9fa);
   overflow-x: hidden;
 }
 
@@ -155,9 +159,9 @@ main {
 section {
   margin-bottom: 4rem;
   padding: 3rem;
-  background: var(--white);
+  background: var(--bg-primary, #ffffff);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px var(--shadow-light, rgba(0, 0, 0, 0.1));
   transition: var(--transition);
   position: relative;
   overflow: hidden;
@@ -186,7 +190,7 @@ section:hover {
 h2 {
   font-family: "Poppins", sans-serif;
   font-size: 2.2rem;
-  color: var(--dark-green);
+  color: var(--primary-green, #2e7d32);
   margin-bottom: 1.5rem;
   text-align: center;
   position: relative;
@@ -212,7 +216,7 @@ h2::after {
 h3 {
   font-family: "Poppins", sans-serif;
   font-size: 1.4rem;
-  color: var(--dark-green);
+  color: var(--primary-green, #2e7d32);
   margin: 2rem 0 1rem;
   font-weight: 600;
 }
@@ -221,7 +225,7 @@ h3 {
 p {
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--text-light);
+  color: var(--text-secondary, #666);
   margin-bottom: 1.5rem;
   text-align: justify;
 }

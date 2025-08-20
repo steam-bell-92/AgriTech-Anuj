@@ -1,7 +1,11 @@
+/* Import theme system */
+@import url('theme.css');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
@@ -16,6 +20,7 @@ body {
   align-items: center;
   position: relative;
   overflow: hidden;
+  color: var(--text-primary, #333);
 }
 
 @keyframes float {
@@ -33,11 +38,11 @@ body {
 
 /* Form container styling */
 .form-container {
-  background: rgba(255, 255, 255, 0.98);
+  background: var(--bg-primary, rgba(255, 255, 255, 0.98));
   backdrop-filter: blur(15px);
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+  box-shadow: 0 20px 40px var(--shadow-medium, rgba(0, 0, 0, 0.15)),
     0 0 0 1px rgba(255, 255, 255, 0.1);
   width: 100%;
   max-width: 520px;
@@ -45,6 +50,7 @@ body {
   transform: translateY(0);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(46, 125, 50, 0.1);
+  color: var(--text-primary, #333);
 }
 
 .form-container:hover {
@@ -159,7 +165,8 @@ body {
   border-radius: 12px;
   font-size: 16px;
   width: 100%;
-  background: rgba(248, 250, 248, 0.8);
+  background: var(--bg-secondary, rgba(248, 250, 248, 0.8));
+  color: var(--text-primary, #333);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
 }
@@ -167,14 +174,14 @@ body {
 .form-container input[type="email"]:focus,
 .form-container input[type="password"]:focus {
   border-color: #2e7d32;
-  background: white;
+  background: var(--bg-primary, white);
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1),
     0 8px 20px rgba(46, 125, 50, 0.1);
   transform: translateY(-2px);
 }
 
 .form-container input::placeholder {
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 15px;
 }
 

@@ -7,9 +7,18 @@
   <title>Login - AgriTech</title>
   <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
   <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="theme.css">
 </head>
 <body>
   <div class="form-container">
+    <div style="position: absolute; top: 20px; right: 20px;">
+      <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(46, 125, 50, 0.1); border: 1px solid rgba(46, 125, 50, 0.3); color: #2e7d32;">
+        <i class="fas fa-sun sun-icon"></i>
+        <i class="fas fa-moon moon-icon"></i>
+        <span class="theme-text">Light</span>
+      </button>
+    </div>
+    
     <div class="brand-section">
       <div class="brand-icon">
         <i class="fas fa-seedling"></i>
@@ -158,5 +167,6 @@
       }
     });
   </script>
+  <script src="theme.js"></script>
 </body>
 </html>

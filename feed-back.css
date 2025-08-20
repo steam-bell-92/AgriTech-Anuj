@@ -1,12 +1,17 @@
+/* Import theme system */
+@import url('theme.css');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
   font-family: 'Segoe UI', 'Arial', sans-serif;
-  background: linear-gradient(135deg, #eaffea 0%, #d4f0d4 100%);
+  background-color: var(--bg-secondary, #eaffea);
+  color: var(--text-primary, #333);
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -120,10 +125,10 @@ main {
 .feedback-container {
   max-width: 700px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-primary, rgba(255, 255, 255, 0.95));
   border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 40px var(--shadow-light, rgba(0, 0, 0, 0.1));
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
@@ -414,12 +419,12 @@ main {
 }
 
 .feedback-item {
-  background: linear-gradient(135deg, #f8fdf8, #ffffff);
+  background: var(--bg-primary, linear-gradient(135deg, #f8fdf8, #ffffff));
   padding: 25px;
   margin-bottom: 20px;
   border-radius: 15px;
   border-left: 5px solid #4caf50;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 15px var(--shadow-light, rgba(0, 0, 0, 0.08));
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -447,7 +452,7 @@ main {
 
 .feedback-item h4 {
   margin-bottom: 8px;
-  color: #1b5e20;
+  color: var(--primary-green, #1b5e20);
   font-size: 1.2rem;
   font-weight: 600;
   position: relative;
@@ -456,7 +461,7 @@ main {
 
 .feedback-item p {
   margin: 10px 0;
-  color: #333;
+  color: var(--text-primary, #333);
   line-height: 1.6;
   position: relative;
   z-index: 1;
@@ -464,7 +469,7 @@ main {
 
 .feedback-meta {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-top: 15px;
   font-style: italic;
   position: relative;

@@ -1,7 +1,11 @@
+/* Import theme system */
+@import url('theme.css');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 :root {
@@ -22,12 +26,8 @@
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
-  background: linear-gradient(
-    135deg,
-    var(--background) 0%,
-    var(--very-light-green) 100%
-  );
-  color: var(--text-dark);
+  background-color: var(--bg-secondary, #f0f4f7);
+  color: var(--text-primary, #333);
   min-height: 100vh;
   line-height: 1.6;
 }
@@ -189,10 +189,10 @@ main {
 }
 
 .form-card {
-  background: var(--card-bg);
+  background: var(--bg-primary, #ffffff);
   padding: 2.5rem;
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 20px var(--shadow-light, rgba(0, 0, 0, 0.1));
   transition: var(--transition);
   border: 1px solid rgba(107, 144, 128, 0.1);
 }
@@ -281,10 +281,10 @@ select:focus {
 
 /* Listings */
 .listings-container {
-  background: var(--card-bg);
+  background: var(--bg-primary, #ffffff);
   padding: 2rem;
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 20px var(--shadow-light, rgba(0, 0, 0, 0.1));
   min-height: 400px;
 }
 

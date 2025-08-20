@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
     <link rel="stylesheet" href="cropCalendar.css">
+    <link rel="stylesheet" href="theme.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -16,7 +17,14 @@
 
 <header>
     <h1>Interactive Crop Calendar</h1>
-    <a href="main.html" class="back-btn">⬅ Back</a>
+    <div style="display: flex; gap: 1rem; align-items: center; position: absolute; right: 15px; top: 15px;">
+        <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white; padding: 8px 12px; border-radius: 20px; font-size: 12px;">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+            <span class="theme-text">Light</span>
+        </button>
+        <a href="main.html" class="back-btn">⬅ Back</a>
+    </div>
 </header>
 
 <main>
@@ -47,6 +55,7 @@
 
 
     <script src="croCalendar.js"></script>
+    <script src="theme.js"></script>
       <style>
     .site-footer {background: linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; margin-top:auto; padding: 2rem 1.25rem;}
     .site-footer .footer-inner {max-width:1200px;margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem; align-items:flex-start;}

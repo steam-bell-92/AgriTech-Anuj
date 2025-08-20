@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>AgriTech - Feedback</title>
-  <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
-  <link rel="stylesheet" href="feed-back.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-</head>
-
-<body>
-  <div class="page-container">
-    <header>
-      <div class="header-content">
-        <div class="logo-section">
-          <img src="/AgriTech/images/logo.png" alt="AgriTech logo" class="site-logo">
-          <h1>AgriTech</h1>
-        </div>
-        <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
-      </div>
-        <a href="index.html" class="logout-button">
-          <i class="fas fa-sign-out-alt"></i>
-          Logout
-        </a>
-      </div>
-    </header>
-    <main>
-      <div class="feedback-container">
-        <div class="feedback-header">
-          <i class="fas fa-comments feedback-icon"></i>
-          <h2 class="feedback-title">Share Your Feedback</h2>
-          <p class="feedback-subtitle">
-            Help us improve by sharing your thoughts and experiences
-          </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>AgriTech - Feedback</title>
+    <link rel="icon" type="image/png" href="/AgriTech/images/logo.png">
+    <link rel="stylesheet" href="feed-back.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page-container">
+      <header>
+        <div class="header-content">
+          <div class="logo-section">
+            <img src="/AgriTech/images/logo.png" alt="AgriTech logo" class="site-logo">
+            <h1>AgriTech</h1>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: center;">
+            <button class="theme-toggle" aria-label="Toggle dark/light mode" style="background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: white;">
+              <i class="fas fa-sun sun-icon"></i>
+              <i class="fas fa-moon moon-icon"></i>
+              <span class="theme-text">Light</span>
+            </button>
+            <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
+          </div>
         </div>
 
         <form id="feedbackForm" class="feedback-form">
@@ -155,6 +150,7 @@
   </footer>
 
     <script src="feed-back.js"></script>
+    <script src="theme.js"></script>
     <script>
         function showLogoutConfirmation() {
             Swal.fire({

@@ -1,7 +1,11 @@
+/* Import theme system */
+@import url('theme.css');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 :root {
@@ -20,12 +24,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(
-    135deg,
-    var(--light-green) 0%,
-    rgba(184, 243, 184, 0.6) 100%
-  );
-  color: var(--text-dark);
+  background-color: var(--bg-secondary, #f0f4f7);
+  color: var(--text-primary, #333);
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -168,12 +168,12 @@ main {
 
 /* Section styles */
 section {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--bg-primary, rgba(255, 255, 255, 0.9));
   backdrop-filter: blur(10px);
   border-radius: 20px;
   padding: 2.5rem;
   margin: 2rem 0;
-  box-shadow: 0 10px 30px var(--shadow-light);
+  box-shadow: 0 10px 30px var(--shadow-light, rgba(0, 0, 0, 0.1));
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   overflow: hidden;
@@ -219,7 +219,7 @@ section::before {
 /* Headings */
 h2 {
   font-size: 2.2rem;
-  color: var(--primary-green);
+  color: var(--primary-green, #2e7d32);
   margin-bottom: 1.5rem;
   text-align: center;
   font-weight: 600;
@@ -247,7 +247,7 @@ h2::after {
 p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-gray);
+  color: var(--text-secondary, #666);
   margin-bottom: 1.5rem;
   text-align: justify;
   font-weight: 400;
