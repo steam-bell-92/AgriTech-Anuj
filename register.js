@@ -124,42 +124,37 @@ function handleRegister(event) {
     input.classList.remove("error", "success");
   });
 
-  // Simulate registration process
+  const formData = {
+    role: document.getElementById("role").value,
+    fullname: document.getElementById("fullname").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    password: document.getElementById("password").value
+  };
   setTimeout(() => {
-    let hasError = false;
-
-    inputs.forEach((input) => {
-      if (!input.value.trim()) {
-        input.classList.add("error");
-        hasError = true;
-      } else {
+    const result = window.authManager.register(formData);
+    
+    if (result.success) {
+      inputs.forEach((input) => {
         input.classList.add("success");
-      }
-    });
-
-    // Email validation
-    const email = document.getElementById("email").value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      document.getElementById("email").classList.add("error");
-      hasError = true;
-    }
-
-    // Password validation
-    const password = document.getElementById("password").value;
-    if (password.length < 8) {
-      document.getElementById("password").classList.add("error");
-      hasError = true;
-    }
-
-    if (!hasError) {
+      });
+      
       registerText.textContent = "Account Created!";
-
-      // Simulate successful registration
+      showAuthMessage(result.message, 'success');
       setTimeout(() => {
         window.location.href = "main.html";
       }, 1500);
     } else {
+      // Show error message
+      showAuthMessage(result.message, 'error');
+      
+      // Mark relevant fields as error
+      if (result.message.includes('email')) {
+        document.getElementById("email").classList.add("error");
+      }
+      if (result.message.includes('password') || result.message.includes('Password')) {
+        document.getElementById("password").classList.add("error");
+      }
+      
       registerBtn.classList.remove("loading");
       registerText.textContent = "Create Account";
       registerBtn.disabled = false;
