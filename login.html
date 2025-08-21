@@ -12,6 +12,13 @@
 </head>
 
 <body>
+  <script>
+    // Redirect if already logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      redirectIfLoggedIn();
+    });
+  </script>
+  
   <div class="form-container">
     <div style="position: absolute; top: 20px; right: 20px;">
       <button class="theme-toggle" aria-label="Toggle dark/light mode"
@@ -45,7 +52,7 @@
       </div>
 
       <div class="forgot-password">
-        <a href="#" onclick="showForgotPassword()">Forgot Password?</a>
+        <a href="forgot-password.html">Forgot Password?</a>
       </div>
 
       <button type="submit" id="login-btn">
@@ -91,7 +98,7 @@
     }
 
     function showForgotPassword() {
-      alert('Forgot password functionality would be implemented here');
+      window.location.href = 'forgot-password.html';
     }
 
     // Enhanced login handler with loading state
@@ -126,6 +133,10 @@
             window.location.href = 'main.html';
           }, 1000);
         } else {
+          // Show error message
+          showAuthMessage(result.message, 'error');
+          
+          // Mark fields as error
           emailInput.classList.add('error');
           passwordInput.classList.add('error');
           loginBtn.classList.remove('loading');
@@ -174,6 +185,7 @@
     });
   </script>
   <script src="theme.js"></script>
+  <script src="auth.js"></script>
 </body>
 
 </html>
