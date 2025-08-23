@@ -10,35 +10,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <link rel="icon" type="image/png" href="images/logo.png">
-  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Libertinus+Serif:wght@400;600&display=swap"
     rel="stylesheet" />
-  <script src="firebase.js" defer type="module"></script>
-  <link rel="stylesheet" href="theme.css" />
+  <link href="style.css" rel="stylesheet" />
+  
 </head>
 
 <body>
   <nav class="navbar">
-    <div class="brand">
-      <h1 class="logo">AgriTech</h1>
-    </div>
-    <div class="nav-buttons">
-      <button class="theme-toggle btn" aria-label="Toggle dark/light mode">
-        <i class="fas fa-sun sun-icon"></i>
-        <i class="fas fa-moon moon-icon"></i>
-        <span class="theme-text">Light</span>
-      </button>
-      <a href="about.html" class="btn">About</a>
-      <a href="login.html" class="btn">Login</a>
-      <a href="register.html" class="btn">Register</a>
+    <div class="navbar-content">
+      <div class="brand">
+        <a href="#" class="logo">AgriTech</a>
+      </div>
+      <div class="nav-buttons">
+        <button class="theme-toggle btn" aria-label="Toggle dark/light mode">
+          <i class="fas fa-sun sun-icon"></i>
+          <i class="fas fa-moon moon-icon"></i>
+          <span class="theme-text">Light</span>
+        </button>
+        <a href="about.html" class="btn btn-secondary">About</a>
+        <a href="login.html" class="btn btn-secondary">Login</a>
+        <a href="register.html" class="btn btn-primary">Register</a>
+      </div>
     </div>
   </nav>
 
   <section class="hero">
     <div class="hero-content">
-      <h2>Empowering Agriculture Through Technology</h2>
+      <h2 class="serif">Empowering Agriculture Through Technology</h2>
       <p>
         AgriTech connects <strong>Farmers</strong>, <strong>Buyers</strong>,
         <strong>Equipment Suppliers</strong>, and
@@ -47,13 +48,14 @@
       </p>
     </div>
   </section>
+
   <section class="features loading">
     <div class="features-container">
-      <h2 class="features-title">Our Platform Benefits</h2>
+      <h2 class="features-title serif">Our Platform Benefits</h2>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">🌱</div>
-          <h3 class="feature-title">For Farmers</h3>
+          <h3 class="feature-title serif">For Farmers</h3>
           <p class="feature-description">
             Direct access to buyers, fair pricing, and modern equipment rental
             services to maximize your harvest potential.
@@ -61,7 +63,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon">🏪</div>
-          <h3 class="feature-title">For Buyers</h3>
+          <h3 class="feature-title serif">For Buyers</h3>
           <p class="feature-description">
             Source fresh produce directly from verified farmers with
             transparent pricing and quality assurance.
@@ -69,7 +71,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon">🚜</div>
-          <h3 class="feature-title">Equipment Suppliers</h3>
+          <h3 class="feature-title serif">Equipment Suppliers</h3>
           <p class="feature-description">
             Expand your reach and connect with farmers who need modern
             agricultural equipment and services.
@@ -77,7 +79,7 @@
         </div>
         <div class="feature-card">
           <div class="feature-icon">🛒</div>
-          <h3 class="feature-title">Grocery Sellers</h3>
+          <h3 class="feature-title serif">Grocery Sellers</h3>
           <p class="feature-description">
             Access fresh produce supply chain with competitive rates and
             reliable delivery systems.
@@ -86,8 +88,9 @@
       </div>
     </div>
   </section>
+
   <section class="carousel" aria-label="Featured agricultural images">
-    <h2 class="carousel-title">Agriculture in Action</h2>
+    <h2 class="carousel-title serif">Agriculture in Action</h2>
     <div class="slider">
       <div class="slide-track">
         <!-- Original 6 images -->
@@ -107,9 +110,10 @@
       </div>
     </div>
   </section>
+
   <section class="cta">
     <div class="cta-content">
-      <h3>Ready to Transform Agriculture?</h3>
+      <h3 class="serif">Ready to Transform Agriculture?</h3>
       <p>
         Join thousands of farmers, buyers, and suppliers who are already
         benefiting from our platform.
@@ -118,28 +122,12 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <style>
-    .site-footer {background: linear-gradient(135deg,#2e7d32,#66bb6a); color:#fff; margin-top:auto; padding: 2rem 1.25rem;}
-    .site-footer .footer-inner {max-width:1200px;margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem; align-items:flex-start;}
-    .footer-brand {display:flex;flex-direction:column;gap:.5rem}
-    .footer-logo {width:48px;height:48px;border-radius:8px;object-fit:cover;background:#fff;padding:4px}
-    .site-footer h3,.site-footer h4{margin:0 0 .5rem 0}
-    .site-footer p {margin:0;opacity:.9}
-    .site-footer ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.4rem}
-    .site-footer a{color:#fff;text-decoration:none;opacity:.9;transition:opacity .2s}
-    .site-footer a:hover{opacity:1;text-decoration:underline}
-    .footer-bottom{max-width:1200px;margin:1rem auto 0; padding-top:1rem; border-top:1px solid rgba(255,255,255,.25); text-align:center; font-size:.9rem; opacity:.9}
-    .social-media {display:flex;gap:1rem;margin-top:.5rem}
-    .social-media a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:50%;transition:all .3s ease;font-size:1.2rem}
-    .social-media a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
-  </style>
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="images/logo.png" alt="AgriTech logo" class="footer-logo">
-        <h3>AgriTech</h3>
-        <p>Empowering India's Farming Future</p>
+        <h3 class="serif">AgriTech</h3>
+        <p>Empowering India's Farming Future with innovative technology solutions that connect every stakeholder in the agricultural ecosystem.</p>
         <div class="social-media">
           <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram">
             <i class="fab fa-instagram"></i>
@@ -153,7 +141,7 @@
         </div>
       </div>
       <div class="footer-links">
-        <h4>Quick Links</h4>
+        <h4 class="serif">Quick Links</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="main.html">Dashboard</a></li>
@@ -162,7 +150,7 @@
         </ul>
       </div>
       <div class="footer-links">
-        <h4>Tools</h4>
+        <h4 class="serif">Smart Tools</h4>
         <ul>
           <li><a href="Crop Recommendation/templates/index.html">Crop Recommendation</a></li>
           <li><a href="Crop Yield Prediction/crop_yield_app/templates/index.html">Yield Prediction</a></li>
@@ -171,13 +159,32 @@
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">© 2025 AgriTech • Made for farmers</div>
+    <div class="footer-bottom">© 2025 AgriTech </div>
   </footer>
-  <div class="scroll-to-top" id="scrollToTop" title="Back to top">
+
+  <button class="scroll-to-top" id="scrollToTop" title="Back to top">
     <i class="fas fa-arrow-up"></i>
-  </div>
+  </button>
 
   <script>
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeText = document.querySelector('.theme-text');
+
+    // Check for saved theme preference
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeText.textContent = currentTheme === 'dark' ? 'Dark' : 'Light';
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeText.textContent = newTheme === 'dark' ? 'Dark' : 'Light';
+    });
+
     // Scroll to top functionality
     const scrollToTopBtn = document.getElementById("scrollToTop");
 
@@ -193,17 +200,6 @@
       window.scrollTo({
         top: 0,
         behavior: "smooth",
-      });
-    });
-    // Smooth scroll for internal links
-    const serviceItems = document.querySelectorAll(".services-list li");
-    serviceItems.forEach((item) => {
-      item.addEventListener("mouseenter", function () {
-        this.style.transform = "translateY(-8px) scale(1.02)";
-      });
-
-      item.addEventListener("mouseleave", function () {
-        this.style.transform = "translateY(-5px) scale(1)";
       });
     });
 
@@ -229,9 +225,6 @@
       document.body.style.opacity = "1";
     });
   </script>
-</body>
-<script src="script.js"></script>
-<script src="theme.js"></script>
 </body>
 
 </html>
