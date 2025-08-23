@@ -167,7 +167,7 @@ body {
 
 .form-container input[type="email"],
 .form-container input[type="password"] {
-  padding: 15px 15px 15px 45px;
+  padding: 15px 15px 15px 15px;
   border: 2px solid #e8f5e8;
   border-radius: 12px;
   font-size: 16px;
@@ -192,24 +192,32 @@ body {
   font-size: 15px;
 }
 
-/* Password toggle */
 .password-toggle {
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
   color: #666;
   cursor: pointer;
-  padding: 5px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.password-toggle:hover {
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.1);
+.password-toggle:hover,
+.password-toggle:focus,
+.password-toggle:active {
+  background: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* Forgot password link */
