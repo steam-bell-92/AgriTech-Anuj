@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../static/style.css" />
     <link rel="stylesheet" href="theme.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -170,24 +172,25 @@
     .social-media a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(255,255,255,.1);border-radius:50%;transition:all .3s ease;font-size:1.2rem}
     .social-media a:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
   </style>
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
       <div class="footer-inner">
         <div class="footer-brand">
           <img src="images/logo.png" alt="AgriTech logo" class="footer-logo">
           <h3>AgriTech</h3>
           <p>Empowering India's Farming Future</p>
           <div class="social-media">
-            <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram">
-              <i class="fab fa-instagram"></i>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
             </a>
-            <a href="https://github.com/omroy07" target="_blank" aria-label="View our GitHub repositories">
-              <i class="fab fa-github"></i>
+            <a href="https://github.com/omroy07" target="_blank" rel="noopener noreferrer" aria-label="View our GitHub repositories">
+              <i class="fab fa-github" aria-hidden="true"></i>
             </a>
-            <a href="https://www.linkedin.com/in/om-roy-3b809628a/" target="_blank" aria-label="Connect with us on LinkedIn">
-              <i class="fab fa-linkedin"></i>
+            <a href="https://www.linkedin.com/in/om-roy-3b809628a/" target="_blank" rel="noopener noreferrer" aria-label="Connect with us on LinkedIn">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
             </a>
           </div>
         </div>
+
         <div class="footer-links">
           <h4>Quick Links</h4>
           <ul>
@@ -197,6 +200,7 @@
             <li><a href="chat.html">AI Assistant</a></li>
           </ul>
         </div>
+
         <div class="footer-links">
           <h4>Tools</h4>
           <ul>
@@ -207,9 +211,13 @@
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">© 2025 AgriTech • Made for farmers</div>
+
+      <div class="footer-bottom">© <span id="year"></span> AgriTech • Made for farmers</div>
     </footer>
-    <script src="theme.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
 </body>
 
 </html>
