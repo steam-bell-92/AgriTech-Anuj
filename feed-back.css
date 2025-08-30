@@ -1,6 +1,16 @@
 /* Import theme system */
 @import url('theme.css');
-
+:root {
+  --primary-green: #2e7d32;
+  --accent-green: #4caf50;
+  --light-green: #e8f5e9;
+  --text-dark: #1b1b1b;
+  --text-light: rgba(255, 255, 255, 0.9);
+  --radius: 14px;
+  --transition: all 0.3s ease;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
 * {
   margin: 0;
   padding: 0;
