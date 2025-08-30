@@ -10,6 +10,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            /* Light theme variables */
+            --bg-gradient: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 30%, #f8fff8 70%, #f0f9f0 100%);
+            --bg-primary: rgba(255, 255, 255, 0.9);
+            --bg-secondary: rgba(255, 255, 255, 0.95);
+            --text-primary: #2d5a2d;
+            --text-secondary: #5a7a5a;
+            --text-muted: #81c784;
+            --border-color: rgba(139, 195, 74, 0.2);
+            --input-bg: rgba(255, 255, 255, 0.8);
+            --input-border: rgba(139, 195, 74, 0.2);
+            --shadow-primary: rgba(76, 175, 80, 0.1);
+            --shadow-secondary: rgba(0, 0, 0, 0.05);
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --header-border: rgba(139, 195, 74, 0.2);
+        }
+
+        .dark-theme {
+            /* Dark theme variables */
+            --bg-gradient: linear-gradient(135deg, #0a1a0a 0%, #1a2e1a 30%, #0f2e0f 70%, #0a1a0a 100%);
+            --bg-primary: rgba(40, 40, 40, 0.9);
+            --bg-secondary: rgba(30, 30, 30, 0.95);
+            --text-primary: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #66bb6a;
+            --border-color: rgba(102, 187, 106, 0.3);
+            --input-bg: rgba(50, 50, 50, 0.8);
+            --input-border: rgba(102, 187, 106, 0.3);
+            --shadow-primary: rgba(102, 187, 106, 0.2);
+            --shadow-secondary: rgba(0, 0, 0, 0.3);
+            --header-bg: rgba(30, 30, 30, 0.95);
+            --header-border: rgba(102, 187, 106, 0.3);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,12 +52,13 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 30%, #f8fff8 70%, #f0f9f0 100%);
-            color: #2d5a2d;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
             overflow-x: hidden;
+            transition: all 0.3s ease;
         }
 
         body::before {
@@ -40,6 +75,12 @@
             z-index: -1;
         }
 
+        .dark-theme::before {
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(102, 187, 106, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.08) 0%, transparent 50%);
+        }
+
         .page-container {
             min-height: 100vh;
             display: flex;
@@ -49,14 +90,15 @@
         }
 
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--header-bg);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+            border-bottom: 1px solid var(--header-border);
             padding: 1.5rem 0;
-            box-shadow: 0 2px 20px rgba(76, 175, 80, 0.08);
+            box-shadow: 0 2px 20px var(--shadow-primary);
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: all 0.3s ease;
         }
 
         .header-content {
@@ -97,21 +139,24 @@
         }
 
         .theme-toggle {
-            background: rgba(139, 195, 74, 0.1) !important;
-            border: 1px solid rgba(139, 195, 74, 0.3) !important;
-            color: #2e7d32 !important;
+            background: rgba(139, 195, 74, 0.1);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
             padding: 8px 16px;
             border-radius: 25px;
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .theme-toggle:hover {
-            background: rgba(139, 195, 74, 0.2) !important;
+            background: rgba(139, 195, 74, 0.2);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(139, 195, 74, 0.2);
+            box-shadow: 0 4px 12px var(--shadow-primary);
         }
 
         .logout-button {
@@ -127,6 +172,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
         }
 
         .logout-button:hover {
@@ -147,16 +193,17 @@
         .feedback-container {
             max-width: 600px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--bg-primary);
             backdrop-filter: blur(20px);
             border-radius: 24px;
             padding: 3rem;
             box-shadow: 
-                0 20px 40px rgba(76, 175, 80, 0.1),
-                0 8px 16px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+                0 20px 40px var(--shadow-primary),
+                0 8px 16px var(--shadow-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         .feedback-container::before {
@@ -194,7 +241,7 @@
         }
 
         .feedback-subtitle {
-            color: #5a7a5a;
+            color: var(--text-secondary);
             font-size: 0.95rem;
             opacity: 0.9;
             font-weight: 400;
@@ -222,6 +269,10 @@
             font-size: 0.95rem;
         }
 
+        .dark-theme .form-group label {
+            color: #66bb6a;
+        }
+
         .input-icon {
             color: #66bb6a;
             font-size: 1rem;
@@ -234,7 +285,7 @@
         }
 
         .optional {
-            color: #81c784;
+            color: var(--text-muted);
             font-weight: 400;
             font-size: 0.85rem;
         }
@@ -243,19 +294,19 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem 1.25rem;
-            border: 1.5px solid rgba(139, 195, 74, 0.2);
+            border: 1.5px solid var(--input-border);
             border-radius: 16px;
             font-size: 1rem;
-            background: rgba(255, 255, 255, 0.8);
+            background: var(--input-bg);
             backdrop-filter: blur(10px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: inherit;
-            color: #2d5a2d;
+            color: var(--text-primary);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: #81c784;
+            color: var(--text-muted);
             opacity: 0.7;
         }
 
@@ -263,7 +314,7 @@
         .form-group textarea:focus {
             border-color: #4caf50;
             outline: none;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-secondary);
             box-shadow: 
                 0 0 0 3px rgba(76, 175, 80, 0.1),
                 0 4px 12px rgba(76, 175, 80, 0.15);
@@ -280,7 +331,7 @@
             text-align: right;
             margin-top: 0.5rem;
             font-size: 0.8rem;
-            color: #81c784;
+            color: var(--text-muted);
             opacity: 0.8;
         }
 
@@ -339,8 +390,12 @@
             font-weight: 600;
         }
 
+        .dark-theme .thank-you-section h3 {
+            color: #66bb6a;
+        }
+
         .thank-you-section p {
-            color: #5a7a5a;
+            color: var(--text-secondary);
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 2rem;
@@ -380,8 +435,12 @@
         .view-button {
             background: rgba(139, 195, 74, 0.1);
             color: #2e7d32;
-            border: 1.5px solid rgba(139, 195, 74, 0.3);
+            border: 1.5px solid var(--border-color);
             box-shadow: 0 4px 12px rgba(139, 195, 74, 0.15);
+        }
+
+        .dark-theme .view-button {
+            color: #66bb6a;
         }
 
         .home-button:hover,
@@ -398,7 +457,6 @@
         .view-button:hover {
             background: rgba(139, 195, 74, 0.15);
             box-shadow: 0 6px 20px rgba(139, 195, 74, 0.2);
-            color: #2e7d32;
         }
 
         .feedback-list-section {
@@ -411,7 +469,7 @@
             gap: 12px;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(139, 195, 74, 0.2);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .section-header i {
@@ -424,6 +482,10 @@
             color: #2e7d32;
             font-size: 1.4rem;
             font-weight: 600;
+        }
+
+        .dark-theme .section-header h3 {
+            color: #66bb6a;
         }
 
         .feedbacks-container {
@@ -447,13 +509,13 @@
         }
 
         .feedback-item {
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--bg-primary);
             backdrop-filter: blur(10px);
             padding: 1.5rem;
             margin-bottom: 1rem;
             border-radius: 16px;
-            border: 1px solid rgba(139, 195, 74, 0.15);
-            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.08);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 16px var(--shadow-primary);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -472,7 +534,7 @@
 
         .feedback-item:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(76, 175, 80, 0.12);
+            box-shadow: 0 8px 24px var(--shadow-primary);
         }
 
         .feedback-item h4 {
@@ -485,16 +547,20 @@
             gap: 8px;
         }
 
+        .dark-theme .feedback-item h4 {
+            color: #66bb6a;
+        }
+
         .feedback-item p {
             margin: 0.75rem 0;
-            color: #4a5c4a;
+            color: var(--text-primary);
             line-height: 1.6;
             font-size: 0.95rem;
         }
 
         .feedback-meta {
             font-size: 0.85rem;
-            color: #81c784;
+            color: var(--text-muted);
             margin-top: 1rem;
             font-style: italic;
             display: flex;
@@ -506,7 +572,7 @@
         .no-feedback {
             text-align: center;
             padding: 3rem 2rem;
-            color: #81c784;
+            color: var(--text-muted);
         }
 
         .floating-help {
@@ -571,6 +637,11 @@
             text-align: center;
             padding: 2rem 1rem;
             margin-top: auto;
+            transition: all 0.3s ease;
+        }
+
+        .dark-theme footer {
+            background: linear-gradient(135deg, #2e4d2e, #1a3d1a);
         }
 
         footer h3 {
@@ -639,8 +710,24 @@
                 gap: 1rem;
             }
 
-            header h1 { font-size: 1.5rem; }
-            .feedback-title { font-size: 1.5rem; }
+            header h1 { 
+                font-size: 1.5rem; 
+            }
+            
+            .feedback-title { 
+                font-size: 1.5rem; 
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .home-button,
+            .view-button {
+                width: 100%;
+                max-width: 200px;
+            }
         }
     </style>
 </head>
@@ -653,14 +740,14 @@
                     <h1>AgriTech</h1>
                 </div>
                 <div class="header-actions">
-                    <button class="theme-toggle" aria-label="Toggle theme">
-                        <i class="fas fa-sun"></i>
-                        <span>Light</span>
+                    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+                        <i class="fas fa-sun theme-icon"></i>
+                        <span class="theme-text">Light</span>
                     </button>
-                    <a href="#" class="logout-button" onclick="showLogoutConfirmation()">
+                    <button class="logout-button" onclick="showLogoutConfirmation()">
                         <i class="fas fa-sign-out-alt"></i>
                         Logout
-                    </a>
+                    </button>
                 </div>
             </div>
         </header>
@@ -727,7 +814,7 @@
                             <i class="fas fa-home"></i>
                             Back to Home
                         </a>
-                        <button id="viewFeedbacks" class="view-button">
+                        <button id="viewFeedbacks" class="view-button" onclick="showAllFeedbacks()">
                             <i class="fas fa-list"></i>
                             View All Feedback
                         </button>
@@ -780,7 +867,43 @@
     </div>
 
     <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
+            
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                themeText.textContent = 'Light';
+                // Store theme preference in memory
+                window.currentTheme = 'light';
+            } else {
+                body.classList.add('dark-theme');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeText.textContent = 'Dark';
+                // Store theme preference in memory
+                window.currentTheme = 'dark';
+            }
+        }
+
+        // Load theme on page load
+        function loadTheme() {
+            const themeIcon = document.querySelector('.theme-icon');
+            const themeText = document.querySelector('.theme-text');
+            
+            if (window.currentTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                themeText.textContent = 'Dark';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Load theme
+            loadTheme();
+            
             const feedbackForm = document.getElementById('feedbackForm');
             const thankYouMessage = document.getElementById('thankYouMessage');
             const allFeedbacksSection = document.getElementById('allFeedbacks');
@@ -809,6 +932,20 @@
             feedbackForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const feedbackText = document.getElementById('feedback').value.trim();
+                
+                if (!name || !feedbackText) {
+                    Swal.fire({
+                        title: 'Missing Information',
+                        text: 'Please fill in all required fields.',
+                        icon: 'warning',
+                        confirmButtonColor: '#4caf50'
+                    });
+                    return;
+                }
+                
                 const submitButton = this.querySelector('.submit-button');
                 const originalText = submitButton.innerHTML;
                 
@@ -817,17 +954,18 @@
                 
                 setTimeout(() => {
                     const feedbackData = {
-                        name: document.getElementById('name').value.trim(),
-                        email: document.getElementById('email').value.trim() || 'Not provided',
-                        feedback: document.getElementById('feedback').value.trim(),
+                        name: name,
+                        email: email || 'Not provided',
+                        feedback: feedbackText,
                         date: new Date().toLocaleString(),
                         id: Date.now() 
                     };
 
-                    // Save feedback
-                    let allFeedbacks = JSON.parse(localStorage.getItem('agritechFeedbacks') || '[]');
-                    allFeedbacks.push(feedbackData);
-                    localStorage.setItem('agritechFeedbacks', JSON.stringify(allFeedbacks));
+                    // Save feedback in memory (using a global variable since localStorage is not available)
+                    if (!window.agritechFeedbacks) {
+                        window.agritechFeedbacks = [];
+                    }
+                    window.agritechFeedbacks.push(feedbackData);
 
                     // Show success
                     feedbackForm.classList.add('hidden');
@@ -844,60 +982,60 @@
                     submitButton.disabled = false;
                 }, 1500);
             });
-
-            // View all feedbacks
-            viewFeedbacksBtn.addEventListener('click', function() {
-                thankYouMessage.classList.add('hidden');
-                displayAllFeedbacks();
-            });
-
-            function displayAllFeedbacks() {
-                const allFeedbacks = JSON.parse(localStorage.getItem('agritechFeedbacks') || '[]');
-                allFeedbacksSection.classList.remove('hidden');
-                
-                if (allFeedbacks.length === 0) {
-                    feedbacksList.innerHTML = `
-                        <div class="no-feedback">
-                            <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.6;"></i>
-                            <p style="font-size: 1rem; margin-bottom: 0.5rem;">No feedback submissions yet</p>
-                            <p style="font-size: 0.9rem; opacity: 0.8;">Be the first to share your thoughts!</p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                allFeedbacks.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                feedbacksList.innerHTML = allFeedbacks.map((fb, index) => `
-                    <div class="feedback-item">
-                        <h4><i class="fas fa-user-circle" style="color: #4caf50; margin-right: 8px;"></i>${escapeHtml(fb.name)}</h4>
-                        ${fb.email !== 'Not provided' ? `<p style="color: #81c784; font-size: 0.9rem; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>${escapeHtml(fb.email)}</p>` : ''}
-                        <p style="margin-top: 1rem;"><i class="fas fa-quote-left" style="color: #66bb6a; margin-right: 8px; opacity: 0.6;"></i>${escapeHtml(fb.feedback)}</p>
-                        <div class="feedback-meta">
-                            📝 Submission #${allFeedbacks.length - index} • ${formatDate(fb.date)}
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            function escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-
-            function formatDate(dateString) {
-                const date = new Date(dateString);
-                const now = new Date();
-                const diffTime = Math.abs(now - date);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                
-                if (diffDays === 1) return 'Today';
-                if (diffDays === 2) return 'Yesterday';
-                if (diffDays <= 7) return `${diffDays - 1} days ago`;
-                return date.toLocaleDateString();
-            }
         });
+
+        function showAllFeedbacks() {
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            const allFeedbacksSection = document.getElementById('allFeedbacks');
+            const feedbacksList = document.getElementById('feedbacksList');
+            
+            thankYouMessage.classList.add('hidden');
+            allFeedbacksSection.classList.remove('hidden');
+            
+            const allFeedbacks = window.agritechFeedbacks || [];
+            
+            if (allFeedbacks.length === 0) {
+                feedbacksList.innerHTML = `
+                    <div class="no-feedback">
+                        <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.6;"></i>
+                        <p style="font-size: 1rem; margin-bottom: 0.5rem;">No feedback submissions yet</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">Be the first to share your thoughts!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            allFeedbacks.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            feedbacksList.innerHTML = allFeedbacks.map((fb, index) => `
+                <div class="feedback-item">
+                    <h4><i class="fas fa-user-circle" style="color: #4caf50; margin-right: 8px;"></i>${escapeHtml(fb.name)}</h4>
+                    ${fb.email !== 'Not provided' ? `<p style="color: #81c784; font-size: 0.9rem; margin: 5px 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i>${escapeHtml(fb.email)}</p>` : ''}
+                    <p style="margin-top: 1rem;"><i class="fas fa-quote-left" style="color: #66bb6a; margin-right: 8px; opacity: 0.6;"></i>${escapeHtml(fb.feedback)}</p>
+                    <div class="feedback-meta">
+                        📝 Submission #${allFeedbacks.length - index} • ${formatDate(fb.date)}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 1) return 'Today';
+            if (diffDays === 2) return 'Yesterday';
+            if (diffDays <= 7) return `${diffDays - 1} days ago`;
+            return date.toLocaleDateString();
+        }
 
         function showLogoutConfirmation() {
             Swal.fire({
@@ -919,26 +1057,6 @@
             });
         }
     </script>
-    <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggleButton = document.querySelector(".theme-toggle");
-    const icon = toggleButton.querySelector("i");
-    const label = toggleButton.querySelector("span");
-
-    toggleButton.addEventListener("click", function () {
-      document.body.classList.toggle("dark-theme");
-
-      // Toggle icon and label
-      if (document.body.classList.contains("dark-theme")) {
-        icon.classList.replace("fa-sun", "fa-moon");
-        label.textContent = "Dark";
-      } else {
-        icon.classList.replace("fa-moon", "fa-sun");
-        label.textContent = "Light";
-      }
-    });
-  });
-</script>
 
 </body>
 </html>
