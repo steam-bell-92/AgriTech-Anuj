@@ -379,7 +379,7 @@ footer a:hover {
   color: white;
   background: rgba(255, 255, 255, 0.08);
   transform: translateY(-3px) scale(1.07);
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  /* box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); */
 }
 
 /* Ripple Animation */

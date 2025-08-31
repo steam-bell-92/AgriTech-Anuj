@@ -12,15 +12,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
       rel="stylesheet"
     />
-    <style>
-    </style>
   </head>
   <body>
     <div class="page-container">
       <header>
         <div class="header-content">
           <div class="logo-section">
-            <img src="/AgriTech/images/logo.png" alt="AgriTech logo" class="site-logo">
+            <img src="images/logo.png" alt="AgriTech logo" class="site-logo">
             <h1>AgriTech</h1>
           </div>
           <div style="display: flex; gap: 1rem; align-items: center;">
@@ -32,9 +30,12 @@
             <a href="#" class="logout-button" onclick="showLogoutConfirmation()">Logout</a>
           </div>
         </div>
-
+      </header>
+        
+      <main>
         <form id="feedbackForm" class="feedback-form">
           <div class="form-row">
+            <h2 class="feedback-header feedback-title">Share Your Feedback</h2>
             <div class="form-group">
               <label for="name">
                 <i class="fas fa-user input-icon"></i>
@@ -77,6 +78,8 @@
             <div class="button-ripple"></div>
           </button>
         </form>
+      </main>
+        
 
         <div id="thankYouMessage" class="hidden thank-you-section">
           <div class="success-animation">
@@ -113,7 +116,7 @@
           </div>
         </div>
       </div>
-    </main>
+
 
     <div class="floating-help">
       <button class="help-button" title="Need help?">
