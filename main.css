@@ -294,6 +294,21 @@ main {
 .grid-item:hover img {
   transform: scale(1.05);
 }
+.grid-item:hover{
+  .arrow-icon{
+    color:white;
+  }
+  .feature-badge{
+    background: white;
+    color: #4caf50;
+  }
+  h3{
+    color:white;
+  }
+  p{
+    color:ivory;
+  }
+}
 
 .grid-item h3 {
   color: #1b5e20;
