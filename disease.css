@@ -37,7 +37,7 @@ header {
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -72,7 +72,7 @@ header > p {
   background: rgba(255, 255, 255, 0.2);
   color: white;
   text-decoration: none;
-  padding: 12px 20px;
+  padding: 6px 10px;
   border-radius: 25px;
   font-size: 14px;
   font-weight: 500;
