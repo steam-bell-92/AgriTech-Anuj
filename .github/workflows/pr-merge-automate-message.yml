@@ -1,0 +1,30 @@
+name: Auto Comment on PR Merged
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  comment:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add Comment to Merged Pull Request
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const prNumber = context.issue.number;
+            const prAuthor = context.payload.pull_request.user.login;
+
+            const commentBody = `🎉 Congrats @${prAuthor} on getting your PR merged! 🙌  
+                              Thanks for the contribution — looking forward to more from you 🚀`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: commentBody
+            });
