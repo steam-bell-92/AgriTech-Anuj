@@ -178,9 +178,9 @@ nav a {
 }
 
 nav a:hover {
-  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  
   color: #ffffff;
-  transform: translateY(-1px);
+  transform: translateY(-6px) scale(1.05);
   box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
 }
 
