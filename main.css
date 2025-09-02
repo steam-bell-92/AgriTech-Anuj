@@ -1,3 +1,175 @@
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f6f9f6;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --loan-guide-bg: #ffffff;
+  --loan-guide-text: #333333;
+  --loan-guide-secondary: #666666;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --loan-guide-bg: #2d2d2d;
+  --loan-guide-text: #ffffff;
+  --loan-guide-secondary: #cccccc;
+}
+
+/* Update your existing loan guide styles */
+.loan-guide-section {
+  text-align: center;
+  margin-top: 50px;
+  background: var(--loan-guide-bg) !important; /* Force override */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  color: var(--loan-guide-text) !important; /* Force text color */
+  transition: all 0.3s ease;
+}
+
+/* Ensure all text in loan guide section uses proper colors */
+.loan-guide-section h1,
+.loan-guide-section h2,
+.loan-guide-section h3 {
+  color: var(--loan-guide-text) !important;
+  margin-bottom: 1rem;
+}
+
+.loan-guide-section p {
+  color: var(--loan-guide-secondary) !important;
+  margin-bottom: 1rem;
+}
+
+/* Fix the header text in loan guide */
+.container header h1 {
+  color: var(--loan-guide-text) !important;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.container header p {
+  color: var(--loan-guide-secondary) !important;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+/* Update loan cards to work with dark mode */
+.loan-card {
+  background: var(--bg-primary);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  color: var(--text-primary);
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.loan-card span {
+  display: block;
+  padding: 15px;
+  font-weight: 600;
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--text-primary) !important;
+  border-top: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.loan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+/* Language select styling for dark mode */
+select.language-select {
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-left: 10px;
+  border: 2px solid rgba(76, 175, 80, 0.3);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+select.language-select:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] .loan-guide-section {
+  background: #2d2d2d !important;
+  border: 1px solid #404040;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .loan-card {
+  background: #3d3d3d;
+  border-color: #505050;
+}
+
+[data-theme="dark"] .loan-card span {
+  background: rgba(76, 175, 80, 0.2);
+  color: #ffffff !important;
+  border-top-color: #505050;
+}
+
+[data-theme="dark"] select.language-select {
+  background: #3d3d3d;
+  border-color: #505050;
+  color: #ffffff;
+}
+
+[data-theme="dark"] select.language-select option {
+  background: #3d3d3d;
+  color: #ffffff;
+}
+
+/* Ensure button text is always visible */
+.btn-green {
+  display: inline-block;
+  background: linear-gradient(135deg, #2e7d32, #4caf50);
+  color: #fff !important;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.3);
+}
+
+.btn-green:hover {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+  color: #fff !important;
+}
+
+/* Additional container styling for better dark mode support */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+[data-theme="dark"] .container {
+  background: #1f1f1f;
+  border: 1px solid #404040;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
