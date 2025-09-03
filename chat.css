@@ -576,3 +576,10 @@ main {
   outline-offset: 2px;
   border-radius: 30px;
 }
+.chat-header h2 {
+  color: var(--light-green); /* Light green */
+}
+
+.logo h1 {
+  color: var(--light-green); /* Light green for AgriBot */
+}
