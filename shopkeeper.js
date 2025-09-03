@@ -1,206 +1,407 @@
-// Particle System - Enhanced from global.js
-const PARTICLE_CONFIG = {
-  count: 80,
-  size: { min: 1, max: 3 },
-  speed: { min: 0.05, max: 0.4 },
-  colors: [
-    "rgba(42, 122, 42, 0.4)",
-    "rgba(76, 175, 80, 0.3)",
-    "rgba(107, 191, 89, 0.2)",
-  ],
-  connections: {
-    distance: 120,
-    lineWidth: 0.6,
-    opacity: 0.1,
+// Enhanced Search and Filter System
+class DealerFilter {
+  constructor() {
+    this.searchInput = document.getElementById('searchInput');
+    this.clearSearch = document.getElementById('clearSearch');
+    this.categoryFilter = document.getElementById('categoryFilter');
+    this.locationFilter = document.getElementById('locationFilter');
+    this.sortBy = document.getElementById('sortBy');
+    this.resetFilters = document.getElementById('resetFilters');
+    this.resultsSummary = document.getElementById('resultsSummary');
+    this.resultsCount = document.getElementById('resultsCount');
+    this.noResults = document.getElementById('noResults');
+    
+    this.dealerCards = document.querySelectorAll('.dealer-card');
+    this.sections = document.querySelectorAll('.section');
+    
+    this.initializeEventListeners();
+    this.updateResultsCount();
+  }
+  
+  initializeEventListeners() {
+    // Search input
+    this.searchInput.addEventListener('input', () => this.handleSearch());
+    this.clearSearch.addEventListener('click', () => this.clearSearchInput());
+    
+    // Filter controls
+    this.categoryFilter.addEventListener('change', () => this.applyFilters());
+    this.locationFilter.addEventListener('change', () => this.applyFilters());
+    this.sortBy.addEventListener('change', () => this.applySorting());
+    this.resetFilters.addEventListener('click', () => this.resetAllFilters());
+    
+    // Show/hide clear button
+    this.searchInput.addEventListener('input', () => {
+      this.clearSearch.style.display = this.searchInput.value ? 'block' : 'none';
+    });
+  }
+  
+  handleSearch() {
+    this.applyFilters();
+  }
+  
+  clearSearchInput() {
+    this.searchInput.value = '';
+    this.clearSearch.style.display = 'none';
+    this.applyFilters();
+  }
+  
+  applyFilters() {
+    const searchTerm = this.searchInput.value.toLowerCase().trim();
+    const categoryFilter = this.categoryFilter.value;
+    const locationFilter = this.locationFilter.value;
+    
+    let visibleCount = 0;
+    
+    this.dealerCards.forEach(card => {
+      const name = card.dataset.name.toLowerCase();
+      const location = card.dataset.location.toLowerCase();
+      const category = card.dataset.category;
+      const address = card.querySelector('.address').textContent.toLowerCase();
+      const services = card.querySelector('.dealer-services span').textContent.toLowerCase();
+      
+      // Search filter
+      const matchesSearch = !searchTerm || 
+        name.includes(searchTerm) || 
+        location.includes(searchTerm) || 
+        address.includes(searchTerm) || 
+        services.includes(searchTerm);
+      
+      // Category filter
+      const matchesCategory = categoryFilter === 'all' || category === categoryFilter;
+      
+      // Location filter
+      const matchesLocation = locationFilter === 'all' || location.includes(locationFilter);
+      
+      const isVisible = matchesSearch && matchesCategory && matchesLocation;
+      
+      if (isVisible) {
+        card.style.display = 'block';
+        card.classList.remove('filtered-out');
+        card.classList.add('filtered-in');
+        visibleCount++;
+      } else {
+        card.classList.add('filtered-out');
+        card.classList.remove('filtered-in');
+        setTimeout(() => {
+          if (card.classList.contains('filtered-out')) {
+            card.style.display = 'none';
+          }
+        }, 300);
+      }
+    });
+    
+    // Show/hide sections based on visible cards
+    this.sections.forEach(section => {
+      const visibleCards = section.querySelectorAll('.dealer-card[style*="block"], .dealer-card:not([style*="none"])');
+      const hasVisibleCards = Array.from(visibleCards).some(card => 
+        !card.classList.contains('filtered-out')
+      );
+      section.style.display = hasVisibleCards ? 'block' : 'none';
+    });
+    
+    // Update results count
+    this.updateResultsCount(visibleCount);
+    
+    // Show/hide no results message
+    this.noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    
+    // Apply sorting after filtering
+    this.applySorting();
+  }
+  
+  applySorting() {
+    const sortBy = this.sortBy.value;
+    const visibleCards = Array.from(this.dealerCards).filter(card => 
+      card.style.display !== 'none' && !card.classList.contains('filtered-out')
+    );
+    
+    // Group cards by their parent sections
+    const cardsBySection = new Map();
+    visibleCards.forEach(card => {
+      const section = card.closest('.section');
+      if (!cardsBySection.has(section)) {
+        cardsBySection.set(section, []);
+      }
+      cardsBySection.get(section).push(card);
+    });
+    
+    // Sort cards within each section
+    cardsBySection.forEach((cards, section) => {
+      const sortedCards = this.sortCards(cards, sortBy);
+      const grid = section.querySelector('.dealer-grid');
+      
+      // Re-append sorted cards
+      sortedCards.forEach(card => {
+        grid.appendChild(card);
+      });
+    });
+  }
+  
+  sortCards(cards, sortBy) {
+    return cards.sort((a, b) => {
+      switch (sortBy) {
+        case 'name':
+          return a.dataset.name.localeCompare(b.dataset.name);
+        case 'name-desc':
+          return b.dataset.name.localeCompare(a.dataset.name);
+        case 'location':
+          return a.dataset.location.localeCompare(b.dataset.location);
+        default:
+          return 0;
+      }
+    });
+  }
+  
+  updateResultsCount(count = null) {
+    if (count === null) {
+      count = Array.from(this.dealerCards).filter(card => 
+        card.style.display !== 'none' && !card.classList.contains('filtered-out')
+      ).length;
+    }
+    this.resultsCount.textContent = count;
+  }
+  
+  resetAllFilters() {
+    this.searchInput.value = '';
+    this.categoryFilter.value = 'all';
+    this.locationFilter.value = 'all';
+    this.sortBy.value = 'name';
+    this.clearSearch.style.display = 'none';
+    this.applyFilters();
+  }
+}
+
+// Dealer details data
+const dealerDetails = {
+  gurukirpa: {
+    name: "M/S Gurukirpa Agro Centre",
+    phone: "+919XXXXXXX45",
+    address: "Kohara, Sahnewal Road, Village Jandiale, Ludhiana",
+    services: ["Pesticides & Insecticides", "Fertilizers", "Seeds", "Agricultural Chemicals"],
+    hours: "Mon-Sat: 9:00 AM - 7:00 PM",
+    established: "2010",
+    specialization: "Organic and chemical pest control solutions"
   },
-  mouseInteraction: {
-    distance: 180,
-    force: 0.3,
+  hicon: {
+    name: "M/S Hicon Pest Control",
+    phone: "+919XXXXXXX00",
+    address: "SCO 4, 2nd Floor, New Shopping Centre, Ghumar Mandi, Ludhiana",
+    services: ["Professional Pest Control", "Spraying Equipment", "Consultation Services"],
+    hours: "Mon-Fri: 10:00 AM - 6:00 PM",
+    established: "2015",
+    specialization: "Commercial and residential pest management"
   },
+  singla: {
+    name: "Singla Tractors",
+    phone: "Contact via location",
+    address: "Malout Road, Near 132 KVA Sub Station, Abohar, Fazilka",
+    services: ["Tractor Sales", "Leasing Services", "Maintenance & Repair", "Spare Parts"],
+    hours: "Mon-Sat: 8:00 AM - 8:00 PM",
+    established: "2005",
+    specialization: "New and used tractor sales with financing options"
+  },
+  gurkirpa: {
+    name: "GURKIRPA AUTOS",
+    phone: "Contact via location",
+    address: "M.K. Bypass Road, Dhuri, Sangrur",
+    services: ["Auto Parts", "Tractor Accessories", "Repair Services"],
+    hours: "Mon-Sat: 9:00 AM - 7:00 PM",
+    established: "2012",
+    specialization: "Genuine parts and accessories for all tractor brands"
+  },
+  majha: {
+    name: "Majha Agro Traders",
+    phone: "+91-9855562888",
+    address: "Ground Floor, Ajnala, Amritsar Road, Bhakha Hari Singh, Amritsar - 143102",
+    services: ["Agricultural Trading", "Equipment Supply", "Bulk Orders", "Export Services"],
+    hours: "Mon-Sat: 8:00 AM - 6:00 PM",
+    established: "2008",
+    specialization: "Large-scale agricultural equipment and commodity trading"
+  },
+  sonalika: {
+    name: "Sonalika Samrat Combine Harvester",
+    phone: "+91-9587886664",
+    address: "Available through Sonalika dealers across Punjab",
+    services: ["Combine Harvesters", "Seasonal Leasing", "Operator Training", "Maintenance"],
+    hours: "Seasonal availability",
+    established: "2018",
+    specialization: "High-efficiency combine harvesters for wheat and rice"
+  },
+  kartar: {
+    name: "Kartar Agro Industries Pvt. Ltd.",
+    phone: "Contact via location",
+    address: "Industrial Area, Ludhiana",
+    services: ["Professional Harvesting Equipment", "Custom Solutions", "Technical Support"],
+    hours: "Mon-Fri: 9:00 AM - 6:00 PM",
+    established: "2000",
+    specialization: "Industrial-grade harvesting and processing equipment"
+  },
+  bhajan: {
+    name: "Bhajan Singh & Bros",
+    phone: "+91-9884395093",
+    address: "1913/36, Bhagwan Chowk, Janta Nagar, Gill Road, Ludhiana - 141003",
+    services: ["Agricultural Tools", "Hand Tools", "Spare Parts", "Hardware"],
+    hours: "Mon-Sat: 9:00 AM - 8:00 PM",
+    established: "1995",
+    specialization: "Traditional and modern agricultural hand tools"
+  },
+  gpn: {
+    name: "GPN Machine Tools",
+    phone: "Contact via location",
+    address: "2436/2, Gali No-16, Dashmesh Nagar, Gill Road, Ludhiana - 141003",
+    services: ["Machine Tools", "Equipment Repair", "Custom Fabrication", "Welding Services"],
+    hours: "Mon-Sat: 8:00 AM - 7:00 PM",
+    established: "2007",
+    specialization: "Precision machine tools and custom agricultural equipment"
+  },
+  jrs: {
+    name: "JRS Farmparts",
+    phone: "+91-9779701222",
+    address: "C-87, Phase 5, Focal Point, Ludhiana - 141010",
+    services: ["Farm Parts", "Replacement Components", "Hydraulic Parts", "Engine Parts"],
+    hours: "Mon-Sat: 9:00 AM - 7:00 PM",
+    established: "2013",
+    specialization: "Genuine replacement parts for all major tractor brands"
+  }
 };
 
-class Particle {
-  constructor(canvas) {
-    this.canvas = canvas;
-    this.reset();
-    this.opacity = Math.random() * 0.5 + 0.3;
-    this.fadeDirection = Math.random() > 0.5 ? 1 : -1;
-    this.pulseSpeed = 0.01 + Math.random() * 0.015;
-  }
-
-  reset() {
-    this.x = Math.random() * this.canvas.width;
-    this.y = Math.random() * this.canvas.height;
-    this.vx =
-      (Math.random() - 0.5) *
-        (PARTICLE_CONFIG.speed.max - PARTICLE_CONFIG.speed.min) +
-      PARTICLE_CONFIG.speed.min;
-    this.vy =
-      (Math.random() - 0.5) *
-        (PARTICLE_CONFIG.speed.max - PARTICLE_CONFIG.speed.min) +
-      PARTICLE_CONFIG.speed.min;
-    this.size =
-      Math.random() * (PARTICLE_CONFIG.size.max - PARTICLE_CONFIG.size.min) +
-      PARTICLE_CONFIG.size.min;
-    this.color =
-      PARTICLE_CONFIG.colors[
-        Math.floor(Math.random() * PARTICLE_CONFIG.colors.length)
-      ];
-    this.originalVx = this.vx;
-    this.originalVy = this.vy;
-  }
-
-  update(mouse) {
-    if (mouse.x !== null && mouse.y !== null) {
-      const dx = mouse.x - this.x;
-      const dy = mouse.y - this.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < PARTICLE_CONFIG.mouseInteraction.distance) {
-        const force =
-          (1 - distance / PARTICLE_CONFIG.mouseInteraction.distance) *
-          PARTICLE_CONFIG.mouseInteraction.force;
-        this.vx -= (dx / distance) * force;
-        this.vy -= (dy / distance) * force;
-      } else {
-        this.vx += (this.originalVx - this.vx) * 0.03;
-        this.vy += (this.originalVy - this.vy) * 0.03;
+// Show dealer details modal
+function showDealerDetails(dealerId) {
+  const dealer = dealerDetails[dealerId];
+  if (!dealer) return;
+  
+  const modal = document.getElementById('dealerModal');
+  const modalName = document.getElementById('modalDealerName');
+  const modalBody = document.getElementById('modalBody');
+  
+  modalName.textContent = dealer.name;
+  
+  modalBody.innerHTML = `
+    <div class="dealer-detail-section">
+      <h4><i class="fas fa-map-marker-alt"></i> Location</h4>
+      <p>${dealer.address}</p>
+    </div>
+    
+    <div class="dealer-detail-section">
+      <h4><i class="fas fa-phone"></i> Contact</h4>
+      <p>${dealer.phone.startsWith('+') ? `<a href="tel:${dealer.phone}">${dealer.phone}</a>` : dealer.phone}</p>
+    </div>
+    
+    <div class="dealer-detail-section">
+      <h4><i class="fas fa-cogs"></i> Services</h4>
+      <ul class="services-list">
+        ${dealer.services.map(service => `<li><i class="fas fa-check"></i> ${service}</li>`).join('')}
+      </ul>
+    </div>
+    
+    <div class="dealer-detail-section">
+      <h4><i class="fas fa-clock"></i> Business Hours</h4>
+      <p>${dealer.hours}</p>
+    </div>
+    
+    <div class="dealer-detail-section">
+      <h4><i class="fas fa-calendar"></i> Established</h4>
+      <p>${dealer.established}</p>
+    </div>
+    
+    <div class="dealer-detail-section">
+      <h4><i class="fas fa-star"></i> Specialization</h4>
+      <p>${dealer.specialization}</p>
+    </div>
+    
+    <div class="modal-actions">
+      ${dealer.phone.startsWith('+') ? 
+        `<a href="tel:${dealer.phone}" class="modal-btn primary">
+          <i class="fas fa-phone"></i> Call Now
+        </a>` : 
+        `<a href="https://maps.google.com/?q=${encodeURIComponent(dealer.address)}" target="_blank" class="modal-btn primary">
+          <i class="fas fa-map-marker-alt"></i> Get Directions
+        </a>`
       }
-    }
+      <button class="modal-btn secondary" onclick="closeDealerModal()">
+        <i class="fas fa-times"></i> Close
+      </button>
+    </div>
+  `;
+  
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
 
-    this.x += this.vx;
-    this.y += this.vy;
+// Close dealer details modal
+function closeDealerModal() {
+  const modal = document.getElementById('dealerModal');
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
 
-    if (this.x < 0 || this.x > this.canvas.width) {
-      this.vx = -this.vx;
-      this.originalVx = -this.originalVx;
-    }
-    if (this.y < 0 || this.y > this.canvas.height) {
-      this.vy = -this.vy;
-      this.originalVy = -this.originalVy;
-    }
-
-    this.x = Math.max(0, Math.min(this.canvas.width, this.x));
-    this.y = Math.max(0, Math.min(this.canvas.height, this.y));
-
-    this.opacity += this.fadeDirection * this.pulseSpeed;
-    if (this.opacity <= 0.2 || this.opacity >= 0.6) {
-      this.fadeDirection *= -1;
-    }
-  }
-
-  draw(ctx) {
-    ctx.save();
-    ctx.globalAlpha = this.opacity;
-    ctx.fillStyle = this.color;
-    ctx.shadowBlur = 8;
-    ctx.shadowColor = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
+// Reset all filters (global function)
+function resetAllFilters() {
+  if (window.dealerFilter) {
+    window.dealerFilter.resetAllFilters();
   }
 }
 
-class ParticleSystem {
-  constructor(canvas) {
-    this.canvas = canvas;
-    this.ctx = canvas.getContext("2d");
-    this.particles = [];
-    this.animationId = null;
-    this.mouse = { x: null, y: null };
-
-    this.setupCanvas();
-    this.createParticles();
-    this.setupEventListeners();
-    this.animate();
-  }
-
-  setupCanvas() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-    this.canvas.style.position = "fixed";
-    this.canvas.style.top = "0";
-    this.canvas.style.left = "0";
-    this.canvas.style.zIndex = "-1";
-    this.canvas.style.pointerEvents = "none";
-  }
-
-  createParticles() {
-    this.particles = [];
-    for (let i = 0; i < PARTICLE_CONFIG.count; i++) {
-      this.particles.push(new Particle(this.canvas));
-    }
-  }
-
-  setupEventListeners() {
-    window.addEventListener("mousemove", (e) => {
-      this.mouse.x = e.clientX;
-      this.mouse.y = e.clientY;
+// Simple particle system for background
+function createParticleSystem() {
+  const canvas = document.getElementById("particles-js");
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  const particles = [];
+  const particleCount = window.innerWidth < 768 ? 30 : 50;
+  
+  // Create particles
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.5 + 0.2
     });
-
-    window.addEventListener("mouseleave", () => {
-      this.mouse.x = null;
-      this.mouse.y = null;
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach(particle => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      
+      // Wrap around edges
+      if (particle.x < 0) particle.x = canvas.width;
+      if (particle.x > canvas.width) particle.x = 0;
+      if (particle.y < 0) particle.y = canvas.height;
+      if (particle.y > canvas.height) particle.y = 0;
+      
+      // Draw particle
+      ctx.save();
+      ctx.globalAlpha = particle.opacity;
+      ctx.fillStyle = '#4caf50';
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
     });
-
-    window.addEventListener("resize", () => this.handleResize());
+    
+    requestAnimationFrame(animate);
   }
-
-  handleResize() {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = window.innerHeight;
-    this.createParticles();
-  }
-
-  drawConnections() {
-    const particles = this.particles;
-
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < PARTICLE_CONFIG.connections.distance) {
-          const opacity =
-            (1 - distance / PARTICLE_CONFIG.connections.distance) *
-            PARTICLE_CONFIG.connections.opacity;
-
-          this.ctx.save();
-          this.ctx.globalAlpha = opacity;
-          this.ctx.strokeStyle = "rgba(76, 175, 80, 0.3)";
-          this.ctx.lineWidth = PARTICLE_CONFIG.connections.lineWidth;
-          this.ctx.beginPath();
-          this.ctx.moveTo(particles[i].x, particles[i].y);
-          this.ctx.lineTo(particles[j].x, particles[j].y);
-          this.ctx.stroke();
-          this.ctx.restore();
-        }
-      }
-    }
-  }
-
-  animate() {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    this.particles.forEach((particle) => {
-      particle.update(this.mouse);
-      particle.draw(this.ctx);
-    });
-
-    this.drawConnections();
-    this.animationId = requestAnimationFrame(() => this.animate());
-  }
-
-  destroy() {
-    if (this.animationId) {
-      cancelAnimationFrame(this.animationId);
-    }
-  }
+  
+  animate();
+  
+  // Handle resize
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
 }
 
-// Search functionality
+// Legacy search function for compatibility
 function initializeSearch() {
   const searchInput = document.getElementById("searchInput");
   const dealerCards = document.querySelectorAll(".dealer-card");
@@ -210,36 +411,38 @@ function initializeSearch() {
 
     dealerCards.forEach((card) => {
       const text = card.textContent.toLowerCase();
-      const section = card.closest(".section");
 
       if (text.includes(searchTerm)) {
         card.style.display = "block";
-        card.style.animation = "fadeInUp 0.3s ease-out";
       } else {
         card.style.display = "none";
       }
-    });
-
-    // Hide/show sections based on visible cards
-    document.querySelectorAll(".section").forEach((section) => {
-      const visibleCards = section.querySelectorAll(
-        '.dealer-card[style*="block"]'
-      );
-      section.style.display = visibleCards.length > 0 ? "block" : "none";
     });
   });
 }
 
 // Initialize everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize enhanced filter system
+  window.dealerFilter = new DealerFilter();
+  
   // Initialize particle system
-  const canvas = document.getElementById("particles-js");
-  if (canvas) {
-    new ParticleSystem(canvas);
-  }
+  createParticleSystem();
 
-  // Initialize search
-  initializeSearch();
+  // Close modal when clicking outside
+  window.addEventListener('click', (e) => {
+    const modal = document.getElementById('dealerModal');
+    if (e.target === modal) {
+      closeDealerModal();
+    }
+  });
+  
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeDealerModal();
+    }
+  });
 
   // Add intersection observer for scroll animations
   const observerOptions = {
@@ -267,24 +470,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Add hover effects to dealer cards
   document.querySelectorAll(".dealer-card").forEach((card) => {
     card.addEventListener("mouseenter", () => {
-      card.style.transform = "translateY(-12px) scale(1.02)";
+      if (!card.classList.contains('filtered-out')) {
+        card.style.transform = "translateY(-8px) scale(1.02)";
+      }
     });
 
     card.addEventListener("mouseleave", () => {
-      card.style.transform = "translateY(0) scale(1)";
-    });
-  });
-
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+      if (!card.classList.contains('filtered-out')) {
+        card.style.transform = "translateY(0) scale(1)";
       }
     });
   });
@@ -294,12 +487,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.opacity = "1";
   }, 100);
 });
-
-// Performance optimization: Reduce particles on mobile
-if (window.innerWidth < 768) {
-  PARTICLE_CONFIG.count = 40;
-  PARTICLE_CONFIG.connections.distance = 80;
-}
 
 // Add touch support for mobile hover effects
 document.addEventListener("touchstart", function () {}, {

@@ -64,7 +64,7 @@ body {
 }
 
 /* Theme Toggle Button */
-.theme-toggle {
+.theme-toggle,.back-button {
   position: relative;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -133,6 +133,7 @@ body {
   border-color: var(--border-color);
   color: var(--text-primary);
 }
+.back-button
 
 /* Secondary backgrounds */
 .chat-header,

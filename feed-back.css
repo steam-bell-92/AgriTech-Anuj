@@ -1,6 +1,16 @@
-/* Import theme system */
-@import url('theme.css');
 
+@import url('theme.css');
+:root {
+  --primary-green: #2e7d32;
+  --accent-green: #4caf50;
+  --light-green: #e8f5e9;
+  --text-dark: #1b1b1b;
+  --text-light: rgba(255, 255, 255, 0.9);
+  --radius: 14px;
+  --transition: all 0.3s ease;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-strong: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
 * {
   margin: 0;
   padding: 0;
@@ -17,14 +27,15 @@ body {
 }
 
 .page-container {
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height:max-content ;
   display: flex;
   flex-direction: column;
 }
 
 /* Header Styles */
 header {
-  background: linear-gradient(135deg, #b5e7b5 0%, #a5d6a7 100%);
+  background: linear-gradient(135deg, #b5e7b5 0%,  #4caf50 100%);
   padding: 20px 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -51,6 +62,8 @@ header::before {
   align-items: center;
   position: relative;
   z-index: 1;
+  /* box-shadow: 0 4px -2px green;  */
+
 }
 
 .logo-section {
@@ -123,16 +136,17 @@ main {
 }
 
 .feedback-container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
-  background: var(--bg-primary, rgba(255, 255, 255, 0.95));
-  border-radius: 20px;
-  padding: 40px;
-  box-shadow: 0 10px 40px var(--shadow-light, rgba(0, 0, 0, 0.1));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-large);
+  padding: 48px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--glass-border);
   position: relative;
   overflow: hidden;
+  /* border-top:2px solid #388e3c; */
 }
 
 .feedback-container::before {
@@ -141,11 +155,16 @@ main {
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #4caf50, #2e7d32, #1b5e20);
-  border-radius: 20px 20px 0 0;
+  height: 6px;
+  background: linear-gradient(90deg, #4caf50, #2e7d32, #1b5e20, #4caf50);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite;
 }
 
+ @keyframes gradientShift {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 0%; }
+  }
 /* Header Section */
 .feedback-header {
   text-align: center;
@@ -153,28 +172,61 @@ main {
 }
 
 .feedback-icon {
-  font-size: 3rem;
-  color: #4caf50;
-  margin-bottom: 20px;
-  animation: pulse 2s infinite;
+  font-size: 4rem;
+  color: var(--accent-green);
+  margin-bottom: 24px;
+  display: inline-block;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(46, 125, 50, 0.05));
+  border-radius: 50%;
+  animation: iconPulse 3s ease-in-out infinite;
+  position: relative;
 }
 
+.feedback-icon::after {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border: 2px solid var(--accent-green);
+        border-radius: 50%;
+        opacity: 0;
+        animation: ringPulse 3s ease-in-out infinite;
+      }
+
 .feedback-title {
-  color: #1b5e20;
-  font-size: 2rem;
-  margin-bottom: 10px;
-  font-weight: 600;
+  color: var(--dark-green);
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 2px 2px 5px green;
 }
 
 .feedback-subtitle {
-  color: #666;
-  font-size: 1rem;
-  opacity: 0.8;
+  color: var(--text-medium);
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+ @keyframes iconPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes ringPulse {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 0.3; transform: scale(1.2); }
 }
 
 /* Form Styles */
 .feedback-form {
   animation: slideInUp 0.6s ease-out;
+  margin-top: 10px;
 }
 
 .form-row {
@@ -183,6 +235,7 @@ main {
 
 .form-group {
   position: relative;
+  padding:0 100px;
 }
 
 .form-group label {
@@ -261,7 +314,7 @@ main {
 
 /* Submit Button */
 .submit-button {
-  width: 100%;
+  width: 86%;
   padding: 18px;
   background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: white;
@@ -271,7 +324,8 @@ main {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  margin:auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -619,12 +673,22 @@ main {
 @media (max-width: 768px) {
   .feedback-container {
     margin: 20px 15px;
-    padding: 30px 25px;
+    /* padding: 30px 25px; */
     border-radius: 15px;
   }
 
+  .form-group{
+    margin: 0;
+    padding: 0 20px;
+  }
+/* 
+  .submit-button{
+    margin: auto;
+  } */
+
   .header-content {
     padding: 0 15px;
+
   }
 
   header h1 {

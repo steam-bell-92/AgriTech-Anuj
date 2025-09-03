@@ -1,4 +1,3 @@
-
 /* Import theme system */
 @import url('theme.css');
 
@@ -354,7 +353,7 @@ section h3 {
   border-radius: var(--border-radius);
 }
 
-/* Enhanced Lists */
+/* Enhanced Lists - FIXED HOVER ISSUE */
 ul {
   margin: 0;
   padding: 0;
@@ -369,12 +368,31 @@ section ul li {
   padding: 0.75rem;
   border-radius: var(--border-radius);
   transition: var(--transition);
-  background: rgba(244, 255, 244, 0.3);
+  background: rgba(139, 252, 139, 0.3);
+  /* Fix text color for both themes */
+  color: var(--text-primary, #343232);
 }
 
+/* FIXED: Proper hover states that maintain text visibility */
 section ul li:hover {
   background: var(--light-green);
   transform: translateX(8px);
+  /* Ensure text stays visible on hover in both themes */
+  color: var(--text-primary, #333);
+  /* color: #456545; */
+}
+
+/* Dark theme specific fixes */
+[data-theme="dark"] section ul li {
+  background: rgba(11, 80, 14, 0.1);
+  /* color: var(--text-primary, #344134); */
+  color: #6b8f67;
+}
+
+[data-theme="dark"] section ul li:hover {
+  background: rgba(76, 175, 80, 0.2);
+  /* color: var(--text-primary, #434443); */
+  color: black
 }
 
 section ul li::before {
@@ -426,7 +444,7 @@ section strong {
   background: linear-gradient(90deg, #2196f3, #1976d2);
 }
 
-/* Crop Details Enhancement */
+/* Crop Details Enhancement - FIXED HOVER ISSUE */
 #crop-details {
   grid-column: 1 / -1;
 }
@@ -445,12 +463,28 @@ section strong {
   border-left: 4px solid var(--secondary-green);
   transition: var(--transition);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  /* Ensure text is visible in both themes */
+  color: var(--text-primary, #333);
 }
 
+/* FIXED: Crop item hover states */
 .crop-item:hover {
-  background: var(--white);
+  background: var(--bg-primary, #ffffff);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transform: translateY(-4px);
+  /* Maintain text visibility on hover */
+  color: var(--text-primary, #333);
+}
+
+/* Dark theme specific crop item fixes */
+[data-theme="dark"] .crop-item {
+  background: var(--bg-secondary, rgba(255, 255, 255, 0.1));
+  color: var(--text-primary, #e0e0e0);
+}
+
+[data-theme="dark"] .crop-item:hover {
+  background: var(--bg-primary, rgba(255, 255, 255, 0.15));
+  color: var(--text-primary, #e0e0e0);
 }
 
 .crop-item h3 {
@@ -459,12 +493,42 @@ section strong {
   border: none;
   margin-bottom: 0.75rem;
   font-size: 1.1rem;
+  /* Ensure heading text is visible */
+  color: var(--text-primary, #333);
+}
+
+/* Dark theme crop item heading fix */
+[data-theme="dark"] .crop-item h3 {
+  color: var(--text-primary, #e0e0e0);
 }
 
 p {
   margin-bottom: 1.5rem;
   line-height: 1.8;
   color: var(--text-secondary, #666);
+}
+
+/* FIXED: Ensure all text in crop items remains visible */
+.crop-item p,
+.crop-item li {
+  color: var(--text-secondary, #666);
+  transition: color 0.3s ease;
+}
+
+.crop-item:hover p,
+.crop-item:hover li {
+  color: var(--text-secondary, #666);
+}
+
+/* Dark theme text fixes for crop items */
+[data-theme="dark"] .crop-item p,
+[data-theme="dark"] .crop-item li {
+  color: var(--text-secondary, #b0b0b0);
+}
+
+[data-theme="dark"] .crop-item:hover p,
+[data-theme="dark"] .crop-item:hover li {
+  color: var(--text-secondary, #b0b0b0);
 }
 
 /* Responsive Design */
