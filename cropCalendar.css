@@ -132,21 +132,31 @@ select option:hover {
 .calendar {
     display: grid;
     grid-template-columns: 150px repeat(12, 1fr);
-    gap: 1px;
+    gap: 6px;
     margin: 2rem auto;
     max-width: 1400px;
-    background: var(--border-color, #e2e8f0);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px var(--shadow-medium, rgba(0, 0, 0, 0.1));
-    padding: 1px;
+    background: transparent;
+    border-radius: 16px;
+    overflow: visible;
+    padding: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 1200px) {
     .calendar {
         grid-template-columns: 120px repeat(12, 1fr);
-        gap: 0.5px;
+        gap: 4px;
         margin: 1rem;
+        padding: 8px;
+    }
+    
+    .month-cell {
+        min-height: 50px;
+        padding: 1rem 0.4rem;
+        margin: 2px;
     }
 }
 
@@ -155,6 +165,15 @@ select option:hover {
         grid-template-columns: 100px repeat(12, minmax(50px, 1fr));
         font-size: 0.875rem;
         overflow-x: auto;
+        gap: 3px;
+        padding: 6px;
+    }
+    
+    .month-cell {
+        min-height: 45px;
+        padding: 0.8rem 0.3rem;
+        margin: 1px;
+        border-radius: 8px;
     }
 }
 
@@ -164,7 +183,9 @@ select option:hover {
     padding: 1rem 0.5rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    border-radius: 10px;
+    margin: 2px;
 }
 
 .month {
@@ -175,6 +196,11 @@ select option:hover {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     position: relative;
+    border-radius: 10px;
+    box-shadow: 
+        0 4px 12px rgba(22, 163, 74, 0.3),
+        0 2px 6px rgba(22, 163, 74, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .month::before {
@@ -193,8 +219,10 @@ select option:hover {
 }
 
 .month:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+        0 8px 20px rgba(22, 163, 74, 0.4),
+        0 4px 10px rgba(22, 163, 74, 0.3);
 }
 
 
@@ -205,60 +233,150 @@ select option:hover {
     font-size: 1.5rem;
     padding: 1.25rem 0.5rem;
     cursor: pointer;
+    border-radius: 12px;
+    margin: 4px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    overflow: visible;
 }
 
 .month-cell:hover {
-    transform: translateY(-2px) scale(1.05);
-    z-index: 10;
-    box-shadow: 0 8px 25px var(--shadow-medium, rgba(0, 0, 0, 0.15));
+    transform: translateY(-4px) scale(1.02);
+    z-index: 15;
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.15),
+        0 6px 12px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .month-cell.grow {
-    background: linear-gradient(135deg, var(--accent-green, #4ade80), var(--secondary-green, #22c55e));
+    background: linear-gradient(135deg, 
+        var(--accent-green, #4ade80) 0%, 
+        var(--secondary-green, #22c55e) 50%,
+        var(--primary-green, #16a34a) 100%);
     color: white;
     animation: pulse 2s ease-in-out infinite;
+    box-shadow: 
+        0 4px 16px rgba(34, 197, 94, 0.3),
+        0 2px 8px rgba(34, 197, 94, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(34, 197, 94, 0.4);
 }
 
 .month-cell.grow:hover {
-    background: linear-gradient(135deg, var(--secondary-green, #22c55e), var(--primary-green, #16a34a));
-    transform: translateY(-2px) scale(1.08);
+    background: linear-gradient(135deg, 
+        var(--secondary-green, #22c55e) 0%, 
+        var(--primary-green, #16a34a) 50%,
+        var(--dark-green, #15803d) 100%);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+        0 16px 32px rgba(34, 197, 94, 0.4),
+        0 8px 16px rgba(34, 197, 94, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .month-cell.sow {
-    background: linear-gradient(135deg, #fef3c7, #fde047);
+    background: linear-gradient(135deg, 
+        #fef3c7 0%, 
+        #fde047 50%, 
+        #facc15 100%);
     border: 2px solid #f59e0b;
-    animation: bounce 1s ease-in-out infinite;
+    animation: bounce 1.5s ease-in-out infinite;
+    color: #92400e;
+    font-weight: 600;
+    box-shadow: 
+        0 4px 16px rgba(245, 158, 11, 0.3),
+        0 2px 8px rgba(245, 158, 11, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .month-cell.sow:hover {
-    background: linear-gradient(135deg, #fde047, #facc15);
+    background: linear-gradient(135deg, 
+        #fde047 0%, 
+        #facc15 50%, 
+        #eab308 100%);
     border-color: #d97706;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+        0 16px 32px rgba(245, 158, 11, 0.4),
+        0 8px 16px rgba(245, 158, 11, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .month-cell.harvest {
-    background: linear-gradient(135deg, #fed7aa, #fb923c);
+    background: linear-gradient(135deg, 
+        #fed7aa 0%, 
+        #fb923c 50%, 
+        #f97316 100%);
     border: 2px solid #ea580c;
     animation: glow 2s ease-in-out infinite alternate;
+    color: #9a3412;
+    font-weight: 600;
+    box-shadow: 
+        0 4px 16px rgba(234, 88, 12, 0.3),
+        0 2px 8px rgba(234, 88, 12, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
 .month-cell.harvest:hover {
-    background: linear-gradient(135deg, #fb923c, #f97316);
+    background: linear-gradient(135deg, 
+        #fb923c 0%, 
+        #f97316 50%, 
+        #ea580c 100%);
     border-color: #c2410c;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 
+        0 16px 32px rgba(234, 88, 12, 0.4),
+        0 8px 16px rgba(234, 88, 12, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 4px 16px rgba(34, 197, 94, 0.3),
+            0 2px 8px rgba(34, 197, 94, 0.2);
+    }
+    50% { 
+        transform: scale(1.02);
+        box-shadow: 
+            0 6px 20px rgba(34, 197, 94, 0.4),
+            0 3px 10px rgba(34, 197, 94, 0.3);
+    }
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
+    0%, 100% { 
+        transform: translateY(0) scale(1);
+    }
+    50% { 
+        transform: translateY(-3px) scale(1.01);
+    }
 }
 
 @keyframes glow {
-    0% { box-shadow: 0 0 5px rgba(234, 88, 12, 0.3); }
-    100% { box-shadow: 0 0 15px rgba(234, 88, 12, 0.6); }
+    0% { 
+        box-shadow: 
+            0 4px 16px rgba(234, 88, 12, 0.3),
+            0 2px 8px rgba(234, 88, 12, 0.2),
+            0 0 8px rgba(234, 88, 12, 0.2);
+    }
+    100% { 
+        box-shadow: 
+            0 6px 20px rgba(234, 88, 12, 0.4),
+            0 3px 10px rgba(234, 88, 12, 0.3),
+            0 0 16px rgba(234, 88, 12, 0.4);
+    }
+}
 }
 
 .crop-name {
@@ -272,6 +390,11 @@ select option:hover {
     overflow: hidden;
     text-align: left;
     border-left: 4px solid var(--primary-green, #16a34a);
+    border-radius: 10px;
+    margin: 2px;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .crop-name::before {
@@ -291,10 +414,12 @@ select option:hover {
 
 .crop-name:hover {
     color: var(--primary-green, #16a34a);
-    transform: translateX(4px);
+    transform: translateX(4px) scale(1.01);
     border-left-width: 6px;
     background: linear-gradient(135deg, var(--light-green, #f0fdf4), var(--bg-secondary, #f8fafc));
-    box-shadow: 0 4px 12px var(--shadow-light, rgba(22, 163, 74, 0.1));
+    box-shadow: 
+        0 6px 16px rgba(22, 163, 74, 0.15),
+        0 3px 8px rgba(22, 163, 74, 0.1);
 }
 
 /* Loading animation */
@@ -383,21 +508,26 @@ select option:hover {
 /* Tooltip styles */
 .tooltip {
     position: absolute;
-    bottom: 100%;
+    bottom: 110%;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--text-primary, #1e293b);
+    background: linear-gradient(135deg, var(--text-primary, #1e293b), #374151);
     color: white;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
     white-space: nowrap;
     visibility: hidden;
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1000;
     pointer-events: none;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
 }
 
 .tooltip::after {
@@ -406,24 +536,29 @@ select option:hover {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border: 4px solid transparent;
+    border: 6px solid transparent;
     border-top-color: var(--text-primary, #1e293b);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .month-cell:hover .tooltip {
     visibility: visible;
     opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
 }
 
 /* Emoji styling */
 .emoji {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     display: inline-block;
-    transition: transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .month-cell:hover .emoji {
-    transform: scale(1.2);
+    transform: scale(1.3) rotate(5deg);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 /* Enhanced responsiveness */
@@ -431,24 +566,36 @@ select option:hover {
     .calendar {
         grid-template-columns: 80px repeat(12, minmax(40px, 1fr));
         font-size: 0.75rem;
+        gap: 2px;
+        padding: 4px;
     }
     
     .crop-name {
         font-size: 0.75rem;
         padding: 0.75rem 0.5rem;
+        border-radius: 8px;
+        margin: 1px;
     }
     
     .month-cell {
-        padding: 0.75rem 0.25rem;
+        padding: 0.6rem 0.25rem;
+        min-height: 40px;
+        border-radius: 6px;
+        margin: 1px;
     }
     
     .emoji {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     
     .tooltip {
         font-size: 0.7rem;
-        padding: 0.4rem 0.6rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .month {
+        border-radius: 6px;
+        margin: 1px;
     }
 }
 
