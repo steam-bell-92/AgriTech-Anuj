@@ -1,8 +1,3 @@
-/* =========================
-   About Page Styles
-   ========================= */
-
-/* Import theme system */
 @import url('theme.css');
 
 * {
@@ -467,6 +462,22 @@ p {
   .why-it-matters-section ul {
     grid-template-columns: 1fr;
   }
+
+  /* Mobile-specific footer centering for about page */
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-brand {
+    align-items: center;
+    text-align: center;
+  }
+
+  .social-media {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -490,6 +501,33 @@ p {
    Keyframes
    ========================= */
 @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body {
+  animation: fadeIn 0.5s ease-in;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px var(--shadow-medium);
+}
+
+.nav-buttons a.btn:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.scroll-to-top:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+=======
   from { opacity: 0; }
   to   { opacity: 1; }
 }
